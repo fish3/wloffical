@@ -1,4 +1,4 @@
-const POSTMARK_API_URL = "https://api.postmarkapp.com/email";
+const RESEND_API_URL = "https://api.resend.com/emails";
 const MAX_NAME_LENGTH = 80;
 const MAX_EMAIL_LENGTH = 120;
 const MAX_PRODUCT_LENGTH = 80;
@@ -20,11 +20,11 @@ export async function onRequestPost(context) {
     const contactMessage = validateContactMessage(requestBody);
     validateEmailEnvironment(context.env);
 
-    const postmarkResponse = await sendContactEmail(context.env, contactMessage);
+    const resendResponse = await sendContactEmail(context.env, contactMessage);
 
-    if (!postmarkResponse.ok) {
-      const errorText = await postmarkResponse.text();
-      throw new Error(`Postmark email delivery failed: ${errorText}`);
+    if (!resendResponse.ok) {
+      const errorText = await resendResponse.text();
+      throw new Error(`Resend email delivery failed: ${errorText}`);
     }
 
     return Response.json({ ok: true }, { headers: jsonHeaders });
@@ -103,7 +103,7 @@ function normalizeRequiredText(value, fieldName, maxLength) {
 
 function validateEmailEnvironment(env) {
   const requiredKeys = [
-    "POSTMARK_SERVER_TOKEN",
+    "RESEND_API_KEY",
     "CONTACT_TO_EMAIL",
     "CONTACT_FROM_EMAIL",
   ];
@@ -117,20 +117,19 @@ function validateEmailEnvironment(env) {
 
 function sendContactEmail(env, contactMessage) {
   const emailPayload = {
-    From: env.CONTACT_FROM_EMAIL,
-    To: env.CONTACT_TO_EMAIL,
-    Subject: `WEI LAN website inquiry - ${contactMessage.product}`,
-    HtmlBody: buildHtmlEmail(contactMessage),
-    TextBody: buildPlainTextEmail(contactMessage),
-    MessageStream: env.POSTMARK_MESSAGE_STREAM || "website-contact-inquiries",
+    from: env.CONTACT_FROM_EMAIL,
+    to: env.CONTACT_TO_EMAIL,
+    reply_to: contactMessage.email,
+    subject: `WEI LAN website inquiry - ${contactMessage.product}`,
+    html: buildHtmlEmail(contactMessage),
+    text: buildPlainTextEmail(contactMessage),
   };
 
-  return fetch(POSTMARK_API_URL, {
+  return fetch(RESEND_API_URL, {
     method: "POST",
     headers: {
-      Accept: "application/json",
       "Content-Type": "application/json",
-      "X-Postmark-Server-Token": env.POSTMARK_SERVER_TOKEN,
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
     },
     body: JSON.stringify(emailPayload),
   });

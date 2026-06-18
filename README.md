@@ -13,14 +13,13 @@ Build settings:
 
 ## Contact form environment variables
 
-The contact form posts to `/api/contact` and sends email through Postmark.
+The contact form posts to `/api/contact` and sends email through Resend.
 
 Set these Cloudflare Pages environment variables:
 
-- `POSTMARK_SERVER_TOKEN`: Postmark server token.
+- `RESEND_API_KEY`: Resend API key.
 - `CONTACT_TO_EMAIL`: sales inbox that receives website inquiries.
-- `CONTACT_FROM_EMAIL`: verified sender address in Postmark, for example `WEI LAN <inquiry@your-domain.com>`.
-- `POSTMARK_MESSAGE_STREAM`: optional, defaults to `website-contact-inquiries`.
+- `CONTACT_FROM_EMAIL`: verified sender address in Resend, for example `WEI LAN <inquiry@your-domain.com>`.
 
 After changing environment variables, redeploy the Pages project.
 

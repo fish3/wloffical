@@ -1,0 +1,4 @@
+POSTMARK_SERVER_TOKEN=pm_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+CONTACT_TO_EMAIL=sales@example.com
+CONTACT_FROM_EMAIL=WEI LAN <inquiry@example.com>
+POSTMARK_MESSAGE_STREAM=website-contact-inquiries

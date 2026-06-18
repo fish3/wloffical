@@ -114,7 +114,7 @@
                 <li>5, 9, or 10 material categories depending on configuration</li>
                 <li>Skid-mounted modules reduce installation and maintenance complexity</li>
               </ul>
-              <p><a class="text-link" href="products/ai-optical-sorting.html">View AI optical sorting details</a></p>
+              <p><a class="text-link" href="products/ai-optical-sorting">View AI optical sorting details</a></p>
             </div>
           </article>
 
@@ -132,7 +132,7 @@
                 <li>35 m2 single-machine footprint for compact project sites</li>
                 <li>Hydraulic drive with adjustable crushing particle size</li>
               </ul>
-              <p><a class="text-link" href="products/construction-waste-recycling-line.html">View construction waste line details</a></p>
+              <p><a class="text-link" href="products/construction-waste-recycling-line">View construction waste line details</a></p>
             </div>
           </article>
         </div>
@@ -272,7 +272,7 @@
           <h2 id="contact-title">Send your waste type, target capacity, and site limits</h2>
           <p>For accurate overseas project recommendations, share material composition, hourly capacity target, available plant area, destination country, voltage, and required automation level.</p>
         </div>
-        <form class="contact-form" action="mailto:13780012268@example.com" method="post" enctype="text/plain">
+        <form class="contact-form" data-contact-form action="/api/contact" method="post">
           <label>
             Name
             <input name="name" autocomplete="name" required>
@@ -295,6 +295,7 @@
             <textarea name="message" rows="5" placeholder="Waste type, capacity target, country, site area, automation requirements" required></textarea>
           </label>
           <button type="submit">Request Engineering Proposal</button>
+          <p class="form-status" data-contact-status role="status" aria-live="polite"></p>
           <p class="contact-note">Sales hotline: +86 137 8001 2268 / +86 180 6737 7770</p>
         </form>
       </section>

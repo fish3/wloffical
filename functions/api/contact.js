@@ -3,6 +3,7 @@ const MAX_NAME_LENGTH = 80;
 const MAX_EMAIL_LENGTH = 120;
 const MAX_PRODUCT_LENGTH = 80;
 const MAX_MESSAGE_LENGTH = 3000;
+const MAX_OPTIONAL_FIELD_LENGTH = 160;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const jsonHeaders = {
@@ -72,7 +73,13 @@ function validateContactMessage(body) {
   const contactMessage = {
     name: normalizeRequiredText(body.name, "Name", MAX_NAME_LENGTH),
     email: normalizeRequiredText(body.email, "Email", MAX_EMAIL_LENGTH),
+    company: normalizeOptionalText(body.company, MAX_OPTIONAL_FIELD_LENGTH),
+    phone: normalizeOptionalText(body.phone, MAX_OPTIONAL_FIELD_LENGTH),
+    country: normalizeOptionalText(body.country, MAX_OPTIONAL_FIELD_LENGTH),
     product: normalizeRequiredText(body.product, "Product interest", MAX_PRODUCT_LENGTH),
+    wasteType: normalizeOptionalText(body.wasteType, MAX_OPTIONAL_FIELD_LENGTH),
+    capacity: normalizeOptionalText(body.capacity, MAX_OPTIONAL_FIELD_LENGTH),
+    siteArea: normalizeOptionalText(body.siteArea, MAX_OPTIONAL_FIELD_LENGTH),
     message: normalizeRequiredText(body.message, "Project details", MAX_MESSAGE_LENGTH),
   };
 
@@ -81,6 +88,24 @@ function validateContactMessage(body) {
   }
 
   return contactMessage;
+}
+
+function normalizeOptionalText(value, maxLength) {
+  if (value === undefined || value === null) {
+    return "";
+  }
+
+  if (typeof value !== "string") {
+    throw new Error("Optional field format is invalid");
+  }
+
+  const normalizedValue = value.trim();
+
+  if (normalizedValue.length > maxLength) {
+    throw new Error("Optional field is too long");
+  }
+
+  return normalizedValue;
 }
 
 function normalizeRequiredText(value, fieldName, maxLength) {
@@ -140,23 +165,37 @@ function buildHtmlEmail(contactMessage) {
     "<strong>New WEI LAN website inquiry</strong><br>",
     `<strong>Name:</strong> ${escapeHtml(contactMessage.name)}<br>`,
     `<strong>Email:</strong> ${escapeHtml(contactMessage.email)}<br>`,
+    formatOptionalHtmlLine("Company", contactMessage.company),
+    formatOptionalHtmlLine("Phone", contactMessage.phone),
+    formatOptionalHtmlLine("Country / Region", contactMessage.country),
     `<strong>Product interest:</strong> ${escapeHtml(contactMessage.product)}<br><br>`,
+    formatOptionalHtmlLine("Waste type", contactMessage.wasteType),
+    formatOptionalHtmlLine("Target capacity", contactMessage.capacity),
+    formatOptionalHtmlLine("Available site area", contactMessage.siteArea),
     "<strong>Project details:</strong><br>",
     escapeHtml(contactMessage.message).replace(/\n/g, "<br>"),
   ].join("");
 }
 
 function buildPlainTextEmail(contactMessage) {
-  return [
+  const lines = [
     "New WEI LAN website inquiry",
     "",
     `Name: ${contactMessage.name}`,
     `Email: ${contactMessage.email}`,
+    formatOptionalPlainLine("Company", contactMessage.company),
+    formatOptionalPlainLine("Phone", contactMessage.phone),
+    formatOptionalPlainLine("Country / Region", contactMessage.country),
     `Product interest: ${contactMessage.product}`,
+    formatOptionalPlainLine("Waste type", contactMessage.wasteType),
+    formatOptionalPlainLine("Target capacity", contactMessage.capacity),
+    formatOptionalPlainLine("Available site area", contactMessage.siteArea),
     "",
     "Project details:",
     contactMessage.message,
-  ].join("\n");
+  ].filter(Boolean);
+
+  return lines.join("\n");
 }
 
 function getErrorStatusCode(error) {
@@ -167,6 +206,7 @@ function getErrorStatusCode(error) {
     "Product interest is required",
     "Project details is required",
     "Email format is invalid",
+    "Optional field format is invalid",
   ];
 
   if (validationMessages.includes(error.message) || error.message.endsWith("is too long")) {
@@ -174,6 +214,22 @@ function getErrorStatusCode(error) {
   }
 
   return 500;
+}
+
+function formatOptionalHtmlLine(label, value) {
+  if (!value) {
+    return "";
+  }
+
+  return `<strong>${label}:</strong> ${escapeHtml(value)}<br>`;
+}
+
+function formatOptionalPlainLine(label, value) {
+  if (!value) {
+    return "";
+  }
+
+  return `${label}: ${value}`;
 }
 
 function escapeHtml(value) {

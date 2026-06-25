@@ -101,8 +101,8 @@
             <span class="field-label" id="waste-type-label">Waste Type</span>
             <input type="hidden" name="wasteType" data-waste-type-value>
             <div class="waste-type-picker" data-waste-picker>
-              <button class="waste-type-control is-placeholder" type="button" data-waste-control aria-labelledby="waste-type-label" aria-haspopup="listbox" aria-expanded="false">
-                <span data-waste-label>Select waste types</span>
+              <button class="waste-type-control is-placeholder" type="button" data-waste-control aria-labelledby="waste-type-label" aria-haspopup="listbox" aria-expanded="false" aria-disabled="true" disabled>
+                <span data-waste-label>Select product line first</span>
                 <span class="waste-type-chevron" aria-hidden="true"></span>
               </button>
               <div class="waste-type-menu" data-waste-menu>
@@ -112,7 +112,7 @@
                   <button class="waste-type-custom-clear" type="button" data-waste-custom-clear aria-label="Clear custom waste type">&times;</button>
                 </div>
                 <div class="waste-type-menu-actions">
-                  <button class="waste-type-clear" type="button" data-waste-clear>Clear</button>
+                  <button class="waste-type-clear" type="button" data-waste-clear>All</button>
                   <button class="waste-type-done" type="button" data-waste-done>Done</button>
                 </div>
               </div>
@@ -206,6 +206,6 @@
       <p>Project consultation and RFQ support for plastic recycling and construction waste recycling systems.</p>
     </footer>
 
-    <script src="script.js?v=waste-picker-matched" defer></script>
+    <script src="script.js?v=waste-picker-disabled-all" defer></script>
   </body>
 </html>

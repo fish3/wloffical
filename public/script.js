@@ -59,6 +59,9 @@ const DEFAULT_WASTE_TYPE_OPTIONS = [
   "Bulky waste",
 ];
 
+const WASTE_TYPE_DISABLED_LABEL = "Select product line first";
+const WASTE_TYPE_PLACEHOLDER_LABEL = "Select waste types";
+
 let selectedWasteTypes = [];
 let customWasteTypeOptions = [];
 
@@ -77,15 +80,64 @@ function normalizeWasteType(value) {
   return value.replace(/\s+/g, " ").trim();
 }
 
+function hasSelectedProductInterest() {
+  return Boolean(productValue && productValue.value.trim());
+}
+
 function getWasteTypeOptions() {
-  const selectedProduct = productValue ? productValue.value : "";
-  const productOptions = !selectedProduct
-    ? DEFAULT_WASTE_TYPE_OPTIONS
-    : WASTE_TYPE_OPTIONS_BY_PRODUCT[selectedProduct] || DEFAULT_WASTE_TYPE_OPTIONS;
+  const selectedProduct = productValue ? productValue.value.trim() : "";
+
+  if (!selectedProduct) {
+    return [];
+  }
+
+  const productOptions = WASTE_TYPE_OPTIONS_BY_PRODUCT[selectedProduct] || DEFAULT_WASTE_TYPE_OPTIONS;
 
   return [...productOptions, ...customWasteTypeOptions].filter((option, index, options) => {
     return options.findIndex((candidate) => candidate.toLowerCase() === option.toLowerCase()) === index;
   });
+}
+
+function updateWasteTypeControlAvailability() {
+  if (!wasteTypeControl) {
+    return;
+  }
+
+  const isEnabled = hasSelectedProductInterest();
+  wasteTypeControl.disabled = !isEnabled;
+  wasteTypeControl.setAttribute("aria-disabled", String(!isEnabled));
+
+  if (wasteTypeCustomInput) {
+    wasteTypeCustomInput.disabled = !isEnabled;
+  }
+
+  if (wasteTypeClearButton) {
+    wasteTypeClearButton.disabled = !isEnabled;
+  }
+
+  if (wasteTypeDoneButton) {
+    wasteTypeDoneButton.disabled = !isEnabled;
+  }
+
+  if (!isEnabled) {
+    if (wasteTypeLabel) {
+      wasteTypeLabel.textContent = WASTE_TYPE_DISABLED_LABEL;
+    }
+
+    if (wasteTypeControl) {
+      wasteTypeControl.classList.add("is-placeholder");
+    }
+
+    closeWasteTypePicker();
+  }
+}
+
+function updateWasteTypeActionLabel() {
+  if (!wasteTypeClearButton) {
+    return;
+  }
+
+  wasteTypeClearButton.textContent = selectedWasteTypes.length ? "Clear" : "All";
 }
 
 function openProductPicker() {
@@ -203,6 +255,7 @@ function renderWasteTypeOptions() {
 
 function renderWasteTypePicker() {
   renderWasteTypeOptions();
+  updateWasteTypeActionLabel();
 
   if (wasteTypePicker && wasteTypePicker.classList.contains("is-open")) {
     refreshWasteTypeMenuLayout();
@@ -223,6 +276,10 @@ function commitWasteTypeSelection() {
 }
 
 function toggleWasteType(value) {
+  if (!hasSelectedProductInterest()) {
+    return;
+  }
+
   const normalizedValue = normalizeWasteType(value);
 
   if (!normalizedValue) {
@@ -239,6 +296,10 @@ function toggleWasteType(value) {
 }
 
 function addCustomWasteType(value) {
+  if (!hasSelectedProductInterest()) {
+    return;
+  }
+
   const normalizedValue = normalizeWasteType(value);
 
   if (!normalizedValue) {
@@ -262,6 +323,10 @@ function addCustomWasteType(value) {
 }
 
 function openWasteTypePicker() {
+  if (!hasSelectedProductInterest() || !wasteTypePicker) {
+    return;
+  }
+
   if (wasteTypePicker) {
     wasteTypePicker.classList.add("is-open");
     if (wasteTypeControl) {
@@ -306,7 +371,7 @@ function resetWasteTypePicker() {
   customWasteTypeOptions = [];
 
   if (wasteTypeLabel && wasteTypeControl) {
-    wasteTypeLabel.textContent = "Select waste types";
+    wasteTypeLabel.textContent = hasSelectedProductInterest() ? WASTE_TYPE_PLACEHOLDER_LABEL : WASTE_TYPE_DISABLED_LABEL;
     wasteTypeControl.classList.add("is-placeholder");
   }
 
@@ -316,6 +381,7 @@ function resetWasteTypePicker() {
   }
 
   updateWasteTypeValue();
+  updateWasteTypeControlAvailability();
   renderWasteTypePicker();
 }
 
@@ -326,6 +392,17 @@ function resetProductPicker() {
 
 function clearWasteTypeSelection() {
   selectedWasteTypes = [];
+  renderWasteTypePicker();
+}
+
+function selectAllWasteTypes() {
+  const availableOptions = getWasteTypeOptions();
+
+  if (!availableOptions.length) {
+    return;
+  }
+
+  selectedWasteTypes = [...availableOptions];
   renderWasteTypePicker();
 }
 
@@ -445,7 +522,11 @@ if (wasteTypeCustomClearButton) {
 if (wasteTypeClearButton) {
   wasteTypeClearButton.addEventListener("click", (event) => {
     event.stopPropagation();
-    clearWasteTypeSelection();
+    if (selectedWasteTypes.length) {
+      clearWasteTypeSelection();
+    } else {
+      selectAllWasteTypes();
+    }
     openWasteTypePicker();
   });
 }
@@ -512,3 +593,4 @@ window.addEventListener("resize", () => {
 }, { passive: true });
 
 setProductInterest(productValue ? productValue.value : "");
+updateWasteTypeControlAvailability();

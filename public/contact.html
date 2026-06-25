@@ -19,7 +19,7 @@
         <a href="index.html">Home</a>
         <a href="products.html">Products</a>
         <a href="solutions.html">Solutions</a>
-        <a href="case-studies.html">Case Studies</a>
+        <!-- <a href="case-studies.html">Case Studies</a> -->
         <a href="service-support.html">Service &amp; Support</a>
         <a href="resources.html">Resources</a>
         <a href="about.html">About Us</a>
@@ -54,53 +54,78 @@
           </div>
         </div>
         <form class="contact-form" data-contact-form action="/api/contact" method="post">
-          <label>
+          <label class="form-field">
             Name
             <input name="name" autocomplete="name" required>
           </label>
-          <label>
+          <label class="form-field">
             Email
             <input type="email" name="email" autocomplete="email" required>
           </label>
-          <label>
+          <label class="form-field">
             Company
             <input name="company" autocomplete="organization">
           </label>
-          <label>
+          <label class="form-field">
             WhatsApp / Phone
             <input name="phone" autocomplete="tel">
           </label>
-          <label>
+          <label class="form-field form-field-narrow">
             Country / Region
             <input name="country" autocomplete="country-name">
           </label>
-          <label>
-            Product Interest
-            <select name="product" required>
-              <option value="">Select a product line</option>
-              <option>AI optical sorting center</option>
-              <option>Construction and bulky waste recycling line</option>
-              <option>Both systems</option>
-            </select>
-          </label>
-          <label>
-            Waste Type
-            <input name="wasteType" placeholder="PET bottles, HDPE, construction waste, bulky waste">
-          </label>
-          <label>
+          <label class="form-field form-field-narrow">
             Target Capacity
             <input name="capacity" placeholder="Example: 2 t/h or 100 t/h">
           </label>
-          <label>
+          <label class="form-field form-field-narrow">
             Available Site Area
             <input name="siteArea" placeholder="Plant footprint or layout limits">
           </label>
-          <label>
-            Project Details
-            <textarea name="message" rows="5" placeholder="Material composition, output target, voltage, automation requirements, timeline" required></textarea>
+          <label class="form-field form-field-full">
+            Product Interest
+            <span class="product-interest-picker" data-product-picker>
+              <input type="hidden" name="product" data-product-value required>
+              <button class="product-interest-control" type="button" data-product-control aria-haspopup="listbox" aria-expanded="false">
+                <span data-product-label>Choose product line</span>
+                <span class="product-interest-chevron" aria-hidden="true"></span>
+              </button>
+              <span class="product-interest-menu" data-product-menu role="listbox" aria-label="Product interest">
+                <button class="product-interest-option" type="button" data-product-option="AI optical sorting center" role="option">AI optical sorting center</button>
+                <button class="product-interest-option" type="button" data-product-option="Construction and bulky waste recycling line" role="option">Construction and bulky waste recycling line</button>
+                <button class="product-interest-option" type="button" data-product-option="Both systems" role="option">Both systems</button>
+              </span>
+            </span>
           </label>
-          <button type="submit">Request Engineering Proposal</button>
-          <p class="form-status" data-contact-status role="status" aria-live="polite"></p>
+          <div class="form-field form-field-full waste-type-field" data-waste-type-field>
+            <span class="field-label" id="waste-type-label">Waste Type</span>
+            <input type="hidden" name="wasteType" data-waste-type-value>
+            <div class="waste-type-picker" data-waste-picker>
+              <button class="waste-type-control is-placeholder" type="button" data-waste-control aria-labelledby="waste-type-label" aria-haspopup="listbox" aria-expanded="false">
+                <span data-waste-label>Select waste types</span>
+                <span class="waste-type-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="waste-type-menu" data-waste-menu>
+                <div class="waste-type-options" data-waste-options role="listbox" aria-label="Waste type suggestions"></div>
+                <div class="waste-type-create-row">
+                  <input data-waste-custom autocomplete="off" placeholder="Type custom waste type">
+                  <button class="waste-type-custom-clear" type="button" data-waste-custom-clear aria-label="Clear custom waste type">&times;</button>
+                </div>
+                <div class="waste-type-menu-actions">
+                  <button class="waste-type-clear" type="button" data-waste-clear>Clear</button>
+                  <button class="waste-type-done" type="button" data-waste-done>Done</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <label class="form-field form-field-full">
+            Project Details
+            <textarea name="message" rows="4" placeholder="Material composition, output target, voltage, automation requirements, timeline" required></textarea>
+          </label>
+          <div class="form-submit-row">
+            <p class="form-status" data-contact-status role="status" aria-live="polite"></p>
+            <button type="submit">Request Engineering Proposal</button>
+          </div>
           <p class="contact-note">Sales hotline: +86 137 8001 2268 / +86 180 6737 7770</p>
         </form>
       </section>
@@ -181,6 +206,6 @@
       <p>Project consultation and RFQ support for plastic recycling and construction waste recycling systems.</p>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="script.js?v=waste-picker-matched" defer></script>
   </body>
 </html>

@@ -30,12 +30,14 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Case Studies merged into Solutions.
   <url>
     <loc>https://example.com/case-studies</loc>
     <lastmod>2026-06-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  -->
   <url>
     <loc>https://example.com/service-support</loc>
     <lastmod>2026-06-23</lastmod>

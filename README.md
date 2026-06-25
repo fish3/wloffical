@@ -30,6 +30,6 @@ cp .dev.vars.example .dev.vars
 npx wrangler pages dev public --port 8788
 ```
 
-## Domain placeholders
+## Production domain
 
-Replace `https://example.com/` in `public/index.html`, `public/products/*.html`, `public/robots.txt`, and `public/sitemap.xml` after the production domain is confirmed.
+The production domain is `https://weilanrecycling.com/`.

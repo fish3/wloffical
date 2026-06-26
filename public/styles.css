@@ -913,6 +913,294 @@ h3 {
   transform: rotate(45deg);
 }
 
+/* AI optical sorter detail page — match every eyebrow to the Super Optical
+   Sorting System label style used on the products landing page */
+.product-page-ai .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #c8d4dc;
+  letter-spacing: 0.1em;
+}
+
+.product-page-ai .eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid #c8d4dc;
+  background: rgba(200, 212, 220, 0.18);
+  box-shadow: 0 0 7px rgba(200, 212, 220, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transform: rotate(45deg);
+}
+
+/* Construction waste detail page — match every eyebrow to the Construction
+   and Bulky Waste Line label style used on the products landing page */
+.product-page-industrial .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-red);
+  letter-spacing: 0.1em;
+}
+
+.product-page-industrial .eyebrow::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 7px solid var(--color-red);
+  border-top: 4.5px solid transparent;
+  border-bottom: 4.5px solid transparent;
+}
+
+/* Request Proposal CTA — reuse the red industrial button from the
+   Construction and Bulky Waste Line card on the products landing page */
+.product-page-industrial .hero-actions .text-link {
+  margin-top: 0;
+  position: relative;
+  min-height: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 2px;
+  color: var(--color-white);
+  background: var(--color-red);
+  font-size: 0.92rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 1px 0 rgba(0, 0, 0, 0.28);
+  transition: background 200ms ease, transform 220ms ease, box-shadow 240ms ease;
+}
+
+.product-page-industrial .hero-actions .text-link::after {
+  content: "";
+  width: 0;
+  height: 0;
+  margin-left: 11px;
+  border-left: 7px solid currentColor;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  background: none;
+  transform: none;
+  transition: transform 220ms ease;
+}
+
+.product-page-industrial .hero-actions .text-link:hover {
+  color: var(--color-white);
+  background: #ee2548;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 4px 14px rgba(214, 16, 56, 0.3);
+  transform: translateY(-1px);
+}
+
+.product-page-industrial .hero-actions .text-link:hover::after {
+  transform: translateX(3px);
+}
+
+.product-page-industrial .hero-actions .text-link:focus-visible {
+  outline: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 0 0 3px rgba(214, 16, 56, 0.32);
+}
+
+.product-page-industrial .hero-actions .text-link:active {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 640px) {
+  .product-page-industrial .hero-actions .text-link {
+    min-height: 42px;
+    padding: 0 18px;
+    font-size: 0.86rem;
+  }
+}
+
+/* ===== Construction waste detail — align all blocks with Core parameters nameplate ===== */
+
+/* Line Modules cards adopt the brushed-steel nameplate with hazard top stripe */
+.product-page-industrial .advantage-grid {
+  gap: 18px;
+}
+
+.product-page-industrial .advantage-grid article {
+  position: relative;
+  min-height: 240px;
+  padding: 30px 24px 24px;
+  border: 0;
+  border-radius: 2px;
+  color: #e8edf0;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.012) 0,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #1c2733 0%, #141d27 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 240ms ease;
+}
+
+.product-page-industrial .advantage-grid article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background:
+    repeating-linear-gradient(135deg,
+      var(--color-red) 0,
+      var(--color-red) 10px,
+      #1a242f 10px,
+      #1a242f 18px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.product-page-industrial .advantage-grid article:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px rgba(214, 16, 56, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 8px 22px rgba(214, 16, 56, 0.18);
+}
+
+.product-page-industrial .advantage-grid .number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 28px;
+  margin: 12px 0 18px;
+  padding: 0 10px;
+  color: var(--color-white);
+  background: var(--color-red);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.product-page-industrial .advantage-grid article h3 {
+  margin: 0 0 10px;
+  color: var(--color-white);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.product-page-industrial .advantage-grid article p {
+  margin: 0;
+  color: #a8b3bd;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* Process Overview — inherit body gradient so the page reads as one surface */
+.product-page-industrial .product-process-section {
+  background: transparent;
+}
+
+.product-page-industrial .process-flow-grid {
+  gap: 16px;
+}
+
+.product-page-industrial .process-step-card {
+  position: relative;
+  min-height: 230px;
+  padding: 28px 22px 22px;
+  border: 0;
+  border-radius: 2px;
+  color: #e8edf0;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.012) 0,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #1c2733 0%, #141d27 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 240ms ease;
+}
+
+.product-page-industrial .process-step-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background:
+    repeating-linear-gradient(135deg,
+      var(--color-red) 0,
+      var(--color-red) 9px,
+      #1a242f 9px,
+      #1a242f 16px);
+}
+
+.product-page-industrial .process-step-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px rgba(214, 16, 56, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 8px 22px rgba(214, 16, 56, 0.18);
+}
+
+/* override the cyan circle — flat red rank chip with notch matches the nameplate */
+.product-page-industrial .process-step-card span {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  min-width: 52px;
+  height: 28px;
+  margin: 10px 0 20px;
+  padding: 0 12px;
+  border-radius: 0;
+  color: var(--color-white);
+  background: var(--color-red);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.product-page-industrial .process-step-card span::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  margin-top: -6px;
+  border-left: 6px solid var(--color-red);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+.product-page-industrial .process-step-card h3 {
+  margin: 0 0 10px;
+  color: var(--color-white);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.product-page-industrial .process-step-card p {
+  margin: 0;
+  color: #a8b3bd;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
 .product-family-ai .product-family-content h2 {
   color: #eaf1f5;
 }
@@ -1318,73 +1606,62 @@ a.text-link.is-hud:active {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* AI variant — matches spec-card-ai terminal panel for visual continuity */
+/* AI variant — "stat readout" style. No card chrome; reads as a tabular fact
+   row with mono ID tag, dominant headline, keyword line, and supporting copy.
+   Designed to look distinct from the GL01V spec terminals above. */
 .advantage-grid-ai {
   gap: 16px;
 }
 
 .advantage-grid-ai article {
   position: relative;
-  padding: 26px 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 4px 20px;
   border: 0;
-  border-radius: 2px;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  border-top: 1px solid rgba(184, 194, 201, 0.28);
   color: #e2e9ee;
-  background-color: #0d1620;
-  background-image:
-    repeating-linear-gradient(0deg,
-      rgba(205, 217, 224, 0.05) 0,
-      rgba(205, 217, 224, 0.05) 1px,
-      transparent 1px,
-      transparent 4px),
-    radial-gradient(120% 80% at 50% 0%, rgba(205, 217, 224, 0.08) 0%, rgba(8, 16, 25, 0) 60%);
-  box-shadow:
-    inset 0 0 0 1px rgba(184, 194, 201, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
-  overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
 }
 
+/* Sweep — short accent bar that grows from the left under the top hairline */
 .advantage-grid-ai article::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    rgba(205, 218, 225, 0) 0%,
-    rgba(205, 218, 225, 0.55) 45%,
-    rgba(245, 249, 251, 0.85) 50%,
-    rgba(205, 218, 225, 0.55) 55%,
-    rgba(205, 218, 225, 0) 100%);
-  box-shadow: 0 0 10px rgba(205, 218, 225, 0.45);
-  opacity: 0.7;
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, #f5f9fb 0%, rgba(245, 249, 251, 0) 100%);
+  box-shadow: 0 0 10px rgba(245, 249, 251, 0.4);
+  transform-origin: left center;
+  transform: scaleX(0.5);
+  opacity: 0.45;
+  transition: transform 0.4s cubic-bezier(0.22, 0.8, 0.32, 1), opacity 0.3s ease, width 0.4s cubic-bezier(0.22, 0.8, 0.32, 1);
   pointer-events: none;
 }
 
 .advantage-grid-ai article::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55));
-  background-position: 100% 0, 100% 0, 0 100%, 0 100%;
-  background-size: 14px 1px, 1px 14px, 14px 1px, 1px 14px;
-  background-repeat: no-repeat;
+  content: none;
 }
 
 .advantage-grid-ai article:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 0 0 1px rgba(225, 234, 240, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-    0 0 24px rgba(205, 217, 224, 0.12);
+  border-top-color: rgba(245, 249, 251, 0.7);
+  background: linear-gradient(180deg, rgba(205, 217, 224, 0.05) 0%, rgba(205, 217, 224, 0) 60%);
+  transform: translateX(4px);
+}
+
+.advantage-grid-ai article:hover::before {
+  width: 96px;
+  transform: scaleX(1);
+  opacity: 1;
 }
 
 .advantage-grid-ai article > * {
@@ -1392,37 +1669,106 @@ a.text-link.is-hud:active {
   z-index: 1;
 }
 
+/* Mono ID tag — e.g. "01 · MAT" */
 .advantage-grid-ai .number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 38px;
-  height: 26px;
-  padding: 0 10px;
-  margin-bottom: 22px;
-  color: #d6dee4;
-  background: rgba(184, 194, 201, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(205, 217, 224, 0.45);
-  border-radius: 1px;
+  position: static;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  color: #8a98a3;
+  text-align: left;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 0.7rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
-  font-variant-numeric: tabular-nums;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.advantage-grid-ai .number::after {
+  content: none;
+}
+
+.advantage-grid-ai article:hover .number {
+  color: #eaf1f5;
+  letter-spacing: 0.26em;
 }
 
 .advantage-grid-ai article h3 {
-  margin: 0 0 10px;
-  color: #eaf1f5;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 1rem;
+  margin: 0;
+  color: #f0f5f8;
+  font-size: 1.2rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.005em;
+  line-height: 1.25;
+  transition: color 0.3s ease;
 }
 
-.advantage-grid-ai article p {
+.advantage-grid-ai article:hover h3 {
+  color: #ffffff;
+}
+
+.advantage-grid-ai .advantage-keyword {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin: 0;
-  color: #aebac4;
+  color: #c8d4dc;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: color 0.3s ease;
+}
+
+.advantage-grid-ai .advantage-keyword::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c8d4dc;
+  box-shadow: 0 0 6px rgba(205, 217, 224, 0.5);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.advantage-grid-ai article:hover .advantage-keyword {
+  color: #f5f9fb;
+}
+
+.advantage-grid-ai article:hover .advantage-keyword::before {
+  background: #f5f9fb;
+  box-shadow: 0 0 12px rgba(245, 249, 251, 0.9);
+  animation: advantage-dot-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes advantage-dot-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .advantage-grid-ai article,
+  .advantage-grid-ai article::before,
+  .advantage-grid-ai .number,
+  .advantage-grid-ai article h3,
+  .advantage-grid-ai .advantage-keyword,
+  .advantage-grid-ai .advantage-keyword::before {
+    transition: none;
+  }
+  .advantage-grid-ai article:hover {
+    transform: none;
+  }
+  .advantage-grid-ai article:hover .advantage-keyword::before {
+    animation: none;
+  }
+}
+
+.advantage-grid-ai article p:not(.advantage-keyword) {
+  margin: 0;
+  color: #9ba9b3;
   font-size: 0.9rem;
   line-height: 1.55;
 }
@@ -1506,11 +1852,11 @@ a.text-link.is-hud:active {
 /* ===== Process Timeline — vertical flow with media slot per node ===== */
 .process-timeline {
   --timeline-chip-w: 72px;
-  --timeline-gap: 28px;
+  --timeline-gap: 32px;
   position: relative;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 8px 0 8px calc(var(--timeline-chip-w) + var(--timeline-gap));
 }
 
 .process-timeline::before {
@@ -1529,8 +1875,9 @@ a.text-link.is-hud:active {
 
 .process-timeline-step {
   position: relative;
-  padding: 0 0 24px calc(var(--timeline-chip-w) + var(--timeline-gap));
+  display: block;
   min-height: 26px;
+  padding-bottom: 16px;
 }
 
 .process-timeline-step:last-child {
@@ -1539,8 +1886,8 @@ a.text-link.is-hud:active {
 
 .process-timeline-rank {
   position: absolute;
-  top: 22px;
-  left: 0;
+  top: 18px;
+  left: calc(-1 * (var(--timeline-chip-w) + var(--timeline-gap)));
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1565,6 +1912,11 @@ a.text-link.is-hud:active {
   z-index: 2;
 }
 
+/* Spine dot removed — v1 chip sits directly on the spine */
+.process-timeline-rank::after {
+  content: none;
+}
+
 .process-timeline-rank::before {
   content: "";
   position: absolute;
@@ -1581,83 +1933,73 @@ a.text-link.is-hud:active {
 .process-timeline-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
-  gap: 28px;
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 260px);
+  gap: 24px;
   align-items: center;
-  padding: 26px 26px 24px;
+  width: 100%;
+  padding: 18px 22px 18px 26px;
   border-radius: 2px;
   color: #e2e9ee;
-  background-color: #0d1620;
-  background-image:
-    repeating-linear-gradient(0deg,
-      rgba(205, 217, 224, 0.05) 0,
-      rgba(205, 217, 224, 0.05) 1px,
-      transparent 1px,
-      transparent 4px),
-    radial-gradient(120% 80% at 50% 0%, rgba(205, 217, 224, 0.08) 0%, rgba(8, 16, 25, 0) 60%);
+  background: rgba(13, 22, 33, 0.55);
   box-shadow:
-    inset 0 0 0 1px rgba(184, 194, 201, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+    inset 0 0 0 1px rgba(184, 194, 201, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
+/* Left-edge accent rail — ties each step into the spine continuity */
 .process-timeline-card::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 14px;
+  bottom: 14px;
   left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg,
-    rgba(205, 218, 225, 0) 0%,
-    rgba(205, 218, 225, 0.55) 45%,
-    rgba(245, 249, 251, 0.85) 50%,
-    rgba(205, 218, 225, 0.55) 55%,
-    rgba(205, 218, 225, 0) 100%);
-  box-shadow: 0 0 10px rgba(205, 218, 225, 0.45);
-  opacity: 0.7;
+  width: 2px;
+  background: linear-gradient(180deg,
+    rgba(205, 217, 224, 0.6) 0%,
+    rgba(205, 217, 224, 0.2) 100%);
   pointer-events: none;
 }
 
+/* No corner brackets — those belong to the spec terminal cards */
 .process-timeline-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55));
-  background-position: 100% 0, 100% 0, 0 100%, 0 100%;
-  background-size: 14px 1px, 1px 14px, 14px 1px, 1px 14px;
-  background-repeat: no-repeat;
+  content: none;
 }
 
 .process-timeline-step:hover .process-timeline-card {
-  transform: translateY(-2px);
+  transform: translateX(2px);
+  background: rgba(13, 22, 33, 0.75);
   box-shadow:
-    inset 0 0 0 1px rgba(225, 234, 240, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.07),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.35),
-    0 0 24px rgba(205, 217, 224, 0.12);
+    inset 0 0 0 1px rgba(225, 234, 240, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.process-timeline-body {
+.process-timeline-step:hover .process-timeline-card::before {
+  background: linear-gradient(180deg,
+    rgba(245, 249, 251, 0.85) 0%,
+    rgba(205, 217, 224, 0.35) 100%);
+}
+
+.process-timeline-card > * {
   position: relative;
   z-index: 1;
   min-width: 0;
 }
 
+.process-timeline-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+}
+
 .process-timeline-body h3 {
-  margin: 0 0 10px;
+  margin: 0;
   color: #eaf1f5;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .process-timeline-body p {
@@ -1680,45 +2022,72 @@ a.text-link.is-hud:active {
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 2px;
-  background-color: #060c14;
+  color: #e2e9ee;
+  background-color: rgba(184, 194, 201, 0.06);
   background-image:
     repeating-linear-gradient(0deg,
       rgba(205, 217, 224, 0.06) 0,
       rgba(205, 217, 224, 0.06) 1px,
       transparent 1px,
       transparent 3px),
-    radial-gradient(80% 60% at 50% 50%, rgba(205, 217, 224, 0.1) 0%, rgba(6, 12, 20, 0) 70%);
-  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.28);
+    radial-gradient(80% 60% at 50% 50%, rgba(205, 217, 224, 0.1) 0%, rgba(6, 12, 20, 0) 70%),
+    /* top-right + bottom-right corner ticks — mirrors product-family-chips span */
+    linear-gradient(rgba(215, 222, 227, 0.6), rgba(215, 222, 227, 0.6)),
+    linear-gradient(rgba(215, 222, 227, 0.6), rgba(215, 222, 227, 0.6));
+  background-position: 0 0, 0 0, 100% 0, 100% 100%;
+  background-size: auto, auto, 12px 1px, 12px 1px;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.18);
   overflow: hidden;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.process-timeline-video::before,
+/* Left accent bar — mirrors the chip's 3px gradient bar */
+.process-timeline-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(205, 218, 225, 0.72), rgba(168, 184, 194, 0.52));
+  box-shadow: 0 0 4px rgba(205, 217, 224, 0.24);
+  transition: background 0.3s ease, box-shadow 0.3s ease, width 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Center vertical scan — kept from v1 for the recording-monitor feel */
 .process-timeline-video::after {
   content: "";
   position: absolute;
   inset: 0;
-  pointer-events: none;
-}
-
-.process-timeline-video::before {
-  background:
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55)),
-    linear-gradient(rgba(205, 217, 224, 0.55), rgba(205, 217, 224, 0.55));
-  background-position: 0 0, 0 0, 100% 100%, 100% 100%;
-  background-size: 12px 1px, 1px 12px, 12px 1px, 1px 12px;
-  background-repeat: no-repeat;
-}
-
-.process-timeline-video::after {
+  width: 1px;
+  left: 50%;
   background: linear-gradient(180deg,
     rgba(205, 217, 224, 0) 0%,
     rgba(205, 217, 224, 0.4) 50%,
     rgba(205, 217, 224, 0) 100%);
-  width: 1px;
-  left: 50%;
   opacity: 0.18;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Card hover state — propagates into the chip-style video tile */
+.process-timeline-step:hover .process-timeline-video {
+  background-color: rgba(184, 194, 201, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(225, 234, 240, 0.42);
+  transform: translateY(-2px);
+}
+
+.process-timeline-step:hover .process-timeline-video::before {
+  width: 5px;
+  background: linear-gradient(180deg, #f5f9fb 0%, rgba(205, 218, 225, 0.7) 100%);
+  box-shadow: 0 0 10px rgba(245, 249, 251, 0.65);
+}
+
+.process-timeline-step:hover .process-timeline-video::after {
+  opacity: 0.5;
 }
 
 .process-timeline-video-tag {
@@ -1734,6 +2103,7 @@ a.text-link.is-hud:active {
   font-size: 0.62rem;
   font-weight: 900;
   letter-spacing: 0.2em;
+  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .process-timeline-video-tag::before {
@@ -1741,6 +2111,24 @@ a.text-link.is-hud:active {
   margin-right: 4px;
   color: #d61038;
   letter-spacing: 0.1em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.process-timeline-step:hover .process-timeline-video-tag {
+  color: #f5f9fb;
+  box-shadow: inset 0 0 0 1px rgba(245, 249, 251, 0.6);
+  transform: translateX(2px);
+}
+
+.process-timeline-step:hover .process-timeline-video-tag::before {
+  color: #ff3358;
+  text-shadow: 0 0 8px rgba(255, 51, 88, 0.7);
+  animation: process-rec-blink 1.4s ease-in-out infinite;
+}
+
+@keyframes process-rec-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
 }
 
 .process-timeline-video-play {
@@ -1753,6 +2141,7 @@ a.text-link.is-hud:active {
   background: rgba(13, 22, 33, 0.65);
   box-shadow: inset 0 0 0 1px rgba(205, 217, 224, 0.5), 0 0 18px rgba(205, 217, 224, 0.18);
   transform: translate(-50%, -50%);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .process-timeline-video-play::after {
@@ -1766,6 +2155,17 @@ a.text-link.is-hud:active {
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
   transform: translate(-50%, -50%);
+  transition: border-left-color 0.3s ease;
+}
+
+.process-timeline-step:hover .process-timeline-video-play {
+  background: rgba(13, 22, 33, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(245, 249, 251, 0.75), 0 0 28px rgba(245, 249, 251, 0.35);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.process-timeline-step:hover .process-timeline-video-play::after {
+  border-left-color: #ffffff;
 }
 
 .process-timeline-video-label {
@@ -1810,16 +2210,28 @@ a.text-link.is-hud:active {
   display: none;
 }
 
-@media (max-width: 720px) {
+/* Mid breakpoint — 2-column flow */
+/* Mid breakpoint — stack body + media inside the card */
+@media (max-width: 960px) {
+  .process-timeline-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+}
+
+/* Narrow — collapse spine, chip stacks above card */
+@media (max-width: 640px) {
   .process-timeline {
     --timeline-chip-w: 64px;
     --timeline-gap: 16px;
+    padding-left: 0;
   }
   .process-timeline::before {
-    left: 0;
+    left: 12px;
   }
   .process-timeline-step {
-    padding: 0 0 22px 14px;
+    padding-left: 28px;
+    padding-bottom: 24px;
   }
   .process-timeline-rank {
     position: relative;
@@ -1831,11 +2243,1602 @@ a.text-link.is-hud:active {
     display: none;
   }
   .process-timeline-card {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 18px;
     padding: 22px 22px 20px;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .process-timeline-video,
+  .process-timeline-video::before,
+  .process-timeline-video::after,
+  .process-timeline-video-tag,
+  .process-timeline-video-tag::before,
+  .process-timeline-video-play,
+  .process-timeline-video-play::after {
+    transition: none;
+  }
+  .process-timeline-step:hover .process-timeline-video,
+  .process-timeline-step:hover .process-timeline-video-tag,
+  .process-timeline-step:hover .process-timeline-video-play {
+    transform: none;
+  }
+  .process-timeline-step:hover .process-timeline-video-tag::before {
+    animation: none;
+  }
+}
+
+/* ===== Product Comparison — exploded view + stacked-bar metrics ===== */
+.product-compare-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(24px, 3vw, 40px);
+  align-items: start;
+}
+
+.product-compare-explode {
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-compare-explode-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  background-color: rgba(184, 194, 201, 0.06);
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(205, 217, 224, 0.05) 0,
+      rgba(205, 217, 224, 0.05) 1px,
+      transparent 1px,
+      transparent 4px),
+    linear-gradient(135deg, rgba(205, 217, 224, 0.06) 0%, rgba(8, 16, 25, 0) 60%),
+    linear-gradient(rgba(215, 222, 227, 0.6), rgba(215, 222, 227, 0.6)),
+    linear-gradient(rgba(215, 222, 227, 0.6), rgba(215, 222, 227, 0.6));
+  background-position: 0 0, 0 0, 100% 0, 100% 100%;
+  background-size: auto, auto, 18px 1px, 18px 1px;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.2);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.product-compare-explode-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(205, 218, 225, 0.72), rgba(168, 184, 194, 0.52));
+  box-shadow: 0 0 4px rgba(205, 217, 224, 0.24);
+  pointer-events: none;
+}
+
+/* Crosshair overlay — gives the empty frame a measurement-view feel */
+.product-compare-explode-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(205, 217, 224, 0.18), rgba(205, 217, 224, 0.18)),
+    linear-gradient(rgba(205, 217, 224, 0.18), rgba(205, 217, 224, 0.18));
+  background-position: 50% 0, 0 50%;
+  background-size: 1px 100%, 100% 1px;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.product-compare-explode-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 4px 9px;
+  color: #d6dee4;
+  background: rgba(8, 16, 25, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(205, 217, 224, 0.45);
+  border-radius: 1px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  z-index: 2;
+}
+
+.product-compare-explode-label {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  right: 14px;
+  color: #8a98a3;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.product-compare-explode-pin {
+  position: absolute;
+  top: var(--pin-y);
+  left: var(--pin-x);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(13, 22, 33, 0.85);
+  box-shadow: inset 0 0 0 1px rgba(205, 217, 224, 0.6), 0 0 10px rgba(205, 217, 224, 0.18);
+  color: #eaf1f5;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  display: inline-grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.product-compare-explode-pin::before {
+  content: attr(data-label);
+}
+
+.product-compare-explode-pin::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(205, 217, 224, 0.18);
+  pointer-events: none;
+}
+
+.product-compare-explode-frame:hover .product-compare-explode-pin {
+  box-shadow: inset 0 0 0 1px rgba(245, 249, 251, 0.85), 0 0 14px rgba(245, 249, 251, 0.45);
+}
+
+.product-compare-explode figcaption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #8a98a3;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.product-compare-explode figcaption::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: rgba(205, 217, 224, 0.45);
+}
+
+/* Drop placeholder chrome when an actual image is added */
+.product-compare-explode-frame:has(> img),
+.product-compare-explode-frame:has(> picture),
+.product-compare-explode-frame:has(> svg) {
+  background-image: none;
+}
+
+.product-compare-explode-frame:has(> img) .product-compare-explode-label,
+.product-compare-explode-frame:has(> picture) .product-compare-explode-label,
+.product-compare-explode-frame:has(> svg) .product-compare-explode-label,
+.product-compare-explode-frame:has(> img)::after,
+.product-compare-explode-frame:has(> picture)::after,
+.product-compare-explode-frame:has(> svg)::after {
+  display: none;
+}
+
+.product-compare-explode-frame > img,
+.product-compare-explode-frame > picture,
+.product-compare-explode-frame > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Comparison panel — legend + stacked metric rows */
+.product-compare-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.product-compare-panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(184, 194, 201, 0.24);
+}
+
+.product-compare-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #c8d4dc;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.product-compare-legend-mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 1px;
+}
+
+.product-compare-legend-mark.is-self {
+  background: linear-gradient(90deg, rgba(225, 234, 240, 0.85), #f5f9fb);
+  box-shadow: 0 0 8px rgba(245, 249, 251, 0.35);
+}
+
+.product-compare-legend-mark.is-base {
+  background: rgba(184, 194, 201, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.45);
+}
+
+.product-compare-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.product-compare-row {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 4px 16px 18px;
+  border-top: 1px solid rgba(184, 194, 201, 0.16);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.product-compare-row::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(205, 218, 225, 0.6), rgba(168, 184, 194, 0.2));
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-compare-row:hover {
+  border-top-color: rgba(245, 249, 251, 0.55);
+  transform: translateX(2px);
+}
+
+.product-compare-row:hover::before {
+  background: linear-gradient(180deg, #f5f9fb, rgba(205, 218, 225, 0.5));
+  box-shadow: 0 0 8px rgba(245, 249, 251, 0.5);
+}
+
+.product-compare-row-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product-compare-row-id {
+  color: #8a98a3;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.product-compare-row-head h3 {
+  margin: 0;
+  color: #f0f5f8;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.005em;
+}
+
+.product-compare-row-unit {
+  margin-left: auto;
+  color: #8a98a3;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.product-compare-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-compare-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  height: 28px;
+}
+
+.product-compare-bar-label {
+  grid-column: 1;
+  color: #8a98a3;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.product-compare-bar-value {
+  grid-column: 3;
+  color: #eaf1f5;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  min-width: 72px;
+  text-align: right;
+}
+
+/* Track in column 2 — fill is the ::after of the bar itself */
+.product-compare-bar::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  height: 6px;
+  border-radius: 1px;
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(205, 217, 224, 0.18) 0,
+      rgba(205, 217, 224, 0.18) 1px,
+      transparent 1px,
+      transparent 6px),
+    rgba(184, 194, 201, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.18);
+}
+
+.product-compare-bar::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  height: 6px;
+  width: var(--fill, 0%);
+  justify-self: start;
+  border-radius: 1px;
+  transition: width 0.5s cubic-bezier(0.22, 0.8, 0.32, 1);
+}
+
+.product-compare-bar.is-self::after {
+  background: linear-gradient(90deg, rgba(225, 234, 240, 0.85), #f5f9fb);
+  box-shadow: 0 0 10px rgba(245, 249, 251, 0.45);
+}
+
+.product-compare-bar.is-base::after {
+  background: linear-gradient(90deg, rgba(184, 194, 201, 0.28), rgba(184, 194, 201, 0.55));
+}
+
+.product-compare-bar.is-self .product-compare-bar-value {
+  color: #ffffff;
+}
+
+.product-compare-row-note {
+  margin: 4px 0 0;
+  color: #9ba9b3;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 960px) {
+  .product-compare-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .product-compare-explode-frame {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 640px) {
+  .product-compare-bar {
+    grid-template-columns: 70px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    height: auto;
+    row-gap: 6px;
+  }
+  .product-compare-bar-label {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .product-compare-bar-value {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    min-width: 0;
+  }
+  .product-compare-bar::before,
+  .product-compare-bar::after {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .product-compare-row-unit {
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-compare-bar::after,
+  .product-compare-row,
+  .product-compare-row::before {
+    transition: none;
+  }
+}
+
+/* ===== Industrial Ledger — Line Modules table-row pattern ===== */
+.industrial-ledger {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid rgba(184, 194, 201, 0.18);
+}
+
+.industrial-ledger-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1.4fr) minmax(220px, 0.9fr);
+  align-items: center;
+  gap: 24px;
+  padding: 22px 18px 22px 22px;
+  border-bottom: 1px solid rgba(184, 194, 201, 0.18);
+  background:
+    linear-gradient(180deg, rgba(28, 39, 51, 0.55) 0%, rgba(20, 29, 39, 0.55) 100%);
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.industrial-ledger-row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background:
+    repeating-linear-gradient(180deg,
+      var(--color-red) 0,
+      var(--color-red) 9px,
+      #1a242f 9px,
+      #1a242f 16px);
+  transition: width 0.25s ease, box-shadow 0.25s ease;
+}
+
+.industrial-ledger-row:hover {
+  background: linear-gradient(180deg, rgba(40, 52, 65, 0.7) 0%, rgba(28, 39, 51, 0.7) 100%);
+  transform: translateX(2px);
+  box-shadow: 0 6px 18px rgba(214, 16, 56, 0.14);
+}
+
+.industrial-ledger-row:hover::before {
+  width: 6px;
+  box-shadow: 0 0 12px rgba(214, 16, 56, 0.5);
+}
+
+/* Stamped-steel serial tag — dark base, mono text, red corner notch */
+.industrial-ledger-tag {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 0 12px 0 14px;
+  color: #f3f6f8;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.014) 0,
+      rgba(255, 255, 255, 0.014) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #2c3947 0%, #18222e 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 9px 100%, 0 calc(100% - 9px));
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+/* Red corner notch — small triangle in the top-right of the stamp */
+.industrial-ledger-tag::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--color-red);
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+}
+
+.industrial-ledger-row:hover .industrial-ledger-tag {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #38465a 0%, #1f2a39 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(214, 16, 56, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.industrial-ledger-body {
+  min-width: 0;
+}
+
+.industrial-ledger-body h3 {
+  margin: 0 0 6px;
+  color: var(--color-white);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.industrial-ledger-body p {
+  margin: 0;
+  color: #a8b3bd;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.industrial-ledger-spec {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+  padding: 10px 0 10px 18px;
+  border-left: 1px dashed rgba(184, 194, 201, 0.24);
+}
+
+.industrial-ledger-spec > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.industrial-ledger-spec dt {
+  color: #8a98a3;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.industrial-ledger-spec dd {
+  margin: 0;
+  color: var(--color-white);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 720px) {
+  .industrial-ledger-row {
+    grid-template-columns: 56px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 12px 16px;
+  }
+  .industrial-ledger-tag {
+    grid-row: 1;
+  }
+  .industrial-ledger-body {
+    grid-row: 1;
+    grid-column: 2;
+  }
+  .industrial-ledger-spec {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    border-left: 0;
+    padding: 0;
+    border-top: 1px dashed rgba(184, 194, 201, 0.24);
+    padding-top: 14px;
+  }
+}
+
+/* ===== Industrial Flow — process diagram with directional arrows ===== */
+.industrial-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.industrial-flow > .industrial-flow-track + .industrial-flow-track {
+  margin-top: 14px;
+}
+
+.industrial-flow-track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 32px;
+  row-gap: 16px;
+  position: relative;
+}
+
+/* Row 2 uses the same 3-column grid as row 1; nodes are placed right-to-left so
+   04 sits directly under 03. The display flow becomes: 03 → 04 → 05 → 06,
+   with 04/05/06 visually arranged as 06 / 05 / 04 from left to right. */
+.industrial-flow-track.is-reverse {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.industrial-flow-track.is-reverse > .industrial-flow-node:nth-child(1) { grid-column: 3; }
+.industrial-flow-track.is-reverse > .industrial-flow-node:nth-child(2) { grid-column: 2; }
+.industrial-flow-track.is-reverse > .industrial-flow-node:nth-child(3) { grid-column: 1; }
+
+.industrial-flow-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 18px 18px 18px;
+  color: #e8edf0;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.012) 0,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #1c2733 0%, #141d27 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  transition: transform 220ms ease, box-shadow 240ms ease;
+}
+
+/* Hazard-stripe accent on the left edge (vs the AI page's quiet hairline) */
+/* Dashed red flow-indicator rail — distinguishes flow nodes from ledger rows */
+.industrial-flow-node::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 0;
+  width: 2px;
+  background:
+    repeating-linear-gradient(180deg,
+      var(--color-red) 0,
+      var(--color-red) 6px,
+      transparent 6px,
+      transparent 11px);
+  box-shadow: 0 0 4px rgba(214, 16, 56, 0.4);
+}
+
+.industrial-flow-node:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px rgba(214, 16, 56, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 8px 22px rgba(214, 16, 56, 0.18);
+}
+
+.industrial-flow-node:hover::before {
+  width: 3px;
+  box-shadow: 0 0 8px rgba(214, 16, 56, 0.65);
+}
+
+.industrial-flow-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 24px;
+  margin: 0 0 12px 8px;
+  color: var(--color-white);
+  background: var(--color-red);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.industrial-flow-node h3 {
+  margin: 0 0 8px 8px;
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.industrial-flow-node p {
+  margin: 0 0 0 8px;
+  color: #a8b3bd;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+/* Final output node uses a brighter red wash to call it out */
+/* Video placeholder slot inside each flow node */
+.industrial-flow-media {
+  margin: 14px 0 0;
+  padding: 0 0 0 8px;
+}
+
+.industrial-flow-video {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+  background-color: rgba(8, 12, 18, 0.6);
+  background-image:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.02) 0,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 3px),
+    radial-gradient(80% 60% at 50% 50%, rgba(214, 16, 56, 0.08) 0%, rgba(8, 12, 18, 0) 70%);
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.22);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* Top hazard stripe — quieter when idle */
+.industrial-flow-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(214, 16, 56, 0.6) 0,
+      rgba(214, 16, 56, 0.6) 7px,
+      rgba(26, 36, 47, 0.7) 7px,
+      rgba(26, 36, 47, 0.7) 12px);
+  opacity: 0.55;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.industrial-flow-video-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 3px 8px;
+  color: var(--color-white);
+  background: rgba(8, 12, 18, 0.78);
+  box-shadow: inset 0 0 0 1px rgba(214, 16, 56, 0.5);
+  border-radius: 1px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  transition: box-shadow 0.25s ease;
+}
+
+.industrial-flow-video-tag::before {
+  content: "● REC ";
+  margin-right: 4px;
+  color: var(--color-red);
+  letter-spacing: 0.1em;
+  transition: text-shadow 0.25s ease;
+}
+
+.industrial-flow-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(8, 12, 18, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(214, 16, 56, 0.55), 0 0 12px rgba(214, 16, 56, 0.18);
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.industrial-flow-video-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  width: 0;
+  height: 0;
+  border-left: 10px solid rgba(234, 241, 245, 0.88);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  transform: translate(-50%, -50%);
+  transition: border-left-color 0.25s ease;
+}
+
+/* Hover state — pushed from the parent node */
+.industrial-flow-node:hover .industrial-flow-video {
+  box-shadow: inset 0 0 0 1px rgba(214, 16, 56, 0.55);
+  transform: translateY(-1px);
+}
+
+.industrial-flow-node:hover .industrial-flow-video::before {
+  opacity: 1;
+}
+
+.industrial-flow-node:hover .industrial-flow-video-tag {
+  box-shadow: inset 0 0 0 1px var(--color-red);
+}
+
+.industrial-flow-node:hover .industrial-flow-video-tag::before {
+  text-shadow: 0 0 8px rgba(214, 16, 56, 0.8);
+  animation: industrial-rec-blink 1.4s ease-in-out infinite;
+}
+
+@keyframes industrial-rec-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+
+.industrial-flow-node:hover .industrial-flow-video-play {
+  background: rgba(8, 12, 18, 0.88);
+  box-shadow: inset 0 0 0 1px var(--color-red), 0 0 22px rgba(214, 16, 56, 0.45);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.industrial-flow-node:hover .industrial-flow-video-play::after {
+  border-left-color: var(--color-white);
+}
+
+/* Drop placeholder chrome when real media is dropped in */
+.industrial-flow-video > video,
+.industrial-flow-video > iframe,
+.industrial-flow-video > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.industrial-flow-video:has(> video),
+.industrial-flow-video:has(> iframe),
+.industrial-flow-video:has(> img) {
+  background-image: none;
+}
+
+.industrial-flow-video:has(> video) .industrial-flow-video-play,
+.industrial-flow-video:has(> iframe) .industrial-flow-video-play,
+.industrial-flow-video:has(> img) .industrial-flow-video-play {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industrial-flow-video,
+  .industrial-flow-video::before,
+  .industrial-flow-video-tag,
+  .industrial-flow-video-tag::before,
+  .industrial-flow-video-play,
+  .industrial-flow-video-play::after {
+    transition: none;
+  }
+  .industrial-flow-node:hover .industrial-flow-video,
+  .industrial-flow-node:hover .industrial-flow-video-play {
+    transform: none;
+  }
+  .industrial-flow-node:hover .industrial-flow-video-tag::before {
+    animation: none;
+  }
+}
+
+/* Arrow between adjacent nodes — industrial chevron with metallic shading */
+.industrial-flow-track > .industrial-flow-node + .industrial-flow-node::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-right: 8px;
+  width: 18px;
+  height: 14px;
+  background: linear-gradient(180deg,
+    #ff2a52 0%,
+    var(--color-red) 50%,
+    #8b0e26 100%);
+  clip-path: polygon(
+    0% 25%, 55% 25%, 100% 50%, 55% 75%, 0% 75%, 38% 50%
+  );
+  transform: translateY(-50%);
+  filter:
+    drop-shadow(0 0 3px rgba(214, 16, 56, 0.55))
+    drop-shadow(0 1px 0 rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+}
+
+/* Connector hairline behind the chevron — dashed track with tick marks */
+.industrial-flow-track > .industrial-flow-node + .industrial-flow-node {
+  position: relative;
+}
+
+.industrial-flow-track > .industrial-flow-node + .industrial-flow-node > .industrial-flow-rank::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 4px);
+  width: 30px;
+  height: 8px;
+  transform: translateY(-50%);
+  background:
+    /* start tick — dim, anchored to source node */
+    linear-gradient(rgba(214, 16, 56, 0.4), rgba(214, 16, 56, 0.4))
+      0 50% / 1px 100% no-repeat,
+    /* end tick — bright, anchored to chevron */
+    linear-gradient(rgba(214, 16, 56, 0.85), rgba(214, 16, 56, 0.85))
+      100% 50% / 1px 100% no-repeat,
+    /* middle dashed conduit */
+    repeating-linear-gradient(90deg,
+      rgba(214, 16, 56, 0.7) 0, rgba(214, 16, 56, 0.7) 4px,
+      transparent 4px, transparent 7px)
+      50% 50% / 100% 1px no-repeat;
+  pointer-events: none;
+}
+
+/* Reverse track — chevron points LEFT (toward the next DOM node, which sits to the left) */
+.industrial-flow-track.is-reverse > .industrial-flow-node + .industrial-flow-node::after {
+  right: auto;
+  left: 100%;
+  margin-right: 0;
+  margin-left: 8px;
+  clip-path: polygon(
+    100% 25%, 45% 25%, 0% 50%, 45% 75%, 100% 75%, 62% 50%
+  );
+}
+
+.industrial-flow-track.is-reverse > .industrial-flow-node + .industrial-flow-node > .industrial-flow-rank::before {
+  right: auto;
+  left: calc(100% + 4px);
+  background:
+    /* start tick — dim, on the source side (right) */
+    linear-gradient(rgba(214, 16, 56, 0.4), rgba(214, 16, 56, 0.4))
+      100% 50% / 1px 100% no-repeat,
+    /* end tick — bright, on the chevron side (left) */
+    linear-gradient(rgba(214, 16, 56, 0.85), rgba(214, 16, 56, 0.85))
+      0 50% / 1px 100% no-repeat,
+    /* dashed conduit */
+    repeating-linear-gradient(90deg,
+      rgba(214, 16, 56, 0.7) 0, rgba(214, 16, 56, 0.7) 4px,
+      transparent 4px, transparent 7px)
+      50% 50% / 100% 1px no-repeat;
+}
+
+.industrial-flow {
+  position: relative;
+}
+
+/* 4 → 5 connector — vertical chevron in the same family as horizontal ones.
+   Sits centered under row 1's column 3 (where 03 lives), pointing down into 04. */
+.industrial-flow-wrap {
+  position: relative;
+  height: 32px;
+  pointer-events: none;
+}
+
+/* Vertical conduit — dashed with tick caps, mirrors the horizontal connector */
+.industrial-flow-wrap-down {
+  position: absolute;
+  top: 0;
+  right: 16.6667%;
+  width: 8px;
+  height: 22px;
+  transform: translateX(50%);
+  background:
+    /* top tick */
+    linear-gradient(rgba(214, 16, 56, 0.4), rgba(214, 16, 56, 0.4))
+      50% 0 / 100% 1px no-repeat,
+    /* bottom tick — bright, near the chevron */
+    linear-gradient(rgba(214, 16, 56, 0.85), rgba(214, 16, 56, 0.85))
+      50% 100% / 100% 1px no-repeat,
+    /* dashed vertical conduit */
+    repeating-linear-gradient(180deg,
+      rgba(214, 16, 56, 0.7) 0, rgba(214, 16, 56, 0.7) 4px,
+      transparent 4px, transparent 7px)
+      50% 50% / 1px 100% no-repeat;
+}
+
+/* Hide unused pieces of the old elbow path */
+.industrial-flow-wrap-cross {
+  display: none;
+}
+
+/* Industrial chevron at the bottom of the wrap conduit */
+.industrial-flow-wrap-arrow {
+  position: absolute;
+  top: 18px;
+  right: 16.6667%;
+  width: 14px;
+  height: 18px;
+  transform: translateX(50%);
+  background: linear-gradient(90deg,
+    #ff2a52 0%,
+    var(--color-red) 50%,
+    #8b0e26 100%);
+  clip-path: polygon(
+    25% 0%, 25% 55%, 50% 100%, 75% 55%, 75% 0%, 50% 38%
+  );
+  filter:
+    drop-shadow(0 0 3px rgba(214, 16, 56, 0.55))
+    drop-shadow(1px 0 0 rgba(0, 0, 0, 0.45));
+  border: none;
+  box-shadow: none;
+}
+
+.industrial-flow-wrap-arrow::after {
+  content: none;
+}
+
+/* Left-side wrap — drops out of row 2 column 1 (06) down into the finale card */
+.industrial-flow-wrap--left .industrial-flow-wrap-down {
+  right: auto;
+  left: 16.6667%;
+  transform: translateX(-50%);
+}
+
+.industrial-flow-wrap--left .industrial-flow-wrap-arrow {
+  right: auto;
+  left: 16.6667%;
+  transform: translateX(-50%);
+}
+
+/* Elbow wrap — 03 (row 1, col 3, right side) → 04 (row 2, col 1, left side).
+   L-shaped trace: short vertical tail under 03, horizontal cross spanning the row,
+   short vertical head dropping into 04, capped by a downward industrial chevron. */
+.industrial-flow-wrap--elbow {
+  height: 52px;
+}
+
+/* Vertical tail under 03 — same dashed-conduit + tick style as the standard wrap */
+.industrial-flow-wrap--elbow .industrial-flow-elbow-tail {
+  position: absolute;
+  top: 0;
+  right: 16.6667%;
+  width: 8px;
+  height: 18px;
+  transform: translateX(50%);
+  background:
+    linear-gradient(rgba(214, 16, 56, 0.4), rgba(214, 16, 56, 0.4))
+      50% 0 / 100% 1px no-repeat,
+    repeating-linear-gradient(180deg,
+      rgba(214, 16, 56, 0.7) 0, rgba(214, 16, 56, 0.7) 4px,
+      transparent 4px, transparent 7px)
+      50% 50% / 1px 100% no-repeat;
+}
+
+/* Horizontal cross — dashed conduit spanning from col 3 center to col 1 center */
+.industrial-flow-wrap--elbow .industrial-flow-elbow-cross {
+  position: absolute;
+  top: 18px;
+  left: 16.6667%;
+  right: 16.6667%;
+  height: 8px;
+  transform: translateY(-50%);
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(214, 16, 56, 0.7) 0, rgba(214, 16, 56, 0.7) 4px,
+      transparent 4px, transparent 7px)
+      50% 50% / 100% 1px no-repeat;
+}
+
+/* Vertical head above 04 — dashed conduit + bright bottom tick */
+.industrial-flow-wrap--elbow .industrial-flow-elbow-head {
+  position: absolute;
+  top: 18px;
+  left: 16.6667%;
+  width: 8px;
+  height: 20px;
+  transform: translateX(-50%);
+  background:
+    linear-gradient(rgba(214, 16, 56, 0.85), rgba(214, 16, 56, 0.85))
+      50% 100% / 100% 1px no-repeat,
+    repeating-linear-gradient(180deg,
+      rgba(214, 16, 56, 0.7) 0, rgba(214, 16, 56, 0.7) 4px,
+      transparent 4px, transparent 7px)
+      50% 50% / 1px 100% no-repeat;
+}
+
+/* Chevron lands above 04 (left column) instead of the default right column */
+.industrial-flow-wrap--elbow .industrial-flow-wrap-arrow {
+  top: 34px;
+  right: auto;
+  left: 16.6667%;
+  transform: translateX(-50%);
+}
+
+/* Finale — single full-width hero card for the recycled output */
+.industrial-flow-finale {
+  margin-top: 0;
+  padding: 24px 24px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  column-gap: 32px;
+  row-gap: 12px;
+  align-items: stretch;
+  background:
+    radial-gradient(60% 100% at 0% 0%, rgba(214, 16, 56, 0.14), rgba(214, 16, 56, 0) 70%),
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.012) 0,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #1f2a36 0%, #161f29 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(214, 16, 56, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
+}
+
+.industrial-flow-finale > .industrial-flow-rank {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.industrial-flow-finale-eyebrow {
+  grid-column: 1;
+  grid-row: 2;
+  margin: 0;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-red);
+}
+
+.industrial-flow-finale > h3 {
+  grid-column: 1;
+  grid-row: 3;
+  margin: 4px 0 0;
+  font-size: 1.5rem;
+}
+
+.industrial-flow-finale > p:not(.industrial-flow-finale-eyebrow) {
+  grid-column: 1;
+  grid-row: 4;
+  align-self: start;
+  max-width: 56ch;
+}
+
+/* Video occupies the right column and stretches to match the card height. */
+.industrial-flow-finale > .industrial-flow-media {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  margin: 0;
+  padding: 0;
+  align-self: stretch;
+  display: flex;
+}
+
+.industrial-flow-finale > .industrial-flow-media > .industrial-flow-video {
+  aspect-ratio: auto;
+  height: 100%;
+  min-height: 220px;
+}
+
+@media (max-width: 960px) {
+  .industrial-flow-finale {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .industrial-flow-finale > .industrial-flow-rank,
+  .industrial-flow-finale > .industrial-flow-media,
+  .industrial-flow-finale > h3,
+  .industrial-flow-finale > p {
+    grid-column: 1;
+  }
+  .industrial-flow-finale > .industrial-flow-media {
+    grid-row: auto;
+  }
+  .industrial-flow-finale > .industrial-flow-media > .industrial-flow-video {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
+  }
+}
+
+/* On stacked layouts the elbow becomes irrelevant — collapse it */
+@media (max-width: 960px) {
+  .industrial-flow-wrap {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .industrial-flow-track,
+  .industrial-flow-track.is-reverse {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    direction: ltr;
+  }
+  /* Reset the row-2 column placement at narrow widths */
+  .industrial-flow-track.is-reverse > .industrial-flow-node:nth-child(1),
+  .industrial-flow-track.is-reverse > .industrial-flow-node:nth-child(2),
+  .industrial-flow-track.is-reverse > .industrial-flow-node:nth-child(3) {
+    grid-column: auto;
+  }
+  /* Reset reverse-track arrow direction back to default LTR */
+  .industrial-flow-track.is-reverse > .industrial-flow-node + .industrial-flow-node::after {
+    right: 100%;
+    left: auto;
+    margin-right: 12px;
+    margin-left: 0;
+    border-left: 9px solid var(--color-red);
+    border-right: 0;
+  }
+  .industrial-flow-track.is-reverse > .industrial-flow-node + .industrial-flow-node > .industrial-flow-rank::before {
+    right: calc(100% + 4px);
+    left: auto;
+    background: linear-gradient(90deg, rgba(214, 16, 56, 0.15), rgba(214, 16, 56, 0.6));
+  }
+  /* arrows positioned only on horizontal pairs — drop the row-end arrow */
+  .industrial-flow-track > .industrial-flow-node:nth-child(2n + 1) + .industrial-flow-node::after {
+    display: revert;
+  }
+  .industrial-flow-track > .industrial-flow-node:nth-child(2n) + .industrial-flow-node::after,
+  .industrial-flow-track > .industrial-flow-node:nth-child(2n) + .industrial-flow-node > .industrial-flow-rank::before {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .industrial-flow-track,
+  .industrial-flow-track.is-reverse {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .industrial-flow-track > .industrial-flow-node + .industrial-flow-node::after {
+    top: -22px;
+    left: 24px;
+    right: auto;
+    margin: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 9px solid var(--color-red);
+    border-bottom: 0;
+    transform: none;
+  }
+  .industrial-flow-track > .industrial-flow-node + .industrial-flow-node > .industrial-flow-rank::before {
+    top: -16px;
+    right: auto;
+    left: 28px;
+    width: 1px;
+    height: 14px;
+    background: linear-gradient(180deg, rgba(214, 16, 56, 0.15), rgba(214, 16, 56, 0.6));
+  }
+}
+
+/* ===== Product Comparison — Industrial variant overrides ===== */
+
+/* Exploded view frame — brushed steel plate with hazard stripe header */
+.product-page-industrial .product-compare-explode-frame {
+  background-color: #1a232e;
+  background-image:
+    /* brushed-metal microhatch */
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 3px),
+    repeating-linear-gradient(0deg,
+      rgba(0, 0, 0, 0.06) 0,
+      rgba(0, 0, 0, 0.06) 1px,
+      transparent 1px,
+      transparent 5px),
+    /* base steel gradient */
+    linear-gradient(180deg, #28333f 0%, #16202b 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.32),
+    inset 0 2px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.55),
+    0 6px 0 rgba(0, 0, 0, 0.18);
+  padding-top: 36px;
+}
+
+/* Hazard stripe spans the full top edge */
+.product-page-industrial .product-compare-explode-frame::before {
+  width: 100%;
+  height: 22px;
+  background:
+    repeating-linear-gradient(135deg,
+      var(--color-red) 0,
+      var(--color-red) 14px,
+      #1a242f 14px,
+      #1a242f 24px);
+  top: 0;
+  bottom: auto;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Crosshair retained but tinted red */
+.product-page-industrial .product-compare-explode-frame::after {
+  background:
+    linear-gradient(rgba(214, 16, 56, 0.32), rgba(214, 16, 56, 0.32)),
+    linear-gradient(rgba(214, 16, 56, 0.32), rgba(214, 16, 56, 0.32));
+  background-position: 50% 0, 0 50%;
+  background-size: 1px 100%, 100% 1px;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+}
+
+/* EXPLODED tag sits below the hazard stripe */
+.product-page-industrial .product-compare-explode-tag {
+  top: 32px;
+  left: 14px;
+  padding: 4px 10px;
+  color: var(--color-white);
+  background: var(--color-red);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(0, 0, 0, 0.3);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+}
+
+.product-page-industrial .product-compare-explode-label {
+  color: #6f7e8b;
+}
+
+/* Pins — rivet-style with red ring */
+.product-page-industrial .product-compare-explode-pin {
+  width: 26px;
+  height: 26px;
+  background: radial-gradient(circle at 35% 30%, #2f3d4c 0%, #141d27 70%);
+  color: var(--color-white);
+  box-shadow:
+    inset 0 0 0 1px rgba(214, 16, 56, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(214, 16, 56, 0.25);
+  font-weight: 900;
+}
+
+.product-page-industrial .product-compare-explode-pin::after {
+  inset: -5px;
+  box-shadow: 0 0 0 1px rgba(214, 16, 56, 0.35);
+}
+
+.product-page-industrial .product-compare-explode-frame:hover .product-compare-explode-pin {
+  box-shadow:
+    inset 0 0 0 1px var(--color-red),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(214, 16, 56, 0.65);
+}
+
+.product-page-industrial .product-compare-explode figcaption::before {
+  background:
+    repeating-linear-gradient(90deg,
+      var(--color-red) 0,
+      var(--color-red) 4px,
+      transparent 4px,
+      transparent 8px);
+  width: 36px;
+}
+
+/* Legend bar — hazard-bordered legend strip */
+.product-page-industrial .product-compare-panel-head {
+  position: relative;
+  padding: 14px 16px;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.014) 0,
+      rgba(255, 255, 255, 0.014) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #28333f 0%, #16202b 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  border: 0;
+}
+
+.product-page-industrial .product-compare-legend {
+  color: var(--color-white);
+}
+
+.product-page-industrial .product-compare-legend-mark.is-self {
+  width: 14px;
+  height: 14px;
+  background: var(--color-red);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 0 8px rgba(214, 16, 56, 0.5);
+}
+
+.product-page-industrial .product-compare-legend-mark.is-base {
+  width: 14px;
+  height: 14px;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(184, 194, 201, 0.4) 0,
+      rgba(184, 194, 201, 0.4) 3px,
+      rgba(184, 194, 201, 0.1) 3px,
+      rgba(184, 194, 201, 0.1) 6px);
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.5);
+}
+
+/* Comparison rows — brushed-steel ledger cards */
+.product-page-industrial .product-compare-row {
+  padding: 18px 18px 18px 26px;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.012) 0,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #1c2733 0%, #141d27 100%);
+  border-top: 0;
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.product-page-industrial .product-compare-row::before {
+  width: 3px;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #ee2548 0%, #b00d2e 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.product-page-industrial .product-compare-row:hover {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 3px),
+    linear-gradient(180deg, #25313e 0%, #1a242f 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(214, 16, 56, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 6px 18px rgba(214, 16, 56, 0.16);
+  transform: translateX(2px);
+}
+
+.product-page-industrial .product-compare-row:hover::before {
+  width: 5px;
+  background: linear-gradient(180deg, #ff3358 0%, #c4112e 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 0 14px rgba(214, 16, 56, 0.6);
+}
+
+/* Row identifier — promote to a red riveted tab */
+/* Chevron-shaped row identifier — directional cue (vs the flow rank's plain block) */
+.product-page-industrial .product-compare-row-id {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  padding: 0 14px 0 10px;
+  color: var(--color-white);
+  background: var(--color-red);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.14em;
+  font-size: 0.66rem;
+  font-weight: 900;
+}
+
+.product-page-industrial .product-compare-row-head h3 {
+  color: var(--color-white);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.product-page-industrial .product-compare-row-unit {
+  color: #8b97a2;
+}
+
+/* Bars — hard-edged gauge */
+.product-page-industrial .product-compare-bar::before {
+  height: 8px;
+  border-radius: 0;
+  background:
+    repeating-linear-gradient(90deg,
+      rgba(0, 0, 0, 0.35) 0,
+      rgba(0, 0, 0, 0.35) 1px,
+      transparent 1px,
+      transparent 8px),
+    linear-gradient(180deg, #0d141c 0%, #182230 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.22),
+    inset 0 1px 1px rgba(0, 0, 0, 0.55);
+}
+
+.product-page-industrial .product-compare-bar::after {
+  height: 8px;
+  border-radius: 0;
+}
+
+/* Self (WEI LAN) fill — solid red gauge with subtle hazard texture */
+.product-page-industrial .product-compare-bar.is-self::after {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.08) 0,
+      rgba(255, 255, 255, 0.08) 4px,
+      transparent 4px,
+      transparent 9px),
+    linear-gradient(180deg, #ee2548 0%, #b00d2e 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 0 10px rgba(214, 16, 56, 0.4);
+}
+
+.product-page-industrial .product-compare-bar.is-base::after {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(184, 194, 201, 0.45) 0,
+      rgba(184, 194, 201, 0.45) 3px,
+      rgba(184, 194, 201, 0.18) 3px,
+      rgba(184, 194, 201, 0.18) 6px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.product-page-industrial .product-compare-bar.is-self .product-compare-bar-value {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(214, 16, 56, 0.5);
+}
+
+.product-page-industrial .product-compare-bar-label {
+  color: #8b97a2;
+}
+
+.product-page-industrial .product-compare-row-note {
+  color: #a8b3bd;
+  padding: 8px 0 0;
+  border-top: 1px dashed rgba(184, 194, 201, 0.18);
+  margin-top: 6px;
+}
+
+/* Comparison list — give rows breathing room */
+.product-page-industrial .product-compare-list {
+  gap: 14px;
+}
+
+
 
 .spec-table-wrap {
   overflow-x: auto;
@@ -2559,6 +4562,11 @@ td {
   color: #a8b3bd;
 }
 
+.spec-card-industrial .spec-suffix-unit {
+  color: var(--color-red);
+  font-weight: 700;
+}
+
 /* bottom nameplate footer */
 .spec-card-foot {
   display: flex;
@@ -3018,26 +5026,43 @@ td {
 }
 
 .form-submit-row {
-  display: grid;
+  display: flex;
   grid-column: 1 / -1;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 2px;
+  gap: 12px 20px;
+  padding-top: 21px;
 }
 
 .contact-note {
-  grid-column: 1 / -1;
   margin: 0;
-  font-size: 0.9rem;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
+}
+
+.contact-note::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  vertical-align: middle;
 }
 
 .form-status {
-  min-height: 22px;
+  grid-column: 1 / -1;
   margin: 0;
   color: var(--color-cyan);
   font-size: 0.92rem;
   font-weight: 700;
+}
+
+.form-status:empty {
+  display: none;
 }
 
 .site-footer {
@@ -3224,7 +5249,13 @@ td {
   }
 
   .form-submit-row {
-    grid-template-columns: 1fr;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .form-submit-row button[type="submit"] {
+    width: 100%;
   }
 
   .waste-type-options {

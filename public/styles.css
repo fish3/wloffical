@@ -904,7 +904,21 @@ h3 {
 }
 
 .product-family-ai .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   color: #c8d4dc;
+  letter-spacing: 0.1em;
+}
+
+.product-family-ai .eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid #c8d4dc;
+  background: rgba(200, 212, 220, 0.18);
+  box-shadow: 0 0 7px rgba(200, 212, 220, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transform: rotate(45deg);
 }
 
 .product-family-ai .product-family-content h2 {

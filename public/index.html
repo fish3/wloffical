@@ -9,7 +9,7 @@
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0b1118">
     <link rel="canonical" href="https://weilanrecycling.com/">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=nav-font-saira-xl-20260702">
     <link rel="preload" href="assets/images/recyclable-plastic-sorting-line.webp" as="image">
     <meta property="og:type" content="website">
     <meta property="og:title" content="WEI LAN AI Waste Sorting and C&D Recycling Equipment">
@@ -45,16 +45,34 @@
         <span class="brand-mark" aria-hidden="true"></span>
         <span>WEI LAN</span>
       </a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a class="nav-link" href="index.html" aria-current="page">Home</a>
-        <a class="nav-link" href="products.html">Products</a>
-        <a class="nav-link" href="solutions.html">Solutions</a>
-        <a class="nav-link" href="service-support.html">Service &amp; Support</a>
-        <a class="nav-link" href="resources.html">Resources</a>
-        <a class="nav-link" href="about.html">About Us</a>
-        <a class="nav-link" href="contact.html">Contact</a>
-      </nav>
+      <div class="nav-shell">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link" href="index.html" aria-current="page">Home</a>
+          <a class="nav-link" href="about.html">About Us</a>
+          <a class="nav-link" href="products.html">Products</a>
+          <a class="nav-link" href="solutions.html">Solutions</a>
+          <a class="nav-link" href="service-support.html">Service &amp; Support</a>
+          <a class="nav-link" href="resources.html">Resources</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="nav-toggle-line" aria-hidden="true"></span>
+          <span class="nav-toggle-line" aria-hidden="true"></span>
+          <span class="nav-toggle-line" aria-hidden="true"></span>
+        </button>
+      </div>
       <a class="header-action" href="contact.html">Request Quote</a>
+      <div class="mobile-nav-panel" id="mobile-nav" data-mobile-nav hidden>
+          <nav class="mobile-nav" aria-label="Mobile navigation">
+            <a class="mobile-nav-link" href="index.html" aria-current="page">Home</a>
+            <a class="mobile-nav-link" href="about.html">About Us</a>
+            <a class="mobile-nav-link" href="products.html">Products</a>
+            <a class="mobile-nav-link" href="solutions.html">Solutions</a>
+            <a class="mobile-nav-link" href="service-support.html">Service &amp; Support</a>
+            <a class="mobile-nav-link" href="resources.html">Resources</a>
+            <a class="mobile-nav-link" href="contact.html">Contact</a>
+          </nav>
+      </div>
     </header>
 
     <main id="top">
@@ -336,7 +354,7 @@
               <li>Configuration: GL01V2-9 standard optical sorting</li>
               <li>Result: cleaner grouped plastic fractions</li>
             </ul>
-            <a class="card-link" href="case-studies.html#municipal-plastic-sorting">View details</a>
+            <a class="card-link" href="case-studies/municipal-plastic-sorting.html">View details</a>
           </article>
           <article class="case-study-card">
             <p class="case-study-meta">Domestic Project Reference | C&amp;D Waste</p>
@@ -347,7 +365,7 @@
               <li>Configuration: 100 t/h Lion One line</li>
               <li>Result: aggregate, metal, and light material recovery</li>
             </ul>
-            <a class="card-link" href="case-studies.html#construction-waste-utilization">View details</a>
+            <a class="card-link" href="case-studies/construction-waste-utilization.html">View details</a>
           </article>
           <article class="case-study-card">
             <p class="case-study-meta">Typical Configuration Reference | Smart City</p>
@@ -358,7 +376,7 @@
               <li>Configuration: sorting modules plus digital control</li>
               <li>Result: monitored throughput and operational reporting</li>
             </ul>
-            <a class="card-link" href="case-studies.html#smart-recovery-center">View details</a>
+            <a class="card-link" href="case-studies/smart-recovery-center.html">View details</a>
           </article>
         </div>
         <div class="case-study-actions">

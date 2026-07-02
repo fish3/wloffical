@@ -1,4 +1,7 @@
+const navHeader = document.querySelector(".site-header");
 const siteHeader = document.querySelector("[data-header]");
+const navToggle = document.querySelector("[data-nav-toggle]");
+const mobileNav = document.querySelector("[data-mobile-nav]");
 const contactForm = document.querySelector("[data-contact-form]");
 const contactStatus = document.querySelector("[data-contact-status]");
 const productPicker = contactForm ? contactForm.querySelector("[data-product-picker]") : null;
@@ -75,6 +78,55 @@ function updateHeaderBackground() {
 
 updateHeaderBackground();
 window.addEventListener("scroll", updateHeaderBackground, { passive: true });
+
+function setMobileNavOpen(isOpen) {
+  if (!navHeader || !navToggle || !mobileNav) {
+    return;
+  }
+
+  mobileNav.hidden = !isOpen;
+  navHeader.classList.toggle("is-nav-open", isOpen);
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+}
+
+function closeMobileNav() {
+  setMobileNavOpen(false);
+}
+
+if (navHeader && navToggle && mobileNav) {
+  navToggle.addEventListener("click", () => {
+    setMobileNavOpen(mobileNav.hidden);
+  });
+
+  mobileNav.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      closeMobileNav();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMobileNav();
+    }
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (mobileNav.hidden || !(event.target instanceof Node)) {
+      return;
+    }
+
+    if (!navHeader.contains(event.target)) {
+      closeMobileNav();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(min-width: 921px)").matches) {
+      closeMobileNav();
+    }
+  });
+}
 
 function normalizeWasteType(value) {
   return value.replace(/\s+/g, " ").trim();

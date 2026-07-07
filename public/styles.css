@@ -5397,22 +5397,49 @@ a.text-link.is-hud:active {
 
 .product-page-ai .sorting-feed-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(92px, 1fr));
+  grid-template-columns: repeat(5, minmax(92px, 1fr));
   gap: 10px;
 }
 
 .product-page-ai .sorting-feed-chip {
+  position: relative;
   display: grid;
   place-items: center;
+  overflow: hidden;
   min-height: 92px;
-  padding: 13px 10px;
+  padding: 13px 12px 13px 18px;
   color: #f8fcfd;
   text-align: center;
-  clip-path: polygon(12px 0, calc(100% - 12px) 0, 100% 12px, 100% calc(100% - 12px), calc(100% - 12px) 100%, 12px 100%, 0 calc(100% - 12px), 0 12px);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), 0 12px 22px rgba(0, 0, 0, 0.18);
+  border-radius: 2px;
+  background: rgba(8, 16, 25, 0.46);
+  box-shadow: inset 0 0 0 1px rgba(205, 217, 224, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 12px 22px rgba(0, 0, 0, 0.16);
+}
+
+.product-page-ai .sorting-feed-chip::before {
+  content: "";
+  position: absolute;
+  top: 9px;
+  bottom: 9px;
+  left: 8px;
+  width: 4px;
+  background: var(--feed-accent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--feed-accent) 52%, transparent);
+}
+
+.product-page-ai .sorting-feed-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), transparent 46%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 18px);
+  opacity: 0.62;
+  pointer-events: none;
 }
 
 .product-page-ai .sorting-feed-chip b {
+  position: relative;
+  z-index: 1;
   display: block;
   font-size: 1.1rem;
   font-weight: 950;
@@ -5420,6 +5447,8 @@ a.text-link.is-hud:active {
 }
 
 .product-page-ai .sorting-feed-chip small {
+  position: relative;
+  z-index: 1;
   display: block;
   margin-top: 8px;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -5430,30 +5459,43 @@ a.text-link.is-hud:active {
 }
 
 .product-page-ai .chip-clear {
-  background: linear-gradient(135deg, rgba(235, 247, 250, 0.46), rgba(120, 145, 157, 0.22));
+  --feed-accent: #dce8ed;
 }
 
 .product-page-ai .chip-green {
-  background: linear-gradient(135deg, rgba(82, 214, 129, 0.52), rgba(20, 92, 68, 0.38));
+  --feed-accent: #52d681;
 }
 
 .product-page-ai .chip-blue {
-  background: linear-gradient(135deg, rgba(66, 215, 223, 0.48), rgba(32, 68, 126, 0.42));
+  --feed-accent: #42d7df;
+}
+
+.product-page-ai .chip-pet-mixed {
+  --feed-accent: #9fd1e2;
 }
 
 .product-page-ai .chip-hdpe {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(116, 132, 142, 0.3));
-  color: #081019;
+  --feed-accent: #ffffff;
+}
+
+.product-page-ai .chip-hdpe-colored {
+  --feed-accent: #b8c7d0;
 }
 
 .product-page-ai .chip-pp {
-  background: linear-gradient(135deg, rgba(214, 16, 56, 0.66), rgba(86, 23, 42, 0.44));
+  --feed-accent: #d61038;
+}
+
+.product-page-ai .chip-pe {
+  --feed-accent: #ffbb5c;
 }
 
 .product-page-ai .chip-mixed {
-  background:
-    linear-gradient(135deg, rgba(66, 215, 223, 0.32), transparent 46%),
-    linear-gradient(315deg, rgba(214, 16, 56, 0.5), rgba(108, 121, 132, 0.36));
+  --feed-accent: #8a98a3;
+}
+
+.product-page-ai .chip-reject {
+  --feed-accent: #687985;
 }
 
 .product-page-ai .sorting-data-band {

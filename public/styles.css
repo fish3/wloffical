@@ -3721,20 +3721,60 @@ h3 {
 }
 
 .resource-related-grid a {
-  min-height: 96px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 112px;
   padding: 18px;
-  border: 1px solid rgba(66, 215, 223, 0.24);
+  overflow: hidden;
+  border: 1px solid rgba(66, 215, 223, 0.28);
   border-radius: 8px;
   color: #e5f2f4;
   background:
-    linear-gradient(180deg, rgba(66, 215, 223, 0.08), transparent 56%),
+    linear-gradient(180deg, rgba(66, 215, 223, 0.1), transparent 58%),
     var(--color-panel);
   font-weight: 850;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.resource-related-grid a::after {
+  content: "Explore ->";
+  align-self: flex-end;
+  margin-top: 18px;
+  color: var(--color-accent);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
 }
 
 .resource-related-grid a:hover {
-  border-color: rgba(66, 215, 223, 0.68);
+  border-color: rgba(66, 215, 223, 0.78);
   color: var(--color-white);
+  background:
+    linear-gradient(180deg, rgba(66, 215, 223, 0.18), rgba(66, 215, 223, 0.04) 62%),
+    var(--color-panel);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.24);
+  transform: translateY(-2px);
+}
+
+.resource-related-grid a:hover::after {
+  color: var(--color-white);
+  transform: translateX(4px);
+}
+
+.resource-related-grid a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
 }
 
 .about-overview-grid {
@@ -4062,6 +4102,74 @@ h3 {
 
 .credential-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.carbon-data-section {
+  padding-top: clamp(44px, 7vw, 78px);
+}
+
+.carbon-data-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+  gap: clamp(22px, 4vw, 46px);
+  align-items: stretch;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid rgba(66, 215, 223, 0.24);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(66, 215, 223, 0.11), rgba(82, 214, 129, 0.07) 45%, rgba(255, 255, 255, 0.035)),
+    var(--color-panel);
+}
+
+.carbon-data-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+}
+
+.carbon-data-summary h3 {
+  max-width: 13em;
+  margin: 0;
+}
+
+.carbon-data-summary p {
+  margin: 18px 0 0;
+  color: var(--color-muted);
+}
+
+.carbon-data-points {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.carbon-data-points li {
+  min-height: 96px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid rgba(82, 214, 129, 0.76);
+  border-radius: 8px;
+  background: rgba(5, 13, 21, 0.26);
+}
+
+.carbon-data-points strong,
+.carbon-data-points span {
+  display: block;
+}
+
+.carbon-data-points strong {
+  color: var(--color-white);
+  font-size: 0.98rem;
+}
+
+.carbon-data-points span {
+  margin-top: 8px;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
 }
 
 .evidence-grid {
@@ -10263,6 +10371,10 @@ td {
   .resource-faq-group-grid,
   .resource-guide-grid,
   .home-trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .carbon-data-layout {
     grid-template-columns: 1fr;
   }
 

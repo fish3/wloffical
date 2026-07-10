@@ -6760,9 +6760,10 @@ a.text-link.is-hud:active {
   position: relative;
   height: 6px;
   width: var(--fill, 0%);
+  left: var(--start, 0%);
   justify-self: start;
   border-radius: 1px;
-  transition: width 0.5s cubic-bezier(0.22, 0.8, 0.32, 1);
+  transition: left 0.5s cubic-bezier(0.22, 0.8, 0.32, 1), width 0.5s cubic-bezier(0.22, 0.8, 0.32, 1);
 }
 
 .product-compare-bar.is-self::after {

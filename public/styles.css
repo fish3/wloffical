@@ -3185,6 +3185,81 @@ h3 {
   color: #aebac4;
 }
 
+.case-study-detail-page-ai .case-promo-video {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: clamp(178px, 22vw, 260px);
+  margin-top: 18px;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: rgba(8, 14, 22, 0.88);
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(205, 217, 224, 0.06) 0,
+      rgba(205, 217, 224, 0.06) 1px,
+      transparent 1px,
+      transparent 5px),
+    linear-gradient(135deg, rgba(205, 217, 224, 0.12), rgba(13, 22, 33, 0.24) 56%, rgba(8, 14, 22, 0.9)),
+    radial-gradient(70% 90% at 50% 44%, rgba(205, 217, 224, 0.12), rgba(8, 14, 22, 0) 72%);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.case-study-detail-page-ai .case-promo-video::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(245, 249, 251, 0.78), rgba(184, 194, 201, 0.26));
+}
+
+.case-study-detail-page-ai .case-promo-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(205, 217, 224, 0.5), rgba(205, 217, 224, 0.5)) 100% 0 / 16px 1px no-repeat,
+    linear-gradient(rgba(205, 217, 224, 0.5), rgba(205, 217, 224, 0.5)) 100% 100% / 16px 1px no-repeat,
+    linear-gradient(rgba(205, 217, 224, 0.5), rgba(205, 217, 224, 0.5)) 0 100% / 16px 1px no-repeat;
+}
+
+.case-study-detail-page-ai .case-promo-video .case-video-tag {
+  box-shadow: inset 0 0 0 1px rgba(205, 217, 224, 0.42);
+}
+
+.case-study-detail-page-ai .case-promo-video .case-video-play {
+  width: 54px;
+  height: 54px;
+  box-shadow: inset 0 0 0 1px rgba(205, 217, 224, 0.62), 0 0 22px rgba(205, 217, 224, 0.18);
+}
+
+.case-promo-video-copy {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  left: 18px;
+  display: grid;
+  gap: 5px;
+  color: #eaf1f5;
+}
+
+.case-promo-video-copy strong {
+  font-size: clamp(1rem, 1.6vw, 1.28rem);
+  line-height: 1.25;
+}
+
+.case-promo-video-copy span {
+  color: #8fa0ad;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
 .case-study-detail-page-ai .case-detail-action-section {
   padding-top: clamp(28px, 4vw, 52px);
   border-top: 0;

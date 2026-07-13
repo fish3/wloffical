@@ -4599,6 +4599,10 @@ h3 {
   border-color: rgba(184, 194, 201, 0.3);
 }
 
+.product-family-ai .product-family-media img {
+  object-fit: cover;
+}
+
 .product-family-ai .product-family-media::after {
   background: linear-gradient(0deg, rgba(8, 16, 25, 0.58), transparent 34%);
 }

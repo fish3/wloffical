@@ -3722,7 +3722,8 @@ h3 {
   transition: color 160ms ease;
 }
 
-.resource-read-more::after {
+.resource-read-more::after,
+.resource-related-cta::after {
   content: "→";
   color: rgba(66, 215, 223, 0.72);
   transition: color 160ms ease, transform 160ms ease;
@@ -3732,7 +3733,8 @@ h3 {
   color: var(--color-white);
 }
 
-.resource-read-more:hover::after {
+.resource-read-more:hover::after,
+.resource-related-grid a:hover .resource-related-cta::after {
   color: var(--color-cyan);
   transform: translateX(4px);
 }
@@ -3818,18 +3820,18 @@ h3 {
     transform 180ms ease;
 }
 
-.resource-related-grid a::after {
-  content: "Explore ->";
+.resource-related-cta {
+  display: inline-flex;
+  align-items: center;
   align-self: flex-end;
+  gap: 8px;
   margin-top: 18px;
   color: var(--color-accent);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
-  transition:
-    color 180ms ease,
-    transform 180ms ease;
+  transition: color 160ms ease;
 }
 
 .resource-related-grid a:hover {
@@ -3842,9 +3844,8 @@ h3 {
   transform: translateY(-2px);
 }
 
-.resource-related-grid a:hover::after {
+.resource-related-grid a:hover .resource-related-cta {
   color: var(--color-white);
-  transform: translateX(4px);
 }
 
 .resource-related-grid a:focus-visible {
@@ -4594,7 +4595,12 @@ h3 {
 }
 
 .product-family-ai .product-family-media {
+  min-height: 0;
   border-color: rgba(184, 194, 201, 0.3);
+}
+
+.product-family-ai .product-family-media img {
+  object-fit: cover;
 }
 
 .product-family-ai .product-family-media::after {
@@ -6760,9 +6766,10 @@ a.text-link.is-hud:active {
   position: relative;
   height: 6px;
   width: var(--fill, 0%);
+  left: var(--start, 0%);
   justify-self: start;
   border-radius: 1px;
-  transition: width 0.5s cubic-bezier(0.22, 0.8, 0.32, 1);
+  transition: left 0.5s cubic-bezier(0.22, 0.8, 0.32, 1), width 0.5s cubic-bezier(0.22, 0.8, 0.32, 1);
 }
 
 .product-compare-bar.is-self::after {
@@ -7963,10 +7970,6 @@ a.text-link.is-hud:active {
       transparent 1px,
       transparent 3px),
     linear-gradient(180deg, #1f2a36 0%, #161f29 100%);
-  box-shadow:
-    inset 0 0 0 1px rgba(214, 16, 56, 0.42),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.45);
 }
 
 .industrial-flow-finale > .industrial-flow-rank {

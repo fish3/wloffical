@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="{{ locale.htmlLang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ content.meta.title }}</title>
+    <meta name="description" content="{{ content.meta.description }}">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0b1118">
+    <script>
+      try {
+        if (localStorage.getItem("weilan_resources_unlocked_v1") === "true") {
+          document.documentElement.dataset.resourcesUnlocked = "true";
+        }
+      } catch {}
+    </script>
+    <link rel="canonical" href="{{ site.origin }}{{ url }}">
+    {% for alternate in alternates %}<link rel="alternate" hreflang="{{ alternate.code }}" href="{{ site.origin }}{{ alternate.url }}">
+    {% endfor %}<link rel="alternate" hreflang="x-default" href="{{ site.origin }}{{ alternates[0].url }}">
+    <link rel="stylesheet" href="/styles.css?v=multilingual-20260714">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ content.meta.ogTitle or content.meta.title }}">
+    <meta property="og:description" content="{{ content.meta.ogDescription or content.meta.description }}">
+    <meta property="og:image" content="{{ content.meta.ogImage or (site.origin + '/assets/images/recyclable-plastic-sorting-line.webp') }}">
+    <meta property="og:url" content="{{ site.origin }}{{ url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{{ structuredData | dump | safe }}</script>
+  </head>
+  <body data-locale="{{ locale.code }}">
+    {% include "components/header.njk" %}
+    {% block content %}{% endblock %}
+    {% include "components/footer.njk" %}
+    <script id="contact-feedback" type="application/json">{{ ui.contactFeedback | dump | safe }}</script>
+    <script src="/script.js"></script>
+  </body>
+</html>

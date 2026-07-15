@@ -5,6 +5,7 @@ const MAX_PRODUCT_LENGTH = 80;
 const MAX_MESSAGE_LENGTH = 3000;
 const MAX_OPTIONAL_FIELD_LENGTH = 160;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const DELIVERY_ERROR = "Unable to send your inquiry right now. Please try again.";
 
 const jsonHeaders = {
   "Content-Type": "application/json; charset=utf-8",
@@ -24,8 +25,7 @@ export async function onRequestPost(context) {
     const resendResponse = await sendContactEmail(context.env, contactMessage);
 
     if (!resendResponse.ok) {
-      const errorText = await resendResponse.text();
-      throw new Error(`Resend email delivery failed: ${errorText}`);
+      throw new PublicError(DELIVERY_ERROR, "DELIVERY_FAILED", 500);
     }
 
     return Response.json({ ok: true }, { headers: jsonHeaders });
@@ -34,6 +34,7 @@ export async function onRequestPost(context) {
     return Response.json(
       {
         ok: false,
+        code: getErrorCode(error),
         message: error.message,
       },
       {
@@ -41,6 +42,14 @@ export async function onRequestPost(context) {
         headers: jsonHeaders,
       },
     );
+  }
+}
+
+class PublicError extends Error {
+  constructor(message, code, status = 400) {
+    super(message);
+    this.code = code;
+    this.status = status;
   }
 }
 
@@ -199,6 +208,7 @@ function buildPlainTextEmail(contactMessage) {
 }
 
 function getErrorStatusCode(error) {
+  if (error instanceof PublicError) return error.status;
   const validationMessages = [
     "Content-Type must be application/json",
     "Name is required",
@@ -214,6 +224,25 @@ function getErrorStatusCode(error) {
   }
 
   return 500;
+}
+
+function getErrorCode(error) {
+  if (error instanceof PublicError) return error.code;
+
+  const codes = new Map([
+    ["Content-Type must be application/json", "INVALID_REQUEST"],
+    ["Name is required", "NAME_REQUIRED"],
+    ["Email is required", "EMAIL_REQUIRED"],
+    ["Email format is invalid", "EMAIL_INVALID"],
+    ["Product interest is required", "PRODUCT_REQUIRED"],
+    ["Project details is required", "MESSAGE_REQUIRED"],
+    ["Optional field format is invalid", "INVALID_REQUEST"],
+  ]);
+
+  if (codes.has(error.message)) return codes.get(error.message);
+  if (error.message.endsWith("is too long")) return "FIELD_TOO_LONG";
+  if (error.message.startsWith("Missing Cloudflare environment variable:")) return "INTERNAL_ERROR";
+  return "INTERNAL_ERROR";
 }
 
 function formatOptionalHtmlLine(label, value) {

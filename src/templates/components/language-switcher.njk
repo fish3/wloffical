@@ -1,0 +1,9 @@
+<div class="language-switcher" data-language-switcher>
+  <button class="language-trigger" type="button" data-language-trigger aria-label="{{ ui.language }}: {{ locale.label }}" aria-expanded="false" aria-controls="language-menu-{{ locale.contentDir }}">
+    <span>{{ locale.label }}</span>
+    <span class="language-chevron" aria-hidden="true"></span>
+  </button>
+  <div class="language-menu" id="language-menu-{{ locale.contentDir }}" data-language-menu hidden>{% for alternate in alternates %}
+    <a href="{{ alternate.switchUrl }}"{% if alternate.code == locale.code %} aria-current="true"{% endif %}>{{ alternate.label }}</a>{% endfor %}
+  </div>
+</div>

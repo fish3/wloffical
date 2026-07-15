@@ -2,8 +2,19 @@ const navHeader = document.querySelector(".site-header");
 const siteHeader = document.querySelector("[data-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const mobileNav = document.querySelector("[data-mobile-nav]");
+const languageSwitcher = document.querySelector("[data-language-switcher]");
+const languageTrigger = document.querySelector("[data-language-trigger]");
+const languageMenu = document.querySelector("[data-language-menu]");
+const languageOptions = languageMenu ? [...languageMenu.querySelectorAll("a")] : [];
+const resourceGate = document.querySelector("[data-resource-gate]");
+const resourceUnlockForm = document.querySelector("[data-resource-unlock-form]");
+const resourceUnlockStatus = document.querySelector("[data-resource-unlock-status]");
+const resourceGatedContent = document.querySelector("[data-resource-gated-content]");
+const resourceUnlockedHeading = document.querySelector("[data-resource-unlocked-heading]");
+const RESOURCE_UNLOCK_KEY = "weilan_resources_unlocked_v1";
 const contactForm = document.querySelector("[data-contact-form]");
 const contactStatus = document.querySelector("[data-contact-status]");
+const contactFeedbackElement = document.querySelector("#contact-feedback");
 const productPicker = contactForm ? contactForm.querySelector("[data-product-picker]") : null;
 const productControl = contactForm ? contactForm.querySelector("[data-product-control]") : null;
 const productLabel = contactForm ? contactForm.querySelector("[data-product-label]") : null;
@@ -21,6 +32,16 @@ const wasteTypeValue = contactForm ? contactForm.querySelector("[data-waste-type
 const wasteTypeCustomClearButton = contactForm ? contactForm.querySelector("[data-waste-custom-clear]") : null;
 const wasteTypeClearButton = contactForm ? contactForm.querySelector("[data-waste-clear]") : null;
 const wasteTypeDoneButton = contactForm ? contactForm.querySelector("[data-waste-done]") : null;
+
+let contactFeedback = {};
+try {
+  contactFeedback = JSON.parse(contactFeedbackElement?.textContent || "{}");
+} catch {
+  contactFeedback = {};
+}
+const resourceFeedback = contactFeedback.resourceUnlock || {};
+
+class ResourceUnlockResponseError extends Error {}
 
 const WASTE_TYPE_OPTIONS_BY_PRODUCT = {
   "AI optical sorting center": [
@@ -62,11 +83,12 @@ const DEFAULT_WASTE_TYPE_OPTIONS = [
   "Bulky waste",
 ];
 
-const WASTE_TYPE_DISABLED_LABEL = "Select product line first";
-const WASTE_TYPE_PLACEHOLDER_LABEL = "Select waste types";
+const WASTE_TYPE_DISABLED_LABEL = contactFeedback.wasteDisabled || "Select product line first";
+const WASTE_TYPE_PLACEHOLDER_LABEL = contactFeedback.wastePlaceholder || "Select waste types";
 
 let selectedWasteTypes = [];
 let customWasteTypeOptions = [];
+let resourceUnlockSubmitting = false;
 
 function updateHeaderBackground() {
   if (!siteHeader) {
@@ -87,7 +109,11 @@ function setMobileNavOpen(isOpen) {
   mobileNav.hidden = !isOpen;
   navHeader.classList.toggle("is-nav-open", isOpen);
   navToggle.setAttribute("aria-expanded", String(isOpen));
-  navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  navToggle.setAttribute("aria-label", isOpen ? navToggle.dataset.closeLabel : navToggle.dataset.openLabel);
+
+  if (isOpen) {
+    setLanguageMenuOpen(false);
+  }
 }
 
 function closeMobileNav() {
@@ -124,6 +150,137 @@ if (navHeader && navToggle && mobileNav) {
   window.addEventListener("resize", () => {
     if (window.matchMedia("(min-width: 921px)").matches) {
       closeMobileNav();
+    }
+  });
+}
+
+function setLanguageMenuOpen(isOpen, focusTarget = null) {
+  if (!languageSwitcher || !languageTrigger || !languageMenu) {
+    return;
+  }
+
+  languageMenu.hidden = !isOpen;
+  languageSwitcher.classList.toggle("is-open", isOpen);
+  languageTrigger.setAttribute("aria-expanded", String(isOpen));
+
+  if (isOpen) {
+    closeMobileNav();
+    if (focusTarget === "first") languageOptions[0]?.focus();
+    if (focusTarget === "last") languageOptions.at(-1)?.focus();
+  }
+}
+
+function closeLanguageMenu({ returnFocus = false } = {}) {
+  setLanguageMenuOpen(false);
+  if (returnFocus) languageTrigger?.focus();
+}
+
+if (languageSwitcher && languageTrigger && languageMenu) {
+  languageTrigger.addEventListener("click", () => {
+    setLanguageMenuOpen(languageMenu.hidden);
+  });
+
+  languageTrigger.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      setLanguageMenuOpen(true, event.key === "ArrowDown" ? "first" : "last");
+    }
+  });
+
+  languageMenu.addEventListener("keydown", (event) => {
+    const currentIndex = languageOptions.indexOf(document.activeElement);
+    let nextIndex = currentIndex;
+
+    if (event.key === "ArrowDown") nextIndex = (currentIndex + 1) % languageOptions.length;
+    if (event.key === "ArrowUp") nextIndex = (currentIndex - 1 + languageOptions.length) % languageOptions.length;
+    if (event.key === "Home") nextIndex = 0;
+    if (event.key === "End") nextIndex = languageOptions.length - 1;
+
+    if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+      event.preventDefault();
+      languageOptions[nextIndex]?.focus();
+    }
+  });
+
+  languageMenu.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) closeLanguageMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !languageMenu.hidden) {
+      event.preventDefault();
+      closeLanguageMenu({ returnFocus: true });
+    }
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    if (!languageMenu.hidden && event.target instanceof Node && !languageSwitcher.contains(event.target)) {
+      closeLanguageMenu();
+    }
+  });
+}
+
+function unlockResourceGate({ moveFocus = false } = {}) {
+  if (!resourceGate || !resourceGatedContent) return;
+
+  resourceGate.dataset.resourceState = "unlocked";
+  resourceGatedContent.removeAttribute("inert");
+  resourceGatedContent.setAttribute("aria-hidden", "false");
+  document.documentElement.dataset.resourcesUnlocked = "true";
+  if (moveFocus) resourceUnlockedHeading?.focus();
+}
+
+if (resourceGate && resourceUnlockForm && resourceGatedContent) {
+  try {
+    if (localStorage.getItem(RESOURCE_UNLOCK_KEY) === "true") unlockResourceGate();
+  } catch {
+    // The form still unlocks the current page if browser storage is unavailable.
+  }
+
+  resourceUnlockForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (resourceUnlockSubmitting || !resourceUnlockForm.reportValidity()) return;
+
+    const submitButton = resourceUnlockForm.querySelector('button[type="submit"]');
+    const payload = Object.fromEntries(new FormData(resourceUnlockForm).entries());
+
+    resourceUnlockSubmitting = true;
+    if (submitButton) submitButton.disabled = true;
+    if (resourceUnlockStatus) {
+      resourceUnlockStatus.textContent = resourceFeedback.sending || "Unlocking resources...";
+    }
+
+    try {
+      const response = await fetch(resourceUnlockForm.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || !result.ok) {
+        throw new ResourceUnlockResponseError(
+          resourceFeedback.errors?.[result.code]
+          || resourceFeedback.generic
+          || result.message
+          || "Unable to unlock resources right now. Please try again.",
+        );
+      }
+
+      try {
+        localStorage.setItem(RESOURCE_UNLOCK_KEY, "true");
+      } catch {
+        // The unlocked state still applies to the current page.
+      }
+      unlockResourceGate({ moveFocus: true });
+    } catch (error) {
+      if (resourceUnlockStatus) {
+        resourceUnlockStatus.textContent = error instanceof ResourceUnlockResponseError
+          ? error.message
+          : (resourceFeedback.generic || "Unable to unlock resources right now. Please try again.");
+      }
+    } finally {
+      resourceUnlockSubmitting = false;
+      if (submitButton) submitButton.disabled = false;
     }
   });
 }
@@ -189,7 +346,9 @@ function updateWasteTypeActionLabel() {
     return;
   }
 
-  wasteTypeClearButton.textContent = selectedWasteTypes.length ? "Clear" : "All";
+  wasteTypeClearButton.textContent = selectedWasteTypes.length
+    ? (contactFeedback.clear || "Clear")
+    : (contactFeedback.all || "All");
 }
 
 function openProductPicker() {
@@ -218,7 +377,10 @@ function setProductInterest(value) {
   }
 
   productValue.value = normalizedValue;
-  productLabel.textContent = normalizedValue || "Choose product line";
+  const selectedOption = [...productOptions].find((option) => option.dataset.productOption === normalizedValue);
+  productLabel.textContent = normalizedValue
+    ? (selectedOption?.textContent.trim() || normalizedValue)
+    : (contactFeedback.chooseProduct || "Choose product line");
   productControl.classList.toggle("is-placeholder", !normalizedValue);
   productControl.classList.remove("has-error");
 
@@ -291,7 +453,7 @@ function renderWasteTypeOptions() {
     checkMark.textContent = isSelected ? "✓" : "";
 
     const optionText = document.createElement("span");
-    optionText.textContent = option;
+    optionText.textContent = contactFeedback.wasteTypes?.[option] || option;
 
     optionButton.append(checkMark, optionText);
     wasteTypeOptions.append(optionButton);
@@ -300,7 +462,7 @@ function renderWasteTypeOptions() {
   if (!wasteTypeOptions.children.length) {
     const emptyMessage = document.createElement("p");
     emptyMessage.className = "waste-type-empty";
-    emptyMessage.textContent = "Select a product line to view waste type suggestions.";
+    emptyMessage.textContent = contactFeedback.empty || "Select a product line to view waste type suggestions.";
     wasteTypeOptions.append(emptyMessage);
   }
 }
@@ -316,11 +478,14 @@ function renderWasteTypePicker() {
 
 function commitWasteTypeSelection() {
   const wasteTypeSummary = getWasteTypeSummary();
+  const visibleWasteTypeSummary = selectedWasteTypes
+    .map((value) => contactFeedback.wasteTypes?.[value] || value)
+    .join(", ");
 
   updateWasteTypeValue();
 
   if (wasteTypeLabel && wasteTypeControl) {
-    wasteTypeLabel.textContent = wasteTypeSummary || "Select waste types";
+    wasteTypeLabel.textContent = visibleWasteTypeSummary || WASTE_TYPE_PLACEHOLDER_LABEL;
     wasteTypeControl.classList.toggle("is-placeholder", !wasteTypeSummary);
   }
 
@@ -473,7 +638,7 @@ async function submitContactForm(event) {
   const submitButton = contactForm.querySelector("button[type='submit']");
 
   if (!validateProductInterest()) {
-    contactStatus.textContent = "Please choose a product line.";
+    contactStatus.textContent = contactFeedback.PRODUCT_REQUIRED || "Please choose a product line.";
     return;
   }
 
@@ -482,7 +647,7 @@ async function submitContactForm(event) {
   const formData = new FormData(contactForm);
   const payload = Object.fromEntries(formData.entries());
 
-  contactStatus.textContent = "Sending your inquiry...";
+  contactStatus.textContent = contactFeedback.sending || "Sending your inquiry...";
   submitButton.disabled = true;
 
   try {
@@ -496,11 +661,11 @@ async function submitContactForm(event) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || "Inquiry submission failed");
+      throw new Error(contactFeedback[errorData.code] || contactFeedback.generic || errorData.message || "Inquiry submission failed");
     }
 
     contactForm.reset();
-    contactStatus.textContent = "Inquiry sent. Our sales team will contact you soon.";
+    contactStatus.textContent = contactFeedback.success || "Inquiry sent. Our sales team will contact you soon.";
   } catch (error) {
     contactStatus.textContent = error.message;
   } finally {
@@ -508,7 +673,25 @@ async function submitContactForm(event) {
   }
 }
 
+function prefillResourceRequest() {
+  if (!contactForm) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const isResourceRequest = params.get("source") === "resources"
+    && params.get("request") === "more-resources";
+
+  if (!isResourceRequest) return;
+
+  const messageField = contactForm.querySelector("textarea[name='message']");
+
+  if (messageField && !messageField.value.trim()) {
+    messageField.value = resourceFeedback.prefill
+      || "I would like to receive more WEI LAN resource materials.";
+  }
+}
+
 if (contactForm) {
+  prefillResourceRequest();
   contactForm.addEventListener("submit", submitContactForm);
   contactForm.addEventListener("reset", () => {
     window.setTimeout(() => {

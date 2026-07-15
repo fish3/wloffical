@@ -6,44 +6,64 @@
     <title>Resources Library | Brochures, Guides and Project Planning | WEI LAN</title>
     <meta name="description" content="Browse WEI LAN resource details for company profile, product brochures, specification sheets, case study PDFs, inquiry checklists, maintenance guides, FAQ, and project planning materials.">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0b1118">
+    <script>
+      try {
+        if (localStorage.getItem("weilan_resources_unlocked_v1") === "true") {
+          document.documentElement.dataset.resourcesUnlocked = "true";
+        }
+      } catch {}
+    </script>
     <link rel="canonical" href="https://weilanrecycling.com/resources">
-    <link rel="stylesheet" href="styles.css?v=nav-font-saira-xl-20260702">
+    <link rel="alternate" hreflang="en" href="https://weilanrecycling.com/resources">
+    <link rel="alternate" hreflang="zh-CN" href="https://weilanrecycling.com/zh-cn/resources">
+    <link rel="alternate" hreflang="zh-Hant" href="https://weilanrecycling.com/zh-hant/resources">
+    <link rel="alternate" hreflang="x-default" href="https://weilanrecycling.com/resources">
+    <link rel="stylesheet" href="/styles.css?v=multilingual-20260714">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Resources Library | Brochures, Guides and Project Planning | WEI LAN">
+    <meta property="og:description" content="Browse WEI LAN resource details for company profile, product brochures, specification sheets, case study PDFs, inquiry checklists, maintenance guides, FAQ, and project planning materials.">
+    <meta property="og:image" content="https://weilanrecycling.com/assets/images/recyclable-plastic-sorting-line.webp">
+    <meta property="og:url" content="https://weilanrecycling.com/resources">
+    <meta name="twitter:card" content="summary_large_image">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Resource library for recycling equipment buyers","url":"https://weilanrecycling.com/resources","description":"Browse WEI LAN resource details for company profile, product brochures, specification sheets, case study PDFs, inquiry checklists, maintenance guides, FAQ, and project planning materials."}</script>
   </head>
-  <body>
-    <header class="site-header is-scrolled">
-      <a class="brand" href="index.html" aria-label="WEI LAN home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>WEI LAN</span>
-      </a>
-      <div class="nav-shell">
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link" href="about.html">About Us</a>
-          <a class="nav-link" href="products.html">Products</a>
-          <a class="nav-link" href="solutions.html">Solutions</a>
-          <a class="nav-link" href="service-support.html">Service &amp; Support</a>
-          <a class="nav-link" href="resources.html" aria-current="page">Resources</a>
-          <a class="nav-link" href="contact.html">Contact</a>
-        </nav>
-        <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
-          <span class="nav-toggle-line" aria-hidden="true"></span>
-          <span class="nav-toggle-line" aria-hidden="true"></span>
-          <span class="nav-toggle-line" aria-hidden="true"></span>
-        </button>
-      </div>
-      <a class="header-action" href="contact.html">Request Quote</a>
-      <div class="mobile-nav-panel" id="mobile-nav" data-mobile-nav hidden>
-          <nav class="mobile-nav" aria-label="Mobile navigation">
-            <a class="mobile-nav-link" href="index.html">Home</a>
-            <a class="mobile-nav-link" href="about.html">About Us</a>
-            <a class="mobile-nav-link" href="products.html">Products</a>
-            <a class="mobile-nav-link" href="solutions.html">Solutions</a>
-            <a class="mobile-nav-link" href="service-support.html">Service &amp; Support</a>
-            <a class="mobile-nav-link" href="resources.html" aria-current="page">Resources</a>
-            <a class="mobile-nav-link" href="contact.html">Contact</a>
-          </nav>
-      </div>
-    </header>
+  <body data-locale="en">
+    <header class="site-header is-scrolled" data-header>
+  <a class="brand" href="/" aria-label="WEI LAN Home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>WEI LAN</span>
+  </a>
+  <div class="nav-shell">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="nav-link" href="/">Home</a><a class="nav-link" href="/about">About Us</a><a class="nav-link" href="/products">Products</a><a class="nav-link" href="/solutions">Solutions</a><a class="nav-link" href="/service-support">Service &amp; Support</a><a class="nav-link" href="/resources" aria-current="page">Resources</a><a class="nav-link" href="/contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-label="Open navigation" data-open-label="Open navigation" data-close-label="Close navigation" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="language-switcher" data-language-switcher>
+  <button class="language-trigger" type="button" data-language-trigger aria-label="Language: English" aria-expanded="false" aria-controls="language-menu-en">
+    <span>English</span>
+    <span class="language-chevron" aria-hidden="true"></span>
+  </button>
+  <div class="language-menu" id="language-menu-en" data-language-menu hidden>
+    <a href="/resources?locale=en" aria-current="true">English</a>
+    <a href="/resources?locale=zh-CN">简体中文</a>
+    <a href="/resources?locale=zh-Hant">繁體中文</a>
+  </div>
+</div>
+
+  <a class="header-action" href="/contact">Request Quote</a>
+  <div class="mobile-nav-panel" id="mobile-nav" data-mobile-nav hidden>
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a class="mobile-nav-link" href="/">Home</a><a class="mobile-nav-link" href="/about">About Us</a><a class="mobile-nav-link" href="/products">Products</a><a class="mobile-nav-link" href="/solutions">Solutions</a><a class="mobile-nav-link" href="/service-support">Service &amp; Support</a><a class="mobile-nav-link" href="/resources" aria-current="page">Resources</a><a class="mobile-nav-link" href="/contact">Contact</a>
+      <a class="mobile-nav-quote" href="/contact">Request Quote</a>
+    </nav>
+  </div>
+</header>
 
     <main class="product-page">
       <section class="section page-hero" aria-labelledby="resources-title">
@@ -56,7 +76,7 @@
           <a href="#planning-checklist-title">Checklists</a>
           <a href="#resource-faq-title">FAQ</a>
           <a href="#future-guides-title">Guides</a>
-          <a href="resources/maintenance-guide.html">Maintenance</a>
+          <a href="/resources/maintenance-guide">Maintenance</a>
         </nav>
       </section>
 
@@ -69,14 +89,14 @@
         <article class="resource-featured">
           <div>
             <p class="eyebrow">Featured Resource</p>
-            <h3><a class="resource-title-link" href="resources/project-inquiry-checklist.html">Project Inquiry Checklist</a></h3>
+            <h3><a class="resource-title-link" href="/resources/project-inquiry-checklist">Project Inquiry Checklist</a></h3>
             <p>Prepare waste type, capacity, site limits, material photos or videos, output requirements, and project stage before asking for equipment configuration advice.</p>
             <div class="resource-meta-row" aria-label="Featured resource metadata">
               <span>Checklist</span>
               <span>Updated 2026-06-30</span>
               <span>Best for RFQ preparation</span>
             </div>
-            <a class="resource-read-more" href="resources/project-inquiry-checklist.html">Read more</a>
+            <a class="resource-read-more" href="/resources/project-inquiry-checklist">Read more</a>
           </div>
         </article>
 
@@ -84,57 +104,57 @@
           <article class="resource-library-card">
             <div class="resource-library-card-body">
               <p class="resource-entry-meta">Company / Updated 2026-06-30 / 8 min</p>
-              <h3><a class="resource-title-link" href="resources/company-profile.html">Company Profile</a></h3>
+              <h3><a class="resource-title-link" href="/resources/company-profile">Company Profile</a></h3>
               <p>Overview of WEI LAN positioning, manufacturing focus, product scope, and environmental technology credentials.</p>
-              <a class="resource-read-more" href="resources/company-profile.html">Read more</a>
+              <a class="resource-read-more" href="/resources/company-profile">Read more</a>
             </div>
           </article>
           <article class="resource-library-card">
             <div class="resource-library-card-body">
               <p class="resource-entry-meta">Brochure / Plastic sorting / 10 min</p>
-              <h3><a class="resource-title-link" href="resources/ai-optical-sorting-system-brochure.html">AI Optical Sorting System Brochure</a></h3>
+              <h3><a class="resource-title-link" href="/resources/ai-optical-sorting-system-brochure">AI Optical Sorting System Brochure</a></h3>
               <p>Material categories, sorting scope, throughput range, footprint, and use scenarios for recyclable plastic projects.</p>
-              <a class="resource-read-more" href="resources/ai-optical-sorting-system-brochure.html">Read more</a>
+              <a class="resource-read-more" href="/resources/ai-optical-sorting-system-brochure">Read more</a>
             </div>
           </article>
           <article class="resource-library-card">
             <div class="resource-library-card-body">
               <p class="resource-entry-meta">Brochure / C&amp;D waste / 10 min</p>
-              <h3><a class="resource-title-link" href="resources/construction-waste-recycling-line-brochure.html">Construction Waste Recycling Line Brochure</a></h3>
+              <h3><a class="resource-title-link" href="/resources/construction-waste-recycling-line-brochure">Construction Waste Recycling Line Brochure</a></h3>
               <p>Integrated process modules, capacity options, output targets, and deployment value for C&amp;D recycling facilities.</p>
-              <a class="resource-read-more" href="resources/construction-waste-recycling-line-brochure.html">Read more</a>
+              <a class="resource-read-more" href="/resources/construction-waste-recycling-line-brochure">Read more</a>
             </div>
           </article>
           <article class="resource-library-card">
             <div class="resource-library-card-body">
               <p class="resource-entry-meta">Specs / Engineering review / 12 min</p>
-              <h3><a class="resource-title-link" href="resources/product-specification-sheet.html">Product Specification Sheet</a></h3>
+              <h3><a class="resource-title-link" href="/resources/product-specification-sheet">Product Specification Sheet</a></h3>
               <p>Core parameters for optical sorting models and Lion One integrated station configurations.</p>
-              <a class="resource-read-more" href="resources/product-specification-sheet.html">Read more</a>
+              <a class="resource-read-more" href="/resources/product-specification-sheet">Read more</a>
             </div>
           </article>
           <article class="resource-library-card">
             <div class="resource-library-card-body">
               <p class="resource-entry-meta">Case PDF / Reference review / 9 min</p>
-              <h3><a class="resource-title-link" href="resources/case-study-pdf.html">Case Study PDF</a></h3>
+              <h3><a class="resource-title-link" href="/resources/case-study-pdf">Case Study PDF</a></h3>
               <p>Reference project overviews and typical configuration notes for technical benchmarking and internal circulation.</p>
-              <a class="resource-read-more" href="resources/case-study-pdf.html">Read more</a>
+              <a class="resource-read-more" href="/resources/case-study-pdf">Read more</a>
             </div>
           </article>
           <article class="resource-library-card">
             <div class="resource-library-card-body">
               <p class="resource-entry-meta">Checklist / RFQ preparation / 7 min</p>
-              <h3><a class="resource-title-link" href="resources/project-inquiry-checklist.html">Project Inquiry Checklist</a></h3>
+              <h3><a class="resource-title-link" href="/resources/project-inquiry-checklist">Project Inquiry Checklist</a></h3>
               <p>Share waste type, country, capacity, site area, and automation expectations so engineering can advise faster.</p>
-              <a class="resource-read-more" href="resources/project-inquiry-checklist.html">Read more</a>
+              <a class="resource-read-more" href="/resources/project-inquiry-checklist">Read more</a>
             </div>
           </article>
           <article class="resource-library-card">
             <div class="resource-library-card-body">
               <p class="resource-entry-meta">Maintenance / Operation support / 8 min</p>
-              <h3><a class="resource-title-link" href="resources/maintenance-guide.html">Maintenance Guide</a></h3>
+              <h3><a class="resource-title-link" href="/resources/maintenance-guide">Maintenance Guide</a></h3>
               <p>Routine inspection, spare parts, operator notes, and maintenance planning topics for long-running recycling equipment operation.</p>
-              <a class="resource-read-more" href="resources/maintenance-guide.html">Read more</a>
+              <a class="resource-read-more" href="/resources/maintenance-guide">Read more</a>
             </div>
           </article>
         </div>
@@ -151,37 +171,37 @@
             <span class="number">01</span>
             <h3>Waste type and composition</h3>
             <p>PET bottles, HDPE, PP, mixed plastics, construction waste, decoration waste, demolition waste, bulky waste, or mixed local streams.</p>
-            <a class="resource-path-link" href="resources/project-inquiry-checklist.html">Review checklist fields</a>
+            <a class="resource-path-link" href="/resources/project-inquiry-checklist">Review checklist fields</a>
           </article>
           <article>
             <span class="number">02</span>
             <h3>Target capacity</h3>
             <p>Expected tons per hour, operating hours per day, peak season changes, and future expansion expectations.</p>
-            <a class="resource-path-link" href="resources/product-specification-sheet.html">Compare specification ranges</a>
+            <a class="resource-path-link" href="/resources/product-specification-sheet">Compare specification ranges</a>
           </article>
           <article>
             <span class="number">03</span>
             <h3>Country and site footprint</h3>
             <p>Project country, available workshop or yard area, voltage conditions, installation limits, and local delivery constraints.</p>
-            <a class="resource-path-link" href="contact.html">Send site conditions</a>
+            <a class="resource-path-link" href="/contact">Send site conditions</a>
           </article>
           <article>
             <span class="number">04</span>
             <h3>Expected output products</h3>
             <p>Sorted plastic categories, recycled aggregates, metals, light materials, baled recyclable streams, or reporting requirements.</p>
-            <a class="resource-path-link" href="resources/construction-waste-recycling-line-brochure.html">Check output examples</a>
+            <a class="resource-path-link" href="/resources/construction-waste-recycling-line-brochure">Check output examples</a>
           </article>
           <article>
             <span class="number">05</span>
             <h3>Material photos or videos</h3>
             <p>Share incoming material photos, videos, contamination details, and current manual or mechanical sorting process if available.</p>
-            <a class="resource-path-link" href="contact.html">Attach material media</a>
+            <a class="resource-path-link" href="/contact">Attach material media</a>
           </article>
           <article>
             <span class="number">06</span>
             <h3>Project stage and document needs</h3>
             <p>Indicate whether the project is research, budget approval, tender, factory comparison, equipment replacement, or ready for quotation.</p>
-            <a class="resource-path-link" href="resources/project-inquiry-checklist.html">Start with the RFQ checklist</a>
+            <a class="resource-path-link" href="/resources/project-inquiry-checklist">Start with the RFQ checklist</a>
           </article>
         </div>
         <div class="resource-planning-action">
@@ -190,7 +210,7 @@
             <h3>Start with the RFQ checklist</h3>
             <p>Use the checklist as a project brief before sending materials to WEI LAN. It turns the static inputs above into the first engineering review path.</p>
           </div>
-          <a class="resource-read-more" href="resources/project-inquiry-checklist.html">Open checklist</a>
+          <a class="resource-read-more" href="/resources/project-inquiry-checklist">Open checklist</a>
         </div>
       </section>
 
@@ -206,8 +226,8 @@
             <h3>Compare supplier scope</h3>
             <p>Use brochures and parameter sheets to compare process scope, capacity range, and deployment fit across suppliers.</p>
             <div class="resource-path-link-group">
-              <a class="resource-path-link" href="resources/company-profile.html">Company profile</a>
-              <a class="resource-path-link" href="resources/product-specification-sheet.html">Specification sheet</a>
+              <a class="resource-path-link" href="/resources/company-profile">Company profile</a>
+              <a class="resource-path-link" href="/resources/product-specification-sheet">Specification sheet</a>
             </div>
           </article>
           <article>
@@ -215,8 +235,8 @@
             <h3>Internal feasibility review</h3>
             <p>Share the company profile and reference summaries with owners, EPC partners, or management before scheduling calls.</p>
             <div class="resource-path-link-group">
-              <a class="resource-path-link" href="resources/case-study-pdf.html">Case study PDF</a>
-              <a class="resource-path-link" href="case-studies.html">Reference projects</a>
+              <a class="resource-path-link" href="/resources/case-study-pdf">Case study PDF</a>
+              <a class="resource-path-link" href="/case-studies">Reference projects</a>
             </div>
           </article>
           <article>
@@ -224,8 +244,8 @@
             <h3>RFQ preparation</h3>
             <p>The inquiry checklist helps buyers send more complete technical inputs, which leads to better proposal direction.</p>
             <div class="resource-path-link-group">
-              <a class="resource-path-link" href="resources/project-inquiry-checklist.html">RFQ checklist</a>
-              <a class="resource-path-link" href="contact.html">Send project details</a>
+              <a class="resource-path-link" href="/resources/project-inquiry-checklist">RFQ checklist</a>
+              <a class="resource-path-link" href="/contact">Send project details</a>
             </div>
           </article>
           <article>
@@ -233,8 +253,8 @@
             <h3>Shorter sales cycles</h3>
             <p>When the right files are prepared early, technical discussion can move faster from discovery to recommendation.</p>
             <div class="resource-path-link-group">
-              <a class="resource-path-link" href="resources/ai-optical-sorting-system-brochure.html">AI sorting brochure</a>
-              <a class="resource-path-link" href="resources/maintenance-guide.html">Maintenance guide</a>
+              <a class="resource-path-link" href="/resources/ai-optical-sorting-system-brochure">AI sorting brochure</a>
+              <a class="resource-path-link" href="/resources/maintenance-guide">Maintenance guide</a>
             </div>
           </article>
         </div>
@@ -260,8 +280,8 @@
               </div>
             </dl>
             <div class="resource-faq-actions">
-              <a class="resource-path-link" href="resources/project-inquiry-checklist.html">Open RFQ checklist</a>
-              <a class="resource-path-link" href="contact.html">Send project details</a>
+              <a class="resource-path-link" href="/resources/project-inquiry-checklist">Open RFQ checklist</a>
+              <a class="resource-path-link" href="/contact">Send project details</a>
             </div>
           </article>
           <article class="resource-faq-group">
@@ -277,8 +297,8 @@
               </div>
             </dl>
             <div class="resource-faq-actions">
-              <a class="resource-path-link" href="resources/ai-optical-sorting-system-brochure.html">Read sorting brochure</a>
-              <a class="resource-path-link" href="resources/product-specification-sheet.html">Check product specs</a>
+              <a class="resource-path-link" href="/resources/ai-optical-sorting-system-brochure">Read sorting brochure</a>
+              <a class="resource-path-link" href="/resources/product-specification-sheet">Check product specs</a>
             </div>
           </article>
           <article class="resource-faq-group">
@@ -294,8 +314,8 @@
               </div>
             </dl>
             <div class="resource-faq-actions">
-              <a class="resource-path-link" href="resources/construction-waste-recycling-line-brochure.html">Read C&amp;D brochure</a>
-              <a class="resource-path-link" href="resources/case-study-pdf.html">Review case PDF</a>
+              <a class="resource-path-link" href="/resources/construction-waste-recycling-line-brochure">Read C&amp;D brochure</a>
+              <a class="resource-path-link" href="/resources/case-study-pdf">Review case PDF</a>
             </div>
           </article>
         </div>
@@ -312,19 +332,19 @@
             <span class="resource-guide-status">Planned guide</span>
             <h3>How to plan a plastic recycling sorting line</h3>
             <p>Inputs, sorting categories, capacity targets, and proposal details for PET, HDPE, PP, and mixed plastic projects.</p>
-            <a class="resource-path-link" href="resources/ai-optical-sorting-system-brochure.html">Start with AI sorting brochure</a>
+            <a class="resource-path-link" href="/resources/ai-optical-sorting-system-brochure">Start with AI sorting brochure</a>
           </article>
           <article>
             <span class="resource-guide-status">Planned guide</span>
             <h3>How to evaluate a construction waste recycling plant</h3>
             <p>Waste composition, process modules, output products, footprint, and site conditions for C&amp;D waste projects.</p>
-            <a class="resource-path-link" href="resources/construction-waste-recycling-line-brochure.html">Start with C&amp;D brochure</a>
+            <a class="resource-path-link" href="/resources/construction-waste-recycling-line-brochure">Start with C&amp;D brochure</a>
           </article>
           <article>
             <span class="resource-guide-status">Available now</span>
             <h3>What to prepare before requesting recycling equipment quotation</h3>
             <p>Buyer-side RFQ information that helps supplier engineering teams recommend a better system configuration.</p>
-            <a class="resource-path-link" href="resources/project-inquiry-checklist.html">Open inquiry checklist</a>
+            <a class="resource-path-link" href="/resources/project-inquiry-checklist">Open inquiry checklist</a>
           </article>
         </div>
       </section>
@@ -336,84 +356,36 @@
           <p>Share your project stage, material stream, and document needs. WEI LAN can prepare the most relevant brochures, parameter summaries, FAQ notes, and reference information for your review.</p>
         </div>
         <div class="about-contact-panel compact-contact-panel">
-          <a class="primary-button" href="contact.html">Request Resource Pack</a>
-          <a class="secondary-button" href="case-studies.html">Review References</a>
+          <a class="primary-button" href="/contact">Request Resource Pack</a>
+          <a class="secondary-button" href="/case-studies">Review References</a>
           <p>Sales hotline: +86 137 8001 2268 / +86 180 6737 7770</p>
         </div>
       </section>
     </main>
-
     <footer class="site-footer">
-      <div class="footer-main">
-        <nav class="footer-nav-grid" aria-label="Footer navigation">
-          <section class="footer-nav-column" aria-labelledby="footer-products-title">
-            <h2 class="footer-nav-heading" id="footer-products-title">Products</h2>
-            <a href="products.html#ai-family-title">Super Optical Sorting System</a>
-            <a href="products.html#industrial-family-title">Construction and Bulky Waste Line</a>
-          </section>
-          <section class="footer-nav-column" aria-labelledby="footer-solutions-title">
-            <h2 class="footer-nav-heading" id="footer-solutions-title">Solutions</h2>
-            <a href="case-studies.html">Case Studies</a>
-            <a href="solutions.html#process-title">Process Integration</a>
-          </section>
-          <section class="footer-nav-column" aria-labelledby="footer-service-support-title">
-            <h2 class="footer-nav-heading" id="footer-service-support-title">Service &amp; Support</h2>
-            <a href="service-support.html#support-modules-title">Support Modules</a>
-            <a href="service-support.html#service-stage-title">Support Path</a>
-            <a href="service-support.html#support-process-title">Working Method</a>
-            <a href="service-support.html#delivery-value-title">Buyer Value</a>
-          </section>
-          <section class="footer-nav-column" aria-labelledby="footer-resources-title">
-            <h2 class="footer-nav-heading" id="footer-resources-title">Resources</h2>
-            <a href="resources.html#resource-library-title">Resource Library</a>
-            <a href="resources.html#planning-checklist-title">RFQ Preparation</a>
-            <a href="resources.html#resource-value-title">How Teams Use Them</a>
-            <a href="resources.html#resource-faq-title">FAQ</a>
-            <a href="resources.html#future-guides-title">Guide roadmap</a>
-          </section>
-          <section class="footer-nav-column" aria-labelledby="footer-about-us-title">
-            <h2 class="footer-nav-heading" id="footer-about-us-title">About Us</h2>
-            <a href="about.html#company-overview-title">Company Foundation</a>
-            <a href="about.html#capabilities-title">Capability System</a>
-            <a href="about.html#credentials-title">Credentials</a>
-            <a href="about.html#evidence-title">Evidence Gallery</a>
-            <a href="about.html#about-news-title">News</a>
-          </section>
-          <section class="footer-nav-column footer-contact-column" aria-labelledby="footer-contact-title">
-            <h2 class="footer-nav-heading" id="footer-contact-title">Contact</h2>
-            <a href="contact.html#form-title">Project Consultation</a>
-            <a href="contact.html#next-steps-title">What Happens Next</a>
-            <a href="contact.html#checklist-title">Inquiry Checklist</a>
-          </section>
-        </nav>
-      </div>
-      <div class="footer-divider" aria-hidden="true"></div>
-      <div class="footer-bottom">
-        <p class="footer-copyright">© 2026 Ningbo Wei Lan Environmental Protection Technology Co., Ltd.</p>
-        <nav class="footer-social" aria-label="Social media links">
-          <a class="footer-social-link footer-social-link--instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow WEI LAN on Instagram">
-            <svg class="footer-social-icon" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M7.2 2.8h9.6c2.4 0 4.4 2 4.4 4.4v9.6c0 2.4-2 4.4-4.4 4.4H7.2c-2.4 0-4.4-2-4.4-4.4V7.2c0-2.4 2-4.4 4.4-4.4Zm0 2C5.9 4.8 4.8 5.9 4.8 7.2v9.6c0 1.3 1.1 2.4 2.4 2.4h9.6c1.3 0 2.4-1.1 2.4-2.4V7.2c0-1.3-1.1-2.4-2.4-2.4H7.2Zm4.8 3.1a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2Zm0 2a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2Zm4.3-2.7a1 1 0 1 1 0 2.1 1 1 0 0 1 0-2.1Z"/>
-            </svg>
-          </a>
-          <a class="footer-social-link footer-social-link--linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow WEI LAN on LinkedIn">
-            <svg class="footer-social-icon" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M5.1 8.5h3.8v12.7H5.1V8.5Zm1.9-5.8a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4Zm4.4 5.8H15v1.7h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6v7.1h-3.8v-6.3c0-1.5 0-3.5-2.1-3.5s-2.5 1.7-2.5 3.4v6.4h-3.8V8.5Z"/>
-            </svg>
-          </a>
-          <a class="footer-social-link footer-social-link--x" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow WEI LAN on X">
-            <svg class="footer-social-icon" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M14.4 10.6 22.6 1h-2l-7.1 8.3L7.8 1H1.2l8.6 12.5L1.2 23h2l7.5-8.8 6 8.8h6.6l-8.9-12.4Zm-2.7 3.1-.9-1.2L3.9 2.5h2.9l5.6 8 .9 1.2 7.3 10.4h-2.9l-6-8.4Z"/>
-            </svg>
-          </a>
-          <a class="footer-social-link footer-social-link--youtube" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow WEI LAN on YouTube">
-            <svg class="footer-social-icon" aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M22.6 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C15.9 3.6 12 3.6 12 3.6s-3.9 0-7.3.3c-.5.1-1.5.1-2.4 1-.7.7-.9 2.3-.9 2.3S1.2 9.1 1.2 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2.1.9 2.7 1 1.9.2 7 .3 7 .3s3.9 0 7.3-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8ZM9.8 15.5V8.7l6.3 3.4-6.3 3.4Z"/>
-            </svg>
-          </a>
-        </nav>
-      </div>
-    </footer>
-    <script src="script.js?v=nav-mobile-shared" defer></script>
+  <div class="footer-main">
+    <nav class="footer-nav-grid" aria-label="Footer navigation">
+      <section class="footer-nav-column" aria-labelledby="footer-products-title"><h2 class="footer-nav-heading" id="footer-products-title">Products</h2><a href="/products#ai-family-title">Super Optical Sorting System</a><a href="/products#industrial-family-title">Construction and Bulky Waste Line</a></section>
+      <section class="footer-nav-column" aria-labelledby="footer-solutions-title"><h2 class="footer-nav-heading" id="footer-solutions-title">Solutions</h2><a href="/case-studies">Case Studies</a><a href="/solutions#process-title">Process Integration</a></section>
+      <section class="footer-nav-column" aria-labelledby="footer-service-title"><h2 class="footer-nav-heading" id="footer-service-title">Service &amp; Support</h2><a href="/service-support#support-modules-title">Support Modules</a><a href="/service-support#service-stage-title">Support Path</a><a href="/service-support#support-process-title">Working Method</a><a href="/service-support#delivery-value-title">Buyer Value</a></section>
+      <section class="footer-nav-column" aria-labelledby="footer-resources-title"><h2 class="footer-nav-heading" id="footer-resources-title">Resources</h2><a href="/resources#resource-library-title">Resource Library</a><a href="/resources#planning-checklist-title">RFQ Preparation</a><a href="/resources#resource-value-title">How Teams Use Them</a><a href="/resources#resource-faq-title">FAQ</a><a href="/resources#future-guides-title">Guide roadmap</a></section>
+      <section class="footer-nav-column" aria-labelledby="footer-about-title"><h2 class="footer-nav-heading" id="footer-about-title">About Us</h2><a href="/about#company-overview-title">Company Foundation</a><a href="/about#capabilities-title">Capability System</a><a href="/about#credentials-title">Credentials</a><a href="/about#evidence-title">Evidence Gallery</a><a href="/about#about-news-title">News</a></section>
+      <section class="footer-nav-column footer-contact-column" aria-labelledby="footer-contact-title"><h2 class="footer-nav-heading" id="footer-contact-title">Contact</h2><a href="/contact#form-title">Project Consultation</a><a href="/contact#next-steps-title">What Happens Next</a><a href="/contact#checklist-title">Inquiry Checklist</a></section>
+    </nav>
+  </div>
+  <div class="footer-divider" aria-hidden="true"></div>
+  <div class="footer-bottom">
+    <p class="footer-copyright">© 2026 Ningbo Wei Lan Environmental Protection Technology Co., Ltd.</p>
+    <nav class="footer-social" aria-label="Social media links">
+      <a class="footer-social-link footer-social-link--instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow WEI LAN on Instagram"><svg class="footer-social-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7.2 2.8h9.6c2.4 0 4.4 2 4.4 4.4v9.6c0 2.4-2 4.4-4.4 4.4H7.2c-2.4 0-4.4-2-4.4-4.4V7.2c0-2.4 2-4.4 4.4-4.4Zm0 2C5.9 4.8 4.8 5.9 4.8 7.2v9.6c0 1.3 1.1 2.4 2.4 2.4h9.6c1.3 0 2.4-1.1 2.4-2.4V7.2c0-1.3-1.1-2.4-2.4-2.4H7.2Zm4.8 3.1a4.1 4.1 0 1 1 0 8.2 4.1 4.1 0 0 1 0-8.2Zm0 2a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2Zm4.3-2.7a1 1 0 1 1 0 2.1 1 1 0 0 1 0-2.1Z"/></svg></a>
+      <a class="footer-social-link footer-social-link--linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow WEI LAN on LinkedIn"><svg class="footer-social-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5.1 8.5h3.8v12.7H5.1V8.5Zm1.9-5.8a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4Zm4.4 5.8H15v1.7h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.6 4.7 6v7.1h-3.8v-6.3c0-1.5 0-3.5-2.1-3.5s-2.5 1.7-2.5 3.4v6.4h-3.8V8.5Z"/></svg></a>
+      <a class="footer-social-link footer-social-link--x" href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow WEI LAN on X"><svg class="footer-social-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M14.4 10.6 22.6 1h-2l-7.1 8.3L7.8 1H1.2l8.6 12.5L1.2 23h2l7.5-8.8 6 8.8h6.6l-8.9-12.4Zm-2.7 3.1-.9-1.2L3.9 2.5h2.9l5.6 8 .9 1.2 7.3 10.4h-2.9l-6-8.4Z"/></svg></a>
+      <a class="footer-social-link footer-social-link--youtube" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Follow WEI LAN on YouTube"><svg class="footer-social-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M22.6 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C15.9 3.6 12 3.6 12 3.6s-3.9 0-7.3.3c-.5.1-1.5.1-2.4 1-.7.7-.9 2.3-.9 2.3S1.2 9.1 1.2 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2.1.9 2.7 1 1.9.2 7 .3 7 .3s3.9 0 7.3-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8ZM9.8 15.5V8.7l6.3 3.4-6.3 3.4Z"/></svg></a>
+    </nav>
+  </div>
+</footer>
+
+    <script id="contact-feedback" type="application/json">{"PRODUCT_REQUIRED":"Please choose a product line.","NAME_REQUIRED":"Name is required.","EMAIL_REQUIRED":"Email is required.","EMAIL_INVALID":"Enter a valid email address.","MESSAGE_REQUIRED":"Project details are required.","FIELD_TOO_LONG":"One or more fields are too long.","INVALID_REQUEST":"Check the form details and try again.","DELIVERY_FAILED":"Unable to send your inquiry right now. Please try again.","INTERNAL_ERROR":"Inquiry submission failed. Please try again.","sending":"Sending your inquiry...","success":"Inquiry sent. Our sales team will contact you soon.","generic":"Inquiry submission failed. Please try again.","chooseProduct":"Choose product line","wasteDisabled":"Select product line first","wastePlaceholder":"Select waste types","clear":"Clear","all":"All","empty":"Select a product line to view waste type suggestions.","wasteTypes":{},"resourceUnlock":{"sending":"Unlocking resources...","generic":"Unable to unlock resources right now. Please try again.","prefill":"I would like to receive more WEI LAN resource materials.","errors":{"INVALID_REQUEST":"Check the form details and try again.","INVALID_ORIGIN":"Unable to unlock resources from this page.","INVALID_RESOURCE":"This resource request is invalid.","NAME_REQUIRED":"Name is required.","EMAIL_REQUIRED":"Email is required.","EMAIL_INVALID":"Enter a valid email address.","COMPANY_REQUIRED":"Company is required.","FIELD_TOO_LONG":"One or more fields are too long.","DELIVERY_FAILED":"Unable to unlock resources right now. Please try again."}}}</script>
+    <script src="/script.js"></script>
   </body>
 </html>

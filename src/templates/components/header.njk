@@ -1,0 +1,24 @@
+<header class="site-header{% if route.id != 'home' %} is-scrolled{% endif %}" data-header>
+  <a class="brand" href="{{ navigation.home.url }}" aria-label="WEI LAN {{ ui.home }}">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>WEI LAN</span>
+  </a>
+  <div class="nav-shell">
+    <nav class="site-nav" aria-label="{{ ui.navigation }}">
+      {% for item in navigation.items %}<a class="nav-link" href="{{ item.url }}"{% if item.active %} aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
+    </nav>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-label="{{ ui.openNavigation }}" data-open-label="{{ ui.openNavigation }}" data-close-label="{{ ui.closeNavigation }}" aria-expanded="false" aria-controls="mobile-nav">
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+    </button>
+  </div>
+  {% include "components/language-switcher.njk" %}
+  <a class="header-action" href="{{ navigation.contact.url }}">{{ ui.requestQuote }}</a>
+  <div class="mobile-nav-panel" id="mobile-nav" data-mobile-nav hidden>
+    <nav class="mobile-nav" aria-label="{{ ui.mobileNavigation }}">
+      {% for item in navigation.items %}<a class="mobile-nav-link" href="{{ item.url }}"{% if item.active %} aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
+      <a class="mobile-nav-quote" href="{{ navigation.contact.url }}">{{ ui.requestQuote }}</a>
+    </nav>
+  </div>
+</header>

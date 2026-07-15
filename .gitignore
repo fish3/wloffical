@@ -3,3 +3,11 @@ output/
 .DS_Store
 .dev.vars
 .wrangler/
+/.idea
+/tests
+/docs
+/.superpowers
+/tmp
+/test
+/test-results
+node_modules/

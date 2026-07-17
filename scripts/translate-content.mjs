@@ -12,6 +12,20 @@ const TARGETS = [
 
 const protectedPattern = /(?:WEI(?:\s|&nbsp;)+LAN|Ningbo Wei Lan Environmental Protection Technology Co\., Ltd\.|Lion One|GL01V(?:1-5|2-9|3-10)?|GREATWALL HEAVY INDUSTRY MK-F50|GREATWALL HAVEY INDUSTRY MK-F50|PET|HDPE|PP|MRF|PLC|DCS|IoT|AI|ISO\s?\d+(?::\d+)?|(?:\+?86[-\s]?)?137[-\s]8001[-\s]2268|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|\b\d+(?:\.\d+)?(?:\s*(?:-|–|&ndash;)\s*\d+(?:\.\d+)?)?\s*(?:t\/h|kW|mm|m(?:²|&sup2;)?|days?|min|%|RMB)?\b)/giu;
 
+function localizeChineseBrand(value, targetCode) {
+  if (targetCode === "zh-Hans") {
+    return value
+      .replaceAll("Ningbo Wei Lan Environmental Protection Technology Co., Ltd.", "宁波蔚澜环保科技有限公司")
+      .replace(/WEI(?:\s|&nbsp;)+LAN/gi, "蔚澜");
+  }
+  if (targetCode === "zh-Hant") {
+    return value
+      .replaceAll("Ningbo Wei Lan Environmental Protection Technology Co., Ltd.", "寧波蔚澜環保科技有限公司")
+      .replace(/WEI(?:\s|&nbsp;)+LAN/gi, "蔚澜");
+  }
+  return value;
+}
+
 let token = "";
 let tokenExpiresAt = 0;
 const cache = new Map();
@@ -106,7 +120,7 @@ async function translateBatch(batch) {
       const source = protectedEntries[index];
       const translations = Object.fromEntries(result.translations.map((item) => [
         item.to,
-        restore(item.text, source.values),
+        localizeChineseBrand(restore(item.text, source.values), item.to),
       ]));
       cache.set(source.entry.value, translations);
     });

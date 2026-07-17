@@ -1,7 +1,7 @@
 <header class="site-header{% if route.id != 'home' %} is-scrolled{% endif %}" data-header>
-  <a class="brand" href="{{ navigation.home.url }}" aria-label="WEI LAN {{ ui.home }}">
+  <a class="brand" href="{{ navigation.home.url }}" aria-label="{{ ui.brandHomeLabel }}">
     <span class="brand-mark" aria-hidden="true"></span>
-    <span>WEI LAN</span>
+    <span>{{ ui.brandName }}</span>
   </a>
   <div class="nav-shell">
     <nav class="site-nav" aria-label="{{ ui.navigation }}">

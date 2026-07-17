@@ -1,5 +1,9 @@
 export const uiCopy = {
   en: {
+    brandName: "WEI LAN",
+    brandHomeLabel: "WEI LAN Home",
+    organizationName: "Ningbo Wei Lan Environmental Protection Technology Co., Ltd.",
+    copyright: "© 2026 Ningbo Wei Lan Environmental Protection Technology Co., Ltd.",
     navigation: "Primary navigation",
     mobileNavigation: "Mobile navigation",
     footerNavigation: "Footer navigation",
@@ -80,6 +84,10 @@ export const uiCopy = {
     },
   },
   "zh-CN": {
+    brandName: "蔚澜",
+    brandHomeLabel: "蔚澜首页",
+    organizationName: "宁波蔚澜环保科技有限公司",
+    copyright: "© 2026 宁波蔚澜环保科技有限公司",
     navigation: "主导航",
     mobileNavigation: "移动端导航",
     footerNavigation: "页脚导航",
@@ -116,10 +124,10 @@ export const uiCopy = {
     nextSteps: "后续流程",
     inquiryChecklist: "咨询清单",
     socialNavigation: "社交媒体链接",
-    followInstagram: "在 Instagram 关注 WEI LAN",
-    followLinkedIn: "在 LinkedIn 关注 WEI LAN",
-    followX: "在 X 关注 WEI LAN",
-    followYouTube: "在 YouTube 关注 WEI LAN",
+    followInstagram: "在 Instagram 关注蔚澜",
+    followLinkedIn: "在 LinkedIn 关注蔚澜",
+    followX: "在 X 关注蔚澜",
+    followYouTube: "在 YouTube 关注蔚澜",
     organizationDescription: "专注于智能废弃物分选与资源回收系统的环保装备制造商。",
     contactFeedback: {
       PRODUCT_REQUIRED: "请选择产品线。",
@@ -157,7 +165,7 @@ export const uiCopy = {
       resourceUnlock: {
         sending: "正在解锁资料...",
         generic: "暂时无法解锁资料，请稍后重试。",
-        prefill: "我想领取更多 WEI LAN 资料。",
+        prefill: "我想获取更多蔚澜资料。",
         errors: {
           INVALID_REQUEST: "请检查表单信息后重试。",
           INVALID_ORIGIN: "无法从当前页面解锁资料。",
@@ -173,6 +181,10 @@ export const uiCopy = {
     },
   },
   "zh-Hant": {
+    brandName: "蔚澜",
+    brandHomeLabel: "蔚澜首頁",
+    organizationName: "寧波蔚澜環保科技有限公司",
+    copyright: "© 2026 寧波蔚澜環保科技有限公司",
     navigation: "主導覽",
     mobileNavigation: "行動版導覽",
     footerNavigation: "頁尾導覽",
@@ -209,10 +221,10 @@ export const uiCopy = {
     nextSteps: "後續流程",
     inquiryChecklist: "諮詢清單",
     socialNavigation: "社群媒體連結",
-    followInstagram: "在 Instagram 關注 WEI LAN",
-    followLinkedIn: "在 LinkedIn 關注 WEI LAN",
-    followX: "在 X 關注 WEI LAN",
-    followYouTube: "在 YouTube 關注 WEI LAN",
+    followInstagram: "在 Instagram 關注蔚澜",
+    followLinkedIn: "在 LinkedIn 關注蔚澜",
+    followX: "在 X 關注蔚澜",
+    followYouTube: "在 YouTube 關注蔚澜",
     organizationDescription: "專注於智慧廢棄物分選與資源回收系統的環保設備製造商。",
     contactFeedback: {
       PRODUCT_REQUIRED: "請選擇產品線。",
@@ -250,7 +262,7 @@ export const uiCopy = {
       resourceUnlock: {
         sending: "正在解鎖資源...",
         generic: "暫時無法解鎖資源，請稍後再試。",
-        prefill: "我想索取更多 WEI LAN 資源資料。",
+        prefill: "我想索取更多蔚澜資料。",
         errors: {
           INVALID_REQUEST: "請檢查表單資料後再試。",
           INVALID_ORIGIN: "無法從目前頁面解鎖資源。",

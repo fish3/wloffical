@@ -532,13 +532,15 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
   min-height: 44px;
   padding: 0 18px;
   border: 1px solid transparent;
   border-radius: 6px;
   font-weight: 700;
   cursor: pointer;
-  white-space: nowrap;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .header-action,
@@ -550,6 +552,7 @@ a {
 
 .header-action {
   flex: 0 0 auto;
+  min-width: 132px;
   white-space: nowrap;
 }
 
@@ -648,7 +651,9 @@ h3 {
 }
 
 .hero-copy {
+  width: min(680px, 100%);
   max-width: 680px;
+  min-height: 3.2em;
   margin: 24px 0 0;
   color: #d0dde5;
   font-size: clamp(1rem, 1.6vw, 1.18rem);
@@ -659,6 +664,11 @@ h3 {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 32px;
+}
+
+.hero-actions .primary-button,
+.hero-actions .secondary-button {
+  min-width: 176px;
 }
 
 .hero-metrics {
@@ -712,7 +722,9 @@ h3 {
 }
 
 .home-trust-heading p:last-child {
+  width: 100%;
   max-width: none;
+  min-height: 3.2em;
   margin: 0;
   color: var(--color-muted);
 }
@@ -834,6 +846,31 @@ h3 {
   color: var(--color-muted);
 }
 
+.hero-copy,
+.home-trust-heading p:last-child,
+.home-trust-card p,
+.solution-card p,
+.case-study-card > p:not(.case-study-meta),
+.resource-card p,
+.case-line-header p:not(.eyebrow) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
+.hero-copy,
+.case-line-header p:not(.eyebrow) {
+  -webkit-line-clamp: 2;
+}
+
+.home-trust-heading p:last-child,
+.home-trust-card p,
+.solution-card p,
+.case-study-card > p:not(.case-study-meta),
+.resource-card p {
+  -webkit-line-clamp: 3;
+}
+
 .case-studies-section {
   width: 100%;
   max-width: none;
@@ -853,12 +890,27 @@ h3 {
     #111b26;
 }
 
+.case-study-card h3,
+.resource-card h3,
+.solution-card h3,
+.home-trust-card h3 {
+  min-height: 2.52em;
+}
+
+.case-study-meta,
+.resource-type {
+  min-height: 2.1em;
+}
+
 .case-study-card .feature-list {
   padding-bottom: 28px;
 }
 
 .case-study-card .card-link {
   align-self: flex-end;
+  justify-content: center;
+  min-width: 156px;
+  text-align: center;
 }
 
 .case-study-actions {
@@ -925,22 +977,29 @@ h3 {
 
 .case-line-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, auto);
   gap: 24px;
   align-items: end;
+  min-height: 176px;
   margin-bottom: 26px;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .case-line-header p:not(.eyebrow) {
+  width: min(760px, 100%);
   max-width: 760px;
+  min-height: 3.2em;
   margin: 12px 0 0;
   color: var(--color-muted);
 }
 
 .case-line-header .text-link {
   margin-top: 0;
+  justify-self: end;
+  justify-content: center;
+  min-width: 150px;
+  text-align: center;
 }
 
 .case-line-section-ai {
@@ -3765,11 +3824,17 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-content: start;
+  min-height: 86px;
   margin-top: 28px;
 }
 
 .resource-category-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 38px;
+  min-width: 104px;
   padding: 8px 12px;
   border: 1px solid rgba(66, 215, 223, 0.28);
   border-radius: 5px;
@@ -3777,6 +3842,8 @@ h3 {
   background: rgba(66, 215, 223, 0.07);
   font-size: 0.88rem;
   font-weight: 850;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .resource-category-nav a:hover {
@@ -3813,9 +3880,15 @@ h3 {
 }
 
 .resource-featured p:not(.eyebrow) {
+  display: -webkit-box;
+  overflow: hidden;
+  width: min(780px, 100%);
   max-width: 780px;
+  min-height: 3.2em;
   margin: 14px 0 0;
   color: var(--color-muted);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .resource-library-list {
@@ -3866,14 +3939,23 @@ h3 {
 }
 
 .resource-library-card h3 {
+  min-height: 2.5em;
   margin-bottom: 10px;
   font-size: clamp(1.2rem, 1.8vw, 1.62rem);
 }
 
 .resource-library-card p {
+  display: -webkit-box;
+  overflow: hidden;
   max-width: 760px;
   margin: 0;
   color: var(--color-muted);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.resource-entry-meta {
+  min-height: 1.25em;
 }
 
 .resource-entry-meta {
@@ -3934,6 +4016,8 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  align-content: start;
+  min-height: 72px;
   margin-top: 16px;
 }
 
@@ -4786,6 +4870,7 @@ html[data-resources-unlocked="true"] [data-resource-gated-content] > * {
   --compact-contact-button-height: 104px;
 }
 
+[aria-labelledby="contact-title"] .home-contact-panel,
 [aria-labelledby="about-contact-title"] .compact-contact-panel {
   --compact-contact-button-height: 104px;
 }
@@ -4810,6 +4895,7 @@ html[data-resources-unlocked="true"] [data-resource-gated-content] > * {
   grid-template-columns: minmax(0, 0.85fr) minmax(260px, 0.55fr);
   gap: 28px;
   align-items: end;
+  min-height: 164px;
   margin-bottom: var(--section-heading-mb);
 }
 
@@ -4819,8 +4905,13 @@ html[data-resources-unlocked="true"] [data-resource-gated-content] > * {
 }
 
 .section-heading p:last-child {
+  display: -webkit-box;
+  overflow: hidden;
+  width: 100%;
   margin: 0;
   color: var(--color-muted);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .product-grid {
@@ -10148,6 +10239,7 @@ td {
   align-items: start;
 }
 
+.contact-section[aria-labelledby="contact-title"],
 .contact-section[aria-labelledby="products-inquiry-title"],
 .contact-section[aria-labelledby="solutions-contact-title"],
 .contact-section[aria-labelledby="service-contact-title"],
@@ -10642,26 +10734,40 @@ td {
 
 .page-hero {
   padding-top: clamp(44px, 6vw, 72px);
+  min-height: clamp(360px, 38vw, 430px);
 }
 
 .page-hero .hero-copy {
   margin-top: 18px;
 }
 
+.page-hero h1 {
+  min-height: 1.96em;
+}
+
 .page-chip-row {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-content: start;
+  min-height: 40px;
   margin-top: 26px;
 }
 
 .page-chip-row span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  min-width: 126px;
   padding: 8px 11px;
   border: 1px solid rgba(82, 214, 129, 0.26);
   border-radius: 5px;
   color: #d7f6e2;
   background: rgba(82, 214, 129, 0.1);
   font-size: 0.88rem;
+  line-height: 1.15;
+  text-align: center;
 }
 
 .cta-band {
@@ -10689,8 +10795,15 @@ td {
 .home-contact-panel .primary-button,
 .home-contact-panel .secondary-button {
   width: 100%;
-  min-height: 78px;
-  font-size: 1.05rem;
+  min-height: 0;
+  font-size: inherit;
+}
+
+.home-contact-panel {
+  align-self: center;
+  min-height: 0;
+  height: auto;
+  grid-template-rows: var(--compact-contact-button-height) var(--compact-contact-button-height) auto;
 }
 
 @media (max-width: 920px) {

@@ -43,8 +43,8 @@ function makeStructuredData(target, content) {
   return {
     "@context": "https://schema.org",
     "@type": target.route.id === "home" ? "Organization" : "WebPage",
-    name: target.route.id === "home" ? "Ningbo Wei Lan Environmental Protection Technology Co., Ltd." : content.pageTitle,
-    alternateName: target.route.id === "home" ? "WEI LAN" : undefined,
+    name: target.route.id === "home" ? uiCopy[target.locale.code].organizationName : content.pageTitle,
+    alternateName: target.route.id === "home" ? uiCopy[target.locale.code].brandName : undefined,
     url: `${site.origin}${target.url}`,
     description: target.route.id === "home" ? uiCopy[target.locale.code].organizationDescription : content.meta.description,
   };

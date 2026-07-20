@@ -69,6 +69,13 @@ async function checkReference(source, attribute, rawValue, document) {
   }
 }
 
+function srcsetCandidates(value) {
+  return value
+    .split(",")
+    .map((candidate) => candidate.trim().split(/\s+/)[0])
+    .filter(Boolean);
+}
+
 for (const target of targets) {
   const relativePath = target.outputPath;
   const source = `public/${relativePath}`;
@@ -78,6 +85,11 @@ for (const target of targets) {
   for (const element of document.querySelectorAll("[href], [src], [poster]")) {
     for (const attribute of ["href", "src", "poster"]) {
       if (element.hasAttribute(attribute)) await checkReference(source, attribute, element.getAttribute(attribute), document);
+    }
+  }
+  for (const element of document.querySelectorAll("[srcset]")) {
+    for (const candidate of srcsetCandidates(element.getAttribute("srcset"))) {
+      await checkReference(source, "srcset", candidate, document);
     }
   }
   for (const link of document.querySelectorAll('link[rel="canonical"]')) {

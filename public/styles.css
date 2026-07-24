@@ -5337,6 +5337,43 @@ html[data-resources-unlocked="true"] [data-resource-gated-content] > * {
   background: transparent;
 }
 
+.product-page-industrial .construction-process-video {
+  position: relative;
+  width: min(100%, 880px);
+  margin: clamp(22px, 3vw, 34px) auto 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  background: #080c12;
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.product-page-industrial .construction-process-video::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  height: 4px;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(214, 16, 56, 0.88) 0,
+      rgba(214, 16, 56, 0.88) 10px,
+      rgba(26, 36, 47, 0.88) 10px,
+      rgba(26, 36, 47, 0.88) 18px);
+  pointer-events: none;
+}
+
+.product-page-industrial .construction-process-video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  background: #080c12;
+}
+
 .product-page-industrial .process-flow-grid {
   gap: 16px;
 }
@@ -6455,10 +6492,70 @@ a.text-link.is-hud:active {
   align-items: center;
 }
 
-.split-section picture {
+.product-page-industrial .split-section {
+  position: relative;
+  min-height: clamp(620px, calc(100svh - 72px), 760px);
+  overflow: hidden;
+}
+
+.product-page-industrial .split-section > div {
+  position: relative;
+  z-index: 3;
+  max-width: 580px;
+}
+
+.split-section picture,
+.split-section-media {
+  margin: 0;
   overflow: hidden;
   border: 1px solid var(--color-line);
   border-radius: 8px;
+}
+
+.split-section-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #111817;
+}
+
+.product-page-industrial .split-section-media {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  width: min(50vw, 640px);
+  height: auto;
+  aspect-ratio: 1440 / 1080;
+  isolation: isolate;
+  overflow: hidden;
+  border-color: transparent;
+  border-radius: 2px;
+  background: transparent;
+  box-shadow: none;
+  transform: translateY(-50%);
+}
+
+.product-page-industrial .split-section-media::before {
+  display: none;
+}
+
+.product-page-industrial .split-section-media::after {
+  display: none;
+}
+
+.split-section-media video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.product-page-industrial .split-section-media video {
+  object-fit: contain;
+  filter: saturate(0.96) contrast(1.04);
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .process-list {
@@ -6935,9 +7032,13 @@ a.text-link.is-hud:active {
 }
 
 /* ===== Product Comparison — exploded view + stacked-bar metrics ===== */
+.product-compare-section {
+  scroll-margin-top: clamp(88px, 10vh, 120px);
+}
+
 .product-compare-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(340px, 0.98fr) minmax(0, 1.02fr);
   gap: clamp(24px, 3vw, 40px);
   align-items: start;
 }
@@ -7069,7 +7170,8 @@ a.text-link.is-hud:active {
 
 .product-compare-explode figcaption {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  flex-direction: column;
   gap: 10px;
   color: #8a98a3;
   font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -7085,16 +7187,61 @@ a.text-link.is-hud:active {
   background: rgba(205, 217, 224, 0.45);
 }
 
+.product-compare-explode-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.product-compare-explode-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+}
+
+.product-compare-explode-stats div {
+  min-width: 0;
+  padding: 9px 10px;
+  background: rgba(184, 194, 201, 0.06);
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.18);
+}
+
+.product-compare-explode-stats dt {
+  color: #7f8d98;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.product-compare-explode-stats dd {
+  margin: 5px 0 0;
+  color: #e7edf1;
+  font-size: 0.86rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
 /* Drop placeholder chrome when an actual image is added */
 .product-compare-explode-frame:has(> img),
 .product-compare-explode-frame:has(> picture),
 .product-compare-explode-frame:has(> svg) {
+  aspect-ratio: 1320 / 910;
+  padding-top: 0;
   background-image: none;
 }
 
 .product-compare-explode-frame:has(> img) .product-compare-explode-label,
 .product-compare-explode-frame:has(> picture) .product-compare-explode-label,
 .product-compare-explode-frame:has(> svg) .product-compare-explode-label,
+.product-compare-explode-frame:has(> img)::before,
+.product-compare-explode-frame:has(> picture)::before,
+.product-compare-explode-frame:has(> svg)::before,
 .product-compare-explode-frame:has(> img)::after,
 .product-compare-explode-frame:has(> picture)::after,
 .product-compare-explode-frame:has(> svg)::after {
@@ -8991,6 +9138,15 @@ a.text-link.is-hud:active {
 
 /* ===== Product Comparison — Industrial variant overrides ===== */
 
+.product-page-industrial .product-compare-layout {
+  grid-template-columns: minmax(360px, 0.98fr) minmax(0, 1.02fr);
+  gap: clamp(28px, 3vw, 38px);
+}
+
+.product-page-industrial .product-compare-panel {
+  gap: 12px;
+}
+
 /* Exploded view frame — brushed steel plate with hazard stripe header */
 .product-page-industrial .product-compare-explode-frame {
   background-color: #1a232e;
@@ -9098,10 +9254,85 @@ a.text-link.is-hud:active {
   width: 36px;
 }
 
+.product-page-industrial .product-compare-explode-frame.is-technical-plate {
+  --technical-plate-inset: 0px;
+  aspect-ratio: 1320 / 910;
+  padding-top: 0;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(184, 194, 201, 0.12);
+}
+
+.product-page-industrial .product-compare-explode-frame.is-technical-plate::before {
+  display: none;
+}
+
+.product-page-industrial .product-compare-explode-frame.is-technical-plate::after {
+  display: none;
+}
+
+.product-page-industrial .product-compare-explode-frame.is-technical-plate > img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  box-shadow: none;
+}
+
+.product-page-industrial .product-compare-explode-frame.is-technical-plate + figcaption {
+  gap: 11px;
+}
+
+.product-page-industrial .product-compare-explode-frame.is-technical-plate + figcaption::before {
+  display: none;
+}
+
+.product-page-industrial .product-compare-explode-frame.is-technical-plate + figcaption .product-compare-explode-meta {
+  color: #b9c5ce;
+  font-size: 0.68rem;
+}
+
+.product-page-industrial .product-compare-explode-frame.is-technical-plate + figcaption .product-compare-explode-meta::before {
+  content: "";
+  width: 36px;
+  height: 1px;
+  background:
+    repeating-linear-gradient(90deg,
+      var(--color-red) 0,
+      var(--color-red) 4px,
+      transparent 4px,
+      transparent 8px);
+  flex: 0 0 auto;
+}
+
+.product-page-industrial .product-compare-explode-stats div {
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.01) 0,
+      rgba(255, 255, 255, 0.01) 1px,
+      transparent 1px,
+      transparent 3px),
+    rgba(184, 194, 201, 0.025);
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.12),
+    inset 2px 0 0 rgba(214, 16, 56, 0.36);
+}
+
+.product-page-industrial .product-compare-explode-stats dt {
+  color: #81909c;
+}
+
+.product-page-industrial .product-compare-explode-stats dd {
+  color: #f1f5f7;
+  text-shadow: 0 0 8px rgba(214, 16, 56, 0.26);
+}
+
 /* Legend bar — hazard-bordered legend strip */
 .product-page-industrial .product-compare-panel-head {
   position: relative;
-  padding: 14px 16px;
+  padding: 12px 14px;
   background:
     repeating-linear-gradient(135deg,
       rgba(255, 255, 255, 0.014) 0,
@@ -9144,7 +9375,7 @@ a.text-link.is-hud:active {
 
 /* Comparison rows — brushed-steel ledger cards */
 .product-page-industrial .product-compare-row {
-  padding: 18px 18px 18px 26px;
+  padding: 16px 16px 16px 24px;
   background:
     repeating-linear-gradient(135deg,
       rgba(255, 255, 255, 0.012) 0,
@@ -9282,14 +9513,30 @@ a.text-link.is-hud:active {
 
 .product-page-industrial .product-compare-row-note {
   color: #a8b3bd;
-  padding: 8px 0 0;
+  padding: 7px 0 0;
   border-top: 1px dashed rgba(184, 194, 201, 0.18);
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 /* Comparison list — give rows breathing room */
 .product-page-industrial .product-compare-list {
-  gap: 14px;
+  gap: 12px;
+}
+
+@media (max-width: 960px) {
+  .product-page-industrial .product-compare-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .product-compare-explode-stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .product-page-industrial .product-compare-explode-frame.is-technical-plate {
+    aspect-ratio: 1320 / 910;
+  }
 }
 
 
@@ -10851,6 +11098,38 @@ td {
   .product-family-inner,
   .product-family-industrial .product-family-inner {
     grid-template-columns: 1fr;
+  }
+
+  .product-page-industrial .split-section {
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .product-page-industrial .split-section > div {
+    max-width: none;
+  }
+
+  .product-page-industrial .split-section-media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1440 / 1080;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #111817;
+    transform: none;
+  }
+
+  .product-page-industrial .split-section-media::before,
+  .product-page-industrial .split-section-media::after {
+    display: none;
+  }
+
+  .product-page-industrial .split-section-media video {
+    transform: none;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .case-line-header .text-link {

@@ -4,6 +4,7 @@
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "check:site": "node scripts/check-generated-site.mjs",
+    "check:construction-process-video": "node tools/check-construction-process-video.js",
     "test": "node --test test/i18n/*.test.mjs test/functions/*.test.mjs",
     "test:browser": "playwright test test/browser"
   },

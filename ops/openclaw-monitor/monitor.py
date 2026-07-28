@@ -23,6 +23,7 @@ from typing import Any
 DEFAULT_TIMEOUT_SECONDS = 20
 DEFAULT_SLOW_RESPONSE_SECONDS = 3.0
 DEFAULT_MINIMUM_SITEMAP_URLS = 3
+WEEKLY_HISTORY_LIMIT = 7
 USER_AGENT = "WEI-LAN-Site-Monitor/1.0 (+https://weilanrecycling.com/)"
 
 
@@ -430,6 +431,65 @@ def render_markdown(report: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def build_weekly_snapshot(report: dict[str, Any]) -> dict[str, Any]:
+    """Build a compact trend snapshot for the weekly AI analysis."""
+    return {
+        "collected_at": report["collected_at"],
+        "summary": report["summary"],
+        "tls": report["tls"],
+        "robots": {
+            "status": report["robots"]["status"],
+            "final_url": report["robots"]["final_url"],
+            "sitemap_directives": report["robots"]["sitemap_directives"],
+            "contains_global_disallow": report["robots"]["contains_global_disallow"],
+        },
+        "sitemap": {
+            "status": report["sitemap"]["status"],
+            "url_count": report["sitemap"]["url_count"],
+            "duplicate_count": report["sitemap"]["duplicate_count"],
+            "english_url_count": report["sitemap"]["english_url_count"],
+            "simplified_chinese_url_count": report["sitemap"][
+                "simplified_chinese_url_count"
+            ],
+            "traditional_chinese_url_count": report["sitemap"][
+                "traditional_chinese_url_count"
+            ],
+            "parse_error": report["sitemap"]["parse_error"],
+        },
+        "pages": [
+            {
+                "requested_url": page["requested_url"],
+                "final_url": page["final_url"],
+                "status": page["status"],
+                "elapsed_seconds": page["elapsed_seconds"],
+                "redirects": page["redirects"],
+                "metadata": page["metadata"],
+            }
+            for page in report["pages"]
+        ],
+        "issues": report["issues"],
+    }
+
+
+def update_weekly_history(report: dict[str, Any], report_directory: Path) -> Path:
+    """Append one compact snapshot and retain the latest seven collections."""
+    history_path = report_directory / "weekly-history.json"
+    history: list[dict[str, Any]] = []
+    if history_path.exists():
+        loaded_history = json.loads(history_path.read_text(encoding="utf-8"))
+        if not isinstance(loaded_history, list):
+            raise ValueError(f"Weekly history must be a JSON array: {history_path}")
+        history = loaded_history
+
+    history.append(build_weekly_snapshot(report))
+    bounded_history = history[-WEEKLY_HISTORY_LIMIT:]
+    history_path.write_text(
+        json.dumps(bounded_history, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return history_path
+
+
 def write_report(report: dict[str, Any], report_directory: Path) -> tuple[Path, Path]:
     """Persist timestamped and latest JSON/Markdown reports."""
     report_directory.mkdir(parents=True, exist_ok=True)
@@ -443,6 +503,7 @@ def write_report(report: dict[str, Any], report_directory: Path) -> tuple[Path, 
     markdown_path.write_text(markdown_content, encoding="utf-8")
     (report_directory / "latest.json").write_text(json_content, encoding="utf-8")
     (report_directory / "latest.md").write_text(markdown_content, encoding="utf-8")
+    update_weekly_history(report, report_directory)
     return json_path, markdown_path
 
 

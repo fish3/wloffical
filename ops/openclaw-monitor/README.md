@@ -15,6 +15,7 @@ This component runs technical SEO and availability monitoring for `weilanrecycli
 
 - Runtime: `/home/openclaw/workspace/monitor`
 - Reports: `/home/openclaw/workspace/monitor/reports`
+- Seven-snapshot AI input: `/home/openclaw/workspace/monitor/reports/weekly-history.json`
 - OpenClaw policy: `/home/openclaw/workspace/monitor/MONITORING.md`
 - Systemd service: `/etc/systemd/system/weilan-site-monitor.service`
 - Systemd timer: `/etc/systemd/system/weilan-site-monitor.timer`
@@ -22,6 +23,8 @@ This component runs technical SEO and availability monitoring for `weilanrecycli
 ## Schedule
 
 The collector runs daily at 03:15 Asia/Shanghai with up to five minutes of random delay.
+Each run updates a compact seven-snapshot history so the weekly AI task does not
+scan or guess timestamped filenames.
 
 ## OpenClaw integration
 

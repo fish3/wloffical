@@ -1,6 +1,6 @@
 # Weekly SEO and website operations report
 
-Read the latest seven timestamped JSON reports in `monitor/reports/` and prepare a concise report for the WEI LAN overseas website. Ignore `latest.json` so the newest collection is not counted twice.
+Read only `monitor/reports/weekly-history.json` and prepare a concise report for the WEI LAN overseas website. This file contains up to seven ordered, compact monitoring snapshots. Do not guess or attempt to read any timestamped report filenames.
 
 Required sections:
 
@@ -13,4 +13,4 @@ Required sections:
 
 Do not claim Google Search Console, ranking, click, impression, conversion, or PageSpeed data unless those data sources are present in the report files. Clearly label missing data sources.
 
-Write the finished report to `monitor/reports/weekly-latest.md` and return the same report as the final response. If fewer than two timestamped reports exist, state that trend comparison does not yet have enough history.
+Write the finished report to `monitor/reports/weekly-latest.md` and return the same report as the final response. If fewer than two snapshots exist, state that trend comparison does not yet have enough history.

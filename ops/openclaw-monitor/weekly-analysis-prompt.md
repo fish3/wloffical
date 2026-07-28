@@ -1,16 +1,36 @@
-# Weekly SEO and website operations report
+# WEI LAN 海外站 SEO 效果周报
 
-Read only `monitor/reports/weekly-history.json` and prepare a concise report for the WEI LAN overseas website. This file contains up to seven ordered, compact monitoring snapshots. Do not guess or attempt to read any timestamped report filenames.
+只读取 `monitor/reports/weekly-history.json`。该文件最多包含最近 7 个按时间排序的每日技术监控快照。禁止猜测或读取任何带时间戳的报告文件名。
 
-Required sections:
+必须使用简体中文输出。URL、产品名、关键词和必要的技术字段可以保留英文。
 
-1. Availability and TLS status.
-2. Redirect and language-routing changes.
-3. Metadata, canonical, hreflang, robots, and sitemap changes.
-4. Response-time trend and pages slower than the configured threshold.
-5. New errors or warnings compared with the previous report.
-6. Prioritized actions for the next seven days.
+报告必须严格区分：
 
-Do not claim Google Search Console, ranking, click, impression, conversion, or PageSpeed data unless those data sources are present in the report files. Clearly label missing data sources.
+- **技术 SEO 健康度**：页面可用性、速度、重定向、索引指令、canonical、hreflang、robots.txt、sitemap 和 TLS。
+- **自然搜索效果**：Google Search Console 的曝光、点击、CTR、平均排名、查询词和着陆页表现。
 
-Write the finished report to `monitor/reports/weekly-latest.md` and return the same report as the final response. If fewer than two snapshots exist, state that trend comparison does not yet have enough history.
+如果报告文件中没有 Google Search Console、PageSpeed、转化数据，必须在指标表中写“未接入”，并明确说明无法据此判断自然流量增长或排名提升。不得用“页面正常”代替“SEO 效果好”，不得虚构任何指标。
+
+## 固定报告结构
+
+1. **本周结论**
+   - 用 3 至 5 条结论分别评价技术健康、搜索效果和数据完整度。
+   - 结论必须直接回答“当前效果怎么样”，避免只罗列数据。
+2. **核心 SEO 指标表**
+   - 技术指标：监控页面成功率、错误/警告数、平均与最慢响应时间、重定向异常、sitemap URL 数和三种语言数量、TLS 剩余天数。
+   - 效果指标：曝光、点击、CTR、平均排名、进入前 10/20/50 的关键词数量、自然搜索着陆页数量。
+   - 体验指标：移动端/桌面端 Performance、LCP、INP 或 TBT、CLS。
+   - 缺少的数据一律标记“未接入”，不要省略。
+3. **趋势与异常**
+   - 有至少 2 个快照时对比变化；不足时明确写“历史数据不足”。
+   - 指出新出现、持续存在和已经恢复的问题。
+4. **页面与多语言 SEO 检查**
+   - 评价英文首页、两款核心产品页、简体中文和繁体中文首页。
+   - 检查英文 URL 是否异常跳转到中文、canonical/hreflang 是否一致、标题与 H1 是否缺失。
+5. **下一步优化行动**
+   - 按 P0、P1、P2 排序，每项包含：问题、证据、具体动作、预期 SEO 影响、建议完成时间。
+   - 优先给出能够提升收录、排名、CTR 和询盘转化的动作，不要给泛泛建议。
+6. **数据缺口与接入计划**
+   - 列出尚未接入的数据源及其影响。
+
+将完整报告写入 `monitor/reports/weekly-latest.md`，并把同一份中文报告作为最终回复。如果只有 1 个每日快照，必须说明暂时不能形成趋势结论。

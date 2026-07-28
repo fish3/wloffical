@@ -25,6 +25,8 @@ This component runs technical SEO and availability monitoring for `weilanrecycli
 The collector runs daily at 03:15 Asia/Shanghai with up to five minutes of random delay.
 Each run updates a compact seven-snapshot history so the weekly AI task does not
 scan or guess timestamped filenames.
+Repeated collections on the same UTC date replace that day's snapshot instead
+of creating a false intra-day trend.
 
 ## OpenClaw integration
 

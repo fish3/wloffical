@@ -378,6 +378,10 @@ def collect_report(config: MonitorConfig) -> dict[str, Any]:
         "schema_version": 1,
         "site_name": config.site_name,
         "collected_at": collected_at.isoformat(),
+        "thresholds": {
+            "slow_response_seconds": config.slow_response_seconds,
+            "minimum_sitemap_urls": config.minimum_sitemap_urls,
+        },
         "tls": inspect_tls(config.base_url, config.timeout_seconds),
         "robots": inspect_robots(config.robots_url, config.timeout_seconds),
         "sitemap": inspect_sitemap(config.sitemap_url, config.timeout_seconds),
@@ -436,6 +440,7 @@ def build_weekly_snapshot(report: dict[str, Any]) -> dict[str, Any]:
     return {
         "collected_at": report["collected_at"],
         "summary": report["summary"],
+        "thresholds": report["thresholds"],
         "tls": report["tls"],
         "robots": {
             "status": report["robots"]["status"],
@@ -481,7 +486,11 @@ def update_weekly_history(report: dict[str, Any], report_directory: Path) -> Pat
             raise ValueError(f"Weekly history must be a JSON array: {history_path}")
         history = loaded_history
 
-    history.append(build_weekly_snapshot(report))
+    snapshot = build_weekly_snapshot(report)
+    if history and history[-1].get("collected_at", "")[:10] == report["collected_at"][:10]:
+        history[-1] = snapshot
+    else:
+        history.append(snapshot)
     bounded_history = history[-WEEKLY_HISTORY_LIMIT:]
     history_path.write_text(
         json.dumps(bounded_history, ensure_ascii=False, indent=2) + "\n",

@@ -4,7 +4,7 @@
   "password_path": "/home/openclaw/.openclaw/secrets/dataforseo-password",
   "report_directory": "/home/openclaw/workspace/monitor/reports",
   "rank_depth": 100,
-  "visibility_depth": 20,
+  "visibility_depth": 10,
   "maximum_tasks": 100,
   "history_limit": 12,
   "timeout_seconds": 300,

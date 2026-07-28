@@ -15,6 +15,8 @@ This component runs technical SEO and availability monitoring for `weilanrecycli
 - DataForSEO Google top-100 rankings for 19 target keywords in the United States,
   Australia, United Arab Emirates, and Saudi Arabia.
 - Google visibility of the brand domain and LinkedIn, YouTube, and Facebook content.
+  Brand and platform queries only inspect the top 10 because they use exact
+  brand or site-qualified intent.
 
 ## Server paths
 

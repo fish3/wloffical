@@ -1,0 +1,17 @@
+{
+  "site_name": "WEI LAN Recycling",
+  "base_url": "https://weilanrecycling.com/",
+  "sitemap_url": "https://weilanrecycling.com/sitemap.xml",
+  "robots_url": "https://weilanrecycling.com/robots.txt",
+  "pages": [
+    "https://weilanrecycling.com/",
+    "https://weilanrecycling.com/products/ai-optical-sorting",
+    "https://weilanrecycling.com/products/construction-waste-recycling-line",
+    "https://weilanrecycling.com/zh-cn/",
+    "https://weilanrecycling.com/zh-hant/"
+  ],
+  "report_directory": "/home/openclaw/workspace/monitor/reports",
+  "timeout_seconds": 20,
+  "slow_response_seconds": 3.0,
+  "minimum_sitemap_urls": 60
+}

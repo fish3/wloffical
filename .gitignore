@@ -11,3 +11,4 @@ output/
 /test
 /test-results
 node_modules/
+__pycache__/

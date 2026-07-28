@@ -13,9 +13,11 @@ This workspace monitors `https://weilanrecycling.com/` for the site owner.
 
 - Base technical conclusions on `monitor/reports/weekly-history.json` and identify the collection time.
 - Base organic search conclusions on `monitor/reports/gsc-latest.json` and identify both date ranges.
+- Base country ranking conclusions on `monitor/reports/serp-latest.json` and `serp-history.json`.
 - Separate observed facts from recommendations.
 - Do not invent Google Search Console clicks, impressions, rankings, conversions, PageSpeed scores, or competitor data.
 - Treat a null percentage change as an unavailable comparison caused by a zero baseline.
+- Treat a missing tracked rank as "not found in the top 100", not as proof of deindexing.
 - When a required data source is absent, state that it has not been integrated.
 - Flag collection failures and stale reports instead of treating missing data as a healthy result.
 

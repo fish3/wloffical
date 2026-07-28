@@ -12,6 +12,9 @@ This component runs technical SEO and availability monitoring for `weilanrecycli
 - Actionable error and warning records.
 - GSC clicks, impressions, CTR, average position, daily trend, query distribution,
   landing pages, position buckets, and opportunity queries.
+- DataForSEO Google top-100 rankings for 19 target keywords in the United States,
+  Australia, United Arab Emirates, and Saudi Arabia.
+- Google visibility of the brand domain and LinkedIn, YouTube, and Facebook content.
 
 ## Server paths
 
@@ -19,11 +22,15 @@ This component runs technical SEO and availability monitoring for `weilanrecycli
 - Reports: `/home/openclaw/workspace/monitor/reports`
 - Seven-snapshot AI input: `/home/openclaw/workspace/monitor/reports/weekly-history.json`
 - Latest GSC AI input: `/home/openclaw/workspace/monitor/reports/gsc-latest.json`
+- Latest country ranking input: `/home/openclaw/workspace/monitor/reports/serp-latest.json`
+- Twelve-week ranking history: `/home/openclaw/workspace/monitor/reports/serp-history.json`
 - OpenClaw policy: `/home/openclaw/workspace/monitor/MONITORING.md`
 - Systemd service: `/etc/systemd/system/weilan-site-monitor.service`
 - Systemd timer: `/etc/systemd/system/weilan-site-monitor.timer`
 - GSC systemd service: `/etc/systemd/system/weilan-gsc-collector.service`
 - GSC systemd timer: `/etc/systemd/system/weilan-gsc-collector.timer`
+- SERP systemd service: `/etc/systemd/system/weilan-serp-collector.service`
+- SERP systemd timer: `/etc/systemd/system/weilan-serp-collector.timer`
 
 ## Schedule
 
@@ -37,6 +44,16 @@ The GSC collector runs daily at 04:00 Asia/Shanghai with up to five minutes of
 random delay. It compares the latest complete seven-day period ending three days
 ago with the preceding seven days. The service-account credential remains outside
 the Git workspace at `/home/openclaw/.openclaw/secrets/google-search-console.json`.
+
+The paid DataForSEO collector runs Sunday at 00:30 Asia/Shanghai, before Monday's
+09:30 weekly analysis. Each run submits 76 country-keyword tasks and 20
+brand/platform visibility tasks, bounded to 100 configured tasks. Created task
+IDs are persisted so a restart or queue delay resumes retrieval without paying
+to create duplicate tasks.
+
+`serp_recovery.py` is a no-charge recovery path for already-created tasks whose
+IDs predate persistent state. Its timer should only remain enabled until those
+results have been recovered.
 
 ## OpenClaw integration
 

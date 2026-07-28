@@ -1,0 +1,48 @@
+{
+  "target_domain": "weilanrecycling.com",
+  "login_path": "/home/openclaw/.openclaw/secrets/dataforseo-login",
+  "password_path": "/home/openclaw/.openclaw/secrets/dataforseo-password",
+  "report_directory": "/home/openclaw/workspace/monitor/reports",
+  "rank_depth": 100,
+  "visibility_depth": 20,
+  "maximum_tasks": 100,
+  "history_limit": 12,
+  "timeout_seconds": 300,
+  "concurrent_requests": 8,
+  "poll_interval_seconds": 15,
+  "maximum_wait_seconds": 21600,
+  "countries": [
+    {"code": "US", "name": "United States", "location_code": 2840, "language_code": "en"},
+    {"code": "AU", "name": "Australia", "location_code": 2036, "language_code": "en"},
+    {"code": "AE", "name": "United Arab Emirates", "location_code": 2784, "language_code": "en"},
+    {"code": "SA", "name": "Saudi Arabia", "location_code": 2682, "language_code": "en"}
+  ],
+  "keywords": [
+    {"text": "AI waste sorting system", "category": "equipment"},
+    {"text": "AI optical sorter for waste", "category": "equipment"},
+    {"text": "automated waste sorting system", "category": "equipment"},
+    {"text": "air separation system for construction waste", "category": "equipment"},
+    {"text": "magnetic separator for C&D waste", "category": "equipment"},
+    {"text": "trommel screen for construction waste", "category": "equipment"},
+    {"text": "vibrating screen for recycled aggregate", "category": "equipment"},
+    {"text": "construction waste crusher and screening plant", "category": "equipment"},
+    {"text": "waste sorting robot", "category": "equipment"},
+    {"text": "smart recycling facility", "category": "equipment"},
+    {"text": "C&D waste recycling plant cost", "category": "commercial"},
+    {"text": "construction waste recycling plant price", "category": "commercial"},
+    {"text": "turnkey C&D waste recycling plant", "category": "commercial"},
+    {"text": "construction waste recycling plant manufacturer", "category": "commercial"},
+    {"text": "waste sorting system supplier", "category": "commercial"},
+    {"text": "recycled aggregate plant investment", "category": "commercial"},
+    {"text": "construction waste processing line for sale", "category": "commercial"},
+    {"text": "AI waste sorting machine price", "category": "commercial"},
+    {"text": "MRF equipment manufacturer", "category": "commercial"}
+  ],
+  "visibility_queries": [
+    {"name": "brand", "query": "\"WEI LAN Recycling\"", "expected_domains": ["weilanrecycling.com"]},
+    {"name": "domain", "query": "weilanrecycling.com", "expected_domains": ["weilanrecycling.com"]},
+    {"name": "linkedin", "query": "site:linkedin.com \"WEI LAN Recycling\"", "expected_domains": ["linkedin.com"]},
+    {"name": "youtube", "query": "site:youtube.com \"WEI LAN Recycling\"", "expected_domains": ["youtube.com"]},
+    {"name": "facebook", "query": "site:facebook.com \"WEI LAN Recycling\"", "expected_domains": ["facebook.com"]}
+  ]
+}

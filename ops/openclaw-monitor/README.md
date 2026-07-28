@@ -40,7 +40,12 @@ the Git workspace at `/home/openclaw/.openclaw/secrets/google-search-console.jso
 
 ## OpenClaw integration
 
-`weekly-analysis-prompt.md` is deployed to an enabled OpenClaw cron job. It requires:
+`weekly-analysis-prompt.md` is deployed to an enabled OpenClaw cron job. The report
+focuses on search impressions, clicks, CTR, rankings, queries, landing pages, and
+prioritized SEO actions. Technical checks appear only when they reveal a crawl or
+indexing risk; performance and conversion analytics are outside this report.
+
+The weekly job requires:
 
 1. A model provider.
 2. A notification channel or webhook.

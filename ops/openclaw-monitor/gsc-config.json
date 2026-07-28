@@ -1,0 +1,9 @@
+{
+  "site_url": "sc-domain:weilanrecycling.com",
+  "credential_path": "/home/openclaw/.openclaw/secrets/google-search-console.json",
+  "report_directory": "/home/openclaw/workspace/monitor/reports",
+  "data_lag_days": 3,
+  "period_days": 7,
+  "row_limit": 25000,
+  "request_timeout_seconds": 30
+}

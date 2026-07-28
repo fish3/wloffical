@@ -11,9 +11,11 @@ This workspace monitors `https://weilanrecycling.com/` for the site owner.
 
 ## Evidence rules
 
-- Base technical conclusions on files in `monitor/reports/` and identify the collection time.
+- Base technical conclusions on `monitor/reports/weekly-history.json` and identify the collection time.
+- Base organic search conclusions on `monitor/reports/gsc-latest.json` and identify both date ranges.
 - Separate observed facts from recommendations.
 - Do not invent Google Search Console clicks, impressions, rankings, conversions, PageSpeed scores, or competitor data.
+- Treat a null percentage change as an unavailable comparison caused by a zero baseline.
 - When a required data source is absent, state that it has not been integrated.
 - Flag collection failures and stale reports instead of treating missing data as a healthy result.
 

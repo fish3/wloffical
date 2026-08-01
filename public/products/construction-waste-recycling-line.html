@@ -77,7 +77,7 @@
         </div>
         <figure class="split-section-media" aria-label="Integrated construction waste crushing and screening station video">
           <video autoplay muted loop playsinline preload="metadata" poster="/assets/images/Lion1_boom.png">
-            <source src="/assets/video/Lion1_boom.mp4" type="video/mp4"> <source src="/assets/video/Lion1_boom.MOV" type="video/quicktime">
+            <source src="/assets/video/Lion1_boom.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </figure>
@@ -195,13 +195,18 @@
           <h2 id="construction-process-title">Construction waste recycling line process video</h2>
           <p>Watch the integrated Lion One line demonstrate crushing, screening, conveying, separation, and recovery as one continuous process.</p>
         </div>
-        <figure class="construction-process-video" aria-label="Construction waste recycling line promotional video">
-          <video playsinline preload="metadata" poster="/assets/images/Lion1_boom.png" controls>
-            <source src="/assets/video/Lion1_boom.mp4" type="video/mp4">
-            <source src="/assets/video/Lion1_boom.MOV" type="video/quicktime">
+        <figure class="construction-process-video" data-process-video-frame data-process-video-state="idle" aria-label="Construction waste recycling line promotional video">
+          <video id="construction-process-flow-video" data-process-video playsinline preload="none" poster="/assets/images/Lion1_flow.png" controls>
+            <source data-src="/assets/video/Lion1_flow.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <button class="construction-process-video-cover" type="button" data-process-video-cover aria-controls="construction-process-flow-video" aria-label="Play construction waste recycling line process video">
+            <span class="construction-process-video-tag" aria-hidden="true"><span>C&amp;D</span><strong>LINE</strong></span>
+            <span class="construction-process-video-play" aria-hidden="true"></span>
+            <span class="construction-process-video-label">C&amp;D process line ready</span>
+          </button>
         </figure>
+        <p class="construction-process-caption"><span>C&amp;D process video</span><strong>Crushing, screening, conveying, separation, and recovery in one operating view</strong></p>
       </section>
 
       <section class="section product-compare-section" id="comparison" aria-labelledby="construction-compare-title">
@@ -216,11 +221,6 @@
             <div class="product-compare-explode-frame is-technical-plate"><img src="/assets/images/Lion1_boom.png" alt="Lion One exploded comparison view"></div>
             <figcaption>
               <span class="product-compare-explode-meta">Integrated mobile station · heavy duty</span>
-              <dl class="product-compare-explode-stats" aria-label="Lion One summary">
-                <div><dt>Footprint</dt><dd>35 m²</dd></div>
-                <div><dt>Capacity</dt><dd>20-70 t/h</dd></div>
-                <div><dt>Install</dt><dd>2-3 days</dd></div>
-              </dl>
             </figcaption>
           </figure>
 

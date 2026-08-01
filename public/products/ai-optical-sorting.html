@@ -75,10 +75,12 @@
             <a class="text-link is-hud" href="/contact">Request Proposal</a>
           </div>
         </div>
-        <picture>
-          <source srcset="/assets/images/recyclable-plastic-sorting-line.webp" type="image/webp">
-          <img src="/assets/images/recyclable-plastic-sorting-line.png" alt="AI optical sorting line for recyclable plastic waste">
-        </picture>
+        <figure class="split-section-media" aria-label="AI optical sorting boom video">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="/assets/video/AI_boom.mp4" type="video/mp4">
+            Your browser does not support the video element.
+          </video>
+        </figure>
       </section>
 
       <section class="section" id="models" aria-labelledby="models-title">
@@ -306,95 +308,17 @@
       <section class="section dark-section product-process-section" aria-labelledby="plastic-process-title">
         <div class="section-heading">
           <p class="eyebrow">Process Flow</p>
-          <h2 id="plastic-process-title">Process control runs from controlled feeding to digital reporting</h2>
-          <p>The optical sorting system is organized around a clear material path so project teams can evaluate where feeding, pre-sorting, material sorting, color sorting, and operating data fit into the production line.</p>
+          <h2 id="plastic-process-title">One operating video summarizes the optical sorting path</h2>
+          <p>The core sorting stage shows material flow, AI recognition, air-jet separation, and operating data in one view.</p>
         </div>
-        <ol class="process-timeline" aria-label="Plastic recycling process">
-          <li class="process-timeline-step">
-            <span class="process-timeline-rank">SYS-01</span>
-            <div class="process-timeline-card">
-              <div class="process-timeline-body">
-                <h3>Controlled feeding</h3>
-                <p>Input post-consumer bottles or mixed recyclable plastics into the sorting line at a controlled rate.</p>
-              </div>
-              <figure class="process-timeline-media" aria-label="Controlled feeding process video">
-                <div class="process-timeline-video">
-                  <video controls playsinline preload="metadata">
-                    <source src="/assets/video/AI上料.mp4" type="video/mp4">
-                    Your browser does not support the video element.
-                  </video>
-                </div>
-              </figure>
-            </div>
-          </li>
-          <li class="process-timeline-step">
-            <span class="process-timeline-rank">SYS-02</span>
-            <div class="process-timeline-card">
-              <div class="process-timeline-body">
-                <h3>Pre-sorting interface</h3>
-                <p>Identify and separate metal containers from bottles made of other materials before downstream sorting.</p>
-              </div>
-              <figure class="process-timeline-media" aria-label="Pre-sorting interface process video">
-                <div class="process-timeline-video">
-                  <video controls playsinline preload="metadata">
-                    <source src="/assets/video/AI预分.mp4" type="video/mp4">
-                    Your browser does not support the video element.
-                  </video>
-                </div>
-              </figure>
-            </div>
-          </li>
-          <li class="process-timeline-step">
-            <span class="process-timeline-rank">SYS-03</span>
-            <div class="process-timeline-card">
-              <div class="process-timeline-body">
-                <h3>Material recognition sorting</h3>
-                <p>Separate plastics by target resin category to improve recovery value and reduce manual dependency.</p>
-              </div>
-              <figure class="process-timeline-media" aria-label="Material recognition sorting process video">
-                <div class="process-timeline-video">
-                  <video controls playsinline preload="metadata">
-                    <source src="/assets/video/AI分拣.mp4" type="video/mp4">
-                    Your browser does not support the video element.
-                  </video>
-                </div>
-              </figure>
-            </div>
-          </li>
-          <li class="process-timeline-step">
-            <span class="process-timeline-rank">SYS-04</span>
-            <div class="process-timeline-card">
-              <div class="process-timeline-body">
-                <h3>Color recognition sorting</h3>
-                <p>Group PET bottles and other target materials by color where project value depends on cleaner fractions.</p>
-              </div>
-              <figure class="process-timeline-media" aria-label="Color recognition sorting process video">
-                <div class="process-timeline-video">
-                  <video controls playsinline preload="metadata">
-                    <source src="/assets/video/AI出料.mp4" type="video/mp4">
-                    Your browser does not support the video element.
-                  </video>
-                </div>
-              </figure>
-            </div>
-          </li>
-          <li class="process-timeline-step">
-            <span class="process-timeline-rank">SYS-05</span>
-            <div class="process-timeline-card">
-              <div class="process-timeline-body">
-                <h3>Digital reporting output</h3>
-                <p>Track throughput, categories, equipment status, alerts, and carbon-related operating indicators.</p>
-              </div>
-              <figure class="process-timeline-media" aria-label="Digital reporting output video placeholder">
-                <div class="process-timeline-video" role="img" aria-label="Video coming soon">
-                  <span class="process-timeline-video-tag">CAM-05</span>
-                  <span class="process-timeline-video-play" aria-hidden="true"></span>
-                  <span class="process-timeline-video-label">Video coming soon</span>
-                </div>
-              </figure>
-            </div>
-          </li>
-        </ol>
+        <div class="ai-process-showcase">
+          <div class="ai-process-media">
+            <figure class="ai-process-video" data-ai-process-video-frame data-ai-process-video-state="idle" aria-label="AI optical sorting process video"> <video id="ai-process-flow-video" data-ai-process-video controls playsinline preload="none"> <source data-src="/assets/video/AI_flow.mp4" type="video/mp4"> Your browser does not support the video element.
+              </video> <button class="ai-process-video-cover" type="button" data-ai-process-video-cover aria-controls="ai-process-flow-video" aria-label="Play AI optical sorting process video"> <span class="ai-process-video-tag" aria-hidden="true"><span>REC</span><strong>FLOW</strong></span> <span class="ai-process-video-play" aria-hidden="true"></span> <span class="ai-process-video-label">AI PROCESS LINE READY</span></button></figure>
+            <p class="ai-process-caption"><span>Core process video</span><strong>AI recognition and optical sorting in one operating view</strong></p>
+          </div>
+
+        </div>
       </section>
 
       <section class="section product-compare-section" aria-labelledby="compare-title" hidden>

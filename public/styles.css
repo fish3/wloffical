@@ -5338,40 +5338,302 @@ html[data-resources-unlocked="true"] [data-resource-gated-content] > * {
 }
 
 .product-page-industrial .construction-process-video {
+  --process-video-max-height: 660px;
+  --process-video-max-width: 1173.33px;
   position: relative;
-  width: min(100%, 880px);
+  isolation: isolate;
+  width: min(100%, var(--process-video-max-width));
+  max-height: var(--process-video-max-height);
   margin: clamp(22px, 3vw, 34px) auto 0;
   overflow: hidden;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(214, 16, 56, 0.36);
   border-radius: 2px;
-  background: #080c12;
+  color: #e8edf0;
+  background-color: #080c12;
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(184, 194, 201, 0.055) 0,
+      rgba(184, 194, 201, 0.055) 1px,
+      transparent 1px,
+      transparent 4px),
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 9px),
+    linear-gradient(90deg, rgba(214, 16, 56, 0.15), transparent 22%, transparent 82%, rgba(214, 16, 56, 0.1)),
+    radial-gradient(82% 58% at 50% 52%, rgba(214, 16, 56, 0.1) 0%, rgba(8, 12, 18, 0) 72%),
+    linear-gradient(rgba(214, 16, 56, 0.44), rgba(214, 16, 56, 0.44)),
+    linear-gradient(rgba(184, 194, 201, 0.36), rgba(184, 194, 201, 0.36));
+  background-position: 0 0, 0 0, 0 0, 0 0, 100% 0, 100% 100%;
+  background-size: auto, auto, auto, auto, 52px 2px, 52px 2px;
+  background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   box-shadow:
+    inset 0 0 0 3px rgba(8, 12, 18, 0.72),
     inset 0 0 0 1px rgba(184, 194, 201, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 18px 42px rgba(0, 0, 0, 0.24);
+    inset 0 -12px 24px rgba(0, 0, 0, 0.16),
+    0 22px 48px rgba(0, 0, 0, 0.32);
 }
 
 .product-page-industrial .construction-process-video::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;
-  z-index: 1;
-  height: 4px;
-  background:
-    repeating-linear-gradient(135deg,
-      rgba(214, 16, 56, 0.88) 0,
-      rgba(214, 16, 56, 0.88) 10px,
-      rgba(26, 36, 47, 0.88) 10px,
-      rgba(26, 36, 47, 0.88) 18px);
+  z-index: 4;
+  height: 7px;
+  background: repeating-linear-gradient(135deg,
+    rgba(214, 16, 56, 0.78) 0,
+    rgba(214, 16, 56, 0.78) 7px,
+    rgba(24, 32, 42, 0.72) 7px,
+    rgba(24, 32, 42, 0.72) 14px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.24);
   pointer-events: none;
 }
 
 .product-page-industrial .construction-process-video video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   display: block;
   object-fit: contain;
   background: #080c12;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease-out;
+}
+
+.product-page-industrial .construction-process-video[data-process-video-state="playing"] video {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.product-page-industrial .construction-process-video-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  color: #e8edf0;
+  background-color: rgba(10, 15, 21, 0.92);
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(184, 194, 201, 0.038) 0,
+      rgba(184, 194, 201, 0.038) 1px,
+      transparent 1px,
+      transparent 5px),
+    repeating-linear-gradient(90deg,
+      rgba(184, 194, 201, 0.026) 0,
+      rgba(184, 194, 201, 0.026) 1px,
+      transparent 1px,
+      transparent 42px),
+    repeating-linear-gradient(135deg,
+      rgba(255, 255, 255, 0.024) 0,
+      rgba(255, 255, 255, 0.024) 1px,
+      transparent 1px,
+      transparent 11px),
+    linear-gradient(180deg, rgba(18, 25, 32, 0.96) 0%, rgba(8, 12, 18, 0.96) 100%);
+  background-position: 0 0;
+  background-size: auto;
+  background-repeat: repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.12),
+    inset 0 0 34px rgba(0, 0, 0, 0.34);
+  cursor: pointer;
+  transition: opacity 200ms ease-out, background-color 200ms ease-out;
+}
+
+.product-page-industrial .construction-process-video-cover::after {
+  content: "";
+  position: absolute;
+  right: clamp(24px, 3.8vw, 46px);
+  bottom: clamp(28px, 4vw, 48px);
+  z-index: 2;
+  width: clamp(106px, 18vw, 184px);
+  height: 6px;
+  background: repeating-linear-gradient(135deg,
+    rgba(214, 16, 56, 0.82) 0,
+    rgba(214, 16, 56, 0.82) 8px,
+    rgba(24, 32, 42, 0.76) 8px,
+    rgba(24, 32, 42, 0.76) 16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  opacity: 0.58;
+  pointer-events: none;
+}
+
+.product-page-industrial .construction-process-video[data-process-video-state="playing"] .construction-process-video-cover,
+.product-page-industrial .construction-process-video-cover[hidden] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.product-page-industrial .construction-process-video-cover:focus-visible {
+  outline: 2px solid rgba(234, 241, 245, 0.78);
+  outline-offset: -8px;
+}
+
+.product-page-industrial .construction-process-video-tag {
+  position: absolute;
+  z-index: 2;
+  top: clamp(16px, 3vw, 28px);
+  left: clamp(18px, 3vw, 32px);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 38px;
+  padding: 7px 14px;
+  color: #e8edf0;
+  background: linear-gradient(180deg, rgba(24, 32, 42, 0.82) 0%, rgba(8, 12, 18, 0.74) 100%);
+  box-shadow:
+    inset 4px 0 0 rgba(214, 16, 56, 0.82),
+    inset 0 0 0 1px rgba(214, 16, 56, 0.42),
+    0 8px 18px rgba(0, 0, 0, 0.24);
+  border-radius: 1px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.product-page-industrial .construction-process-video-tag::before {
+  content: "";
+  width: 16px;
+  height: 14px;
+  background: repeating-linear-gradient(135deg,
+    var(--color-red) 0,
+    var(--color-red) 4px,
+    rgba(24, 32, 42, 0.86) 4px,
+    rgba(24, 32, 42, 0.86) 8px);
+  clip-path: polygon(0 0, 100% 0, 82% 100%, 0 100%);
+  box-shadow: 0 0 10px rgba(214, 16, 56, 0.28);
+}
+
+.product-page-industrial .construction-process-video-tag span {
+  color: var(--color-red);
+}
+
+.product-page-industrial .construction-process-video-tag strong {
+  color: var(--color-white);
+  font: inherit;
+}
+
+.product-page-industrial .construction-process-video-play {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: clamp(74px, 8vw, 108px);
+  height: clamp(48px, 5.4vw, 62px);
+  border: 1px solid rgba(184, 194, 201, 0.28);
+  border-radius: 8px;
+  background-color: rgba(8, 12, 18, 0.74);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 12px 22px rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%);
+  transition: background-color 140ms cubic-bezier(0.23, 1, 0.32, 1), border-color 140ms cubic-bezier(0.23, 1, 0.32, 1), transform 140ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.product-page-industrial .construction-process-video-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  width: 0;
+  height: 0;
+  border-left: clamp(14px, 2vw, 20px) solid rgba(234, 241, 245, 0.88);
+  border-top: clamp(9px, 1.3vw, 13px) solid transparent;
+  border-bottom: clamp(9px, 1.3vw, 13px) solid transparent;
+  transform: translate(-50%, -50%);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-page-industrial .construction-process-video-cover:hover {
+    background-color: rgba(12, 18, 26, 0.88);
+  }
+
+  .product-page-industrial .construction-process-video-cover:hover .construction-process-video-play,
+  .product-page-industrial .construction-process-video-cover:focus-visible .construction-process-video-play {
+    border-color: rgba(214, 16, 56, 0.46);
+    background-color: rgba(14, 21, 29, 0.82);
+    transform: translate(-50%, -50%) scale(1.01);
+  }
+}
+
+.product-page-industrial .construction-process-video-cover:active .construction-process-video-play {
+  transform: translate(-50%, -50%) scale(0.97);
+}
+
+.product-page-industrial .construction-process-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  max-width: min(100%, 880px);
+  margin: clamp(14px, 2vw, 20px) auto 0;
+  color: #d6dee4;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.product-page-industrial .construction-process-caption span {
+  color: #8e9ba6;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.product-page-industrial .construction-process-caption strong {
+  color: #eaf1f5;
+  font-weight: 800;
+}
+
+.product-page-industrial .construction-process-video-label {
+  position: absolute;
+  z-index: 2;
+  right: clamp(18px, 3vw, 32px);
+  bottom: clamp(20px, 3vw, 34px);
+  left: clamp(18px, 3vw, 32px);
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: calc(100% - clamp(36px, 6vw, 64px));
+  min-height: 36px;
+  padding: 8px 13px 8px 16px;
+  border: 1px solid rgba(184, 194, 201, 0.16);
+  border-left: 3px solid rgba(214, 16, 56, 0.74);
+  color: #a8b3bd;
+  background: rgba(8, 12, 18, 0.58);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 8px 18px rgba(0, 0, 0, 0.22);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-page-industrial .construction-process-video video,
+  .product-page-industrial .construction-process-video-cover,
+  .product-page-industrial .construction-process-video-play {
+    transition: none;
+  }
 }
 
 .product-page-industrial .process-flow-grid {
@@ -6492,6 +6754,19 @@ a.text-link.is-hud:active {
   align-items: center;
 }
 
+.product-page-ai > .split-section {
+  grid-template-columns: minmax(0, 0.76fr) minmax(420px, 1.24fr);
+}
+
+.product-page-ai > .split-section > div {
+  max-width: 620px;
+}
+
+.product-page-ai > .split-section h1 {
+  max-width: 620px;
+  font-size: 4.85rem;
+}
+
 .product-page-industrial .split-section {
   position: relative;
   min-height: clamp(620px, calc(100svh - 72px), 760px);
@@ -6516,6 +6791,12 @@ a.text-link.is-hud:active {
   position: relative;
   aspect-ratio: 4 / 3;
   background: #111817;
+}
+
+.product-page-ai .split-section-media {
+  aspect-ratio: 16 / 9;
+  border-color: transparent;
+  background: transparent;
 }
 
 .product-page-industrial .split-section-media {
@@ -6549,6 +6830,10 @@ a.text-link.is-hud:active {
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+.product-page-ai .split-section-media video {
+  object-fit: contain;
 }
 
 .product-page-industrial .split-section-media video {
@@ -6611,6 +6896,249 @@ a.text-link.is-hud:active {
   margin: 14px 0 0;
   color: var(--color-muted);
   font-size: 0.94rem;
+}
+
+/* ===== AI Process Flow — single operating video + compact step summary ===== */
+.product-page-ai .ai-process-showcase {
+  display: grid;
+  gap: clamp(18px, 3vw, 30px);
+}
+
+.product-page-ai .ai-process-media {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.product-page-ai .ai-process-video {
+  --process-video-max-height: 660px;
+  --process-video-max-width: 1173.33px;
+  position: relative;
+  width: min(100%, var(--process-video-max-width));
+  max-height: var(--process-video-max-height);
+  margin: 0 auto;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+  color: #e2e9ee;
+  background: #080c12;
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(205, 217, 224, 0.06) 0,
+      rgba(205, 217, 224, 0.06) 1px,
+      transparent 1px,
+      transparent 3px),
+    radial-gradient(80% 60% at 50% 50%, rgba(205, 217, 224, 0.1) 0%, rgba(6, 12, 20, 0) 70%),
+    linear-gradient(rgba(215, 222, 227, 0.6), rgba(215, 222, 227, 0.6)),
+    linear-gradient(rgba(215, 222, 227, 0.6), rgba(215, 222, 227, 0.6));
+  background-position: 0 0, 0 0, 100% 0, 100% 100%;
+  background-size: auto, auto, 38px 1px, 38px 1px;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(184, 194, 201, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 42px rgba(0, 0, 0, 0.26);
+}
+
+.product-page-ai .ai-process-video::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 4;
+  width: 5px;
+  background: linear-gradient(180deg, rgba(205, 218, 225, 0.72), rgba(168, 184, 194, 0.52));
+  box-shadow: 0 0 4px rgba(205, 217, 224, 0.24);
+  pointer-events: none;
+}
+
+.product-page-ai .ai-process-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  z-index: 4;
+  width: 1px;
+  background: linear-gradient(180deg,
+    rgba(205, 217, 224, 0) 0%,
+    rgba(205, 217, 224, 0.4) 50%,
+    rgba(205, 217, 224, 0) 100%);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.product-page-ai .ai-process-video video {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #080c12;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.product-page-ai [data-ai-process-video-state="playing"] video {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.product-page-ai .ai-process-video-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  color: #e2e9ee;
+  background-color: rgba(13, 22, 33, 0.94);
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(205, 217, 224, 0.07) 0,
+      rgba(205, 217, 224, 0.07) 1px,
+      transparent 1px,
+      transparent 3px),
+    radial-gradient(80% 60% at 50% 50%, rgba(205, 217, 224, 0.1) 0%, rgba(6, 12, 20, 0) 70%),
+    linear-gradient(rgba(215, 222, 227, 0.6), rgba(215, 222, 227, 0.6)),
+    linear-gradient(rgba(215, 222, 227, 0.6), rgba(215, 222, 227, 0.6));
+  background-position: 0 0, 0 0, 100% 0, 100% 100%;
+  background-size: auto, auto, 38px 1px, 38px 1px;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.product-page-ai [data-ai-process-video-state="playing"] .ai-process-video-cover,
+.product-page-ai .ai-process-video-cover[hidden] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.product-page-ai .ai-process-video-cover:focus-visible {
+  outline: 2px solid rgba(245, 249, 251, 0.78);
+  outline-offset: -8px;
+}
+
+.product-page-ai .ai-process-video-tag {
+  position: absolute;
+  top: clamp(16px, 3vw, 28px);
+  left: clamp(18px, 3vw, 32px);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 38px;
+  padding: 7px 14px;
+  color: #d6dee4;
+  background: rgba(8, 16, 25, 0.58);
+  box-shadow: inset 0 0 0 1px rgba(205, 217, 224, 0.45);
+  border-radius: 1px;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.product-page-ai .ai-process-video-tag::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d61038;
+  box-shadow: 0 0 12px rgba(214, 16, 56, 0.48);
+}
+
+.product-page-ai .ai-process-video-tag span {
+  color: #ff174c;
+}
+
+.product-page-ai .ai-process-video-tag strong {
+  color: #e2e9ee;
+  font: inherit;
+}
+
+.product-page-ai .ai-process-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(58px, 8vw, 94px);
+  height: clamp(58px, 8vw, 94px);
+  border-radius: 50%;
+  background: rgba(13, 22, 33, 0.46);
+  box-shadow:
+    inset 0 0 0 2px rgba(205, 217, 224, 0.36),
+    0 0 24px rgba(205, 217, 224, 0.16);
+  transform: translate(-50%, -50%);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.product-page-ai .ai-process-video-play::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  width: 0;
+  height: 0;
+  border-left: clamp(16px, 2.5vw, 26px) solid rgba(234, 241, 245, 0.88);
+  border-top: clamp(11px, 1.7vw, 18px) solid transparent;
+  border-bottom: clamp(11px, 1.7vw, 18px) solid transparent;
+  transform: translate(-50%, -50%);
+}
+
+.product-page-ai .ai-process-video-cover:hover .ai-process-video-play,
+.product-page-ai .ai-process-video-cover:focus-visible .ai-process-video-play {
+  background: rgba(13, 22, 33, 0.76);
+  box-shadow:
+    inset 0 0 0 2px rgba(245, 249, 251, 0.62),
+    0 0 30px rgba(245, 249, 251, 0.26);
+  transform: translate(-50%, -50%) scale(1.04);
+}
+
+.product-page-ai .ai-process-video-label {
+  position: absolute;
+  right: clamp(18px, 3vw, 32px);
+  bottom: clamp(20px, 3vw, 34px);
+  left: clamp(18px, 3vw, 32px);
+  color: #9cabb7;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.product-page-ai .ai-process-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 14px;
+  max-width: min(100%, 920px);
+  margin: 0;
+  color: #d6dee4;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.product-page-ai .ai-process-caption span {
+  color: #8e9ba6;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.product-page-ai .ai-process-caption strong {
+  color: #eaf1f5;
+  font-weight: 800;
 }
 
 /* ===== Process Timeline — vertical flow with media slot per node ===== */
@@ -11100,6 +11628,23 @@ td {
     grid-template-columns: 1fr;
   }
 
+  .product-page-ai > .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  .product-page-ai > .split-section > div {
+    max-width: none;
+  }
+
+  .product-page-ai > .split-section h1 {
+    max-width: 720px;
+    font-size: 4.1rem;
+  }
+
+  .product-page-ai .split-section-media {
+    width: 100%;
+  }
+
   .product-page-industrial .split-section {
     min-height: auto;
     overflow: visible;
@@ -11348,6 +11893,11 @@ td {
 
   .product-page-ai .sorting-performance-section {
     border-radius: 8px;
+  }
+
+  .product-page-ai > .split-section h1 {
+    font-size: 2.85rem;
+    line-height: 1;
   }
 
   .product-page-ai .sorting-performance-head h2 {

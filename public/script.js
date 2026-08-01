@@ -32,6 +32,7 @@ const wasteTypeValue = contactForm ? contactForm.querySelector("[data-waste-type
 const wasteTypeCustomClearButton = contactForm ? contactForm.querySelector("[data-waste-custom-clear]") : null;
 const wasteTypeClearButton = contactForm ? contactForm.querySelector("[data-waste-clear]") : null;
 const wasteTypeDoneButton = contactForm ? contactForm.querySelector("[data-waste-done]") : null;
+const processVideoFrames = document.querySelectorAll("[data-process-video-frame], [data-ai-process-video-frame]");
 
 let contactFeedback = {};
 try {
@@ -217,6 +218,71 @@ if (languageSwitcher && languageTrigger && languageMenu) {
     if (!languageMenu.hidden && event.target instanceof Node && !languageSwitcher.contains(event.target)) {
       closeLanguageMenu();
     }
+  });
+}
+
+if (processVideoFrames.length) {
+  processVideoFrames.forEach((frame) => {
+    const video = frame.querySelector("[data-process-video], [data-ai-process-video]");
+    const cover = frame.querySelector("[data-process-video-cover], [data-ai-process-video-cover]");
+
+    if (!(video instanceof HTMLVideoElement) || !(cover instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    function loadProcessVideoSources() {
+      const deferredSources = video.querySelectorAll("source[data-src]");
+      let didLoadSource = false;
+
+      deferredSources.forEach((source) => {
+        const src = source.dataset.src;
+        if (!src) {
+          return;
+        }
+
+        source.setAttribute("src", src);
+        delete source.dataset.src;
+        didLoadSource = true;
+      });
+
+      if (didLoadSource) {
+        video.load();
+      }
+    }
+
+    function setProcessVideoPlaying(isPlaying) {
+      const state = isPlaying ? "playing" : "idle";
+      if (frame.hasAttribute("data-process-video-frame")) {
+        frame.dataset.processVideoState = state;
+      }
+      if (frame.hasAttribute("data-ai-process-video-frame")) {
+        frame.dataset.aiProcessVideoState = state;
+      }
+      cover.hidden = isPlaying;
+    }
+
+    cover.addEventListener("click", async () => {
+      loadProcessVideoSources();
+      try {
+        await video.play();
+      } catch {
+        setProcessVideoPlaying(false);
+      }
+    });
+
+    video.addEventListener("play", () => {
+      setProcessVideoPlaying(true);
+    });
+
+    video.addEventListener("pause", () => {
+      setProcessVideoPlaying(false);
+    });
+
+    video.addEventListener("ended", () => {
+      setProcessVideoPlaying(false);
+    });
+
+    setProcessVideoPlaying(!video.paused && !video.ended);
   });
 }
 
